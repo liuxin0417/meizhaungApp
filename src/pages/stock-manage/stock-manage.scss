@@ -1,0 +1,51 @@
+page-stock-manage {
+    .goodsMsg{
+        width:96%;
+        height:240px;
+        background:#fff;
+        border-radius:5px;
+        margin:0 auto;
+        margin-top:10px;
+        position: relative;
+    }
+    .goodsDeatil{
+        height:4rem;
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #dedede;
+    }
+    .goodsTitle{
+        width:20%;
+        padding-left:10px;
+        height:100%;
+        line-height: 4rem;
+    }
+    .codeImg{
+        height:50px;
+        width:50px;
+        position: fixed;
+        bottom:2rem;
+        right:2rem;
+    }
+    .numInput{
+        width:70%;
+        height:90%;
+        border:none;
+        outline: none;
+    }
+    .saveBtn{
+        width:100%;
+        height:4rem;
+        line-height: 4rem;
+        text-align: center;
+        background:#FF5C00;
+        color:#fff;
+        position: absolute;
+        bottom:0px;
+        left:0px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}

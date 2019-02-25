@@ -1,0 +1,34 @@
+page-pay-success {
+    .paycontent{
+        height:9.8rem;
+        width:100%;
+        background:#fff;
+        display:flex;
+        flex-direction: column;
+    }
+    .paycontent1{
+        height:6.8rem;
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color:color($colors, baseColor);
+    }
+    .paycontent2{
+        height:1.5rem;
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .paycontent2>div{
+        height:1.5rem;
+        width:7.7rem;
+    }
+    .info{
+        text-align: center;
+        font-size: 1.6rem;
+        margin-top: 20px;
+    }
+}

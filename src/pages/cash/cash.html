@@ -1,0 +1,44 @@
+<!--
+  Generated template for the CashPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">提现</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div class="cash_title">
+    <h6>提现说明</h6>
+    <div>
+      <p>1.账户满100元可提现，提现金额需为100的倍数：如100、200、300等。积分兑换比例为100：1。</p>
+      <p>2.提现3-7个工作日到账，默认提现到注册使用的微信账号。</p>
+      <p>3.提现时收取“提现金额3%”，用作支付税费和银行手续费。</p>
+    </div>
+  </div>
+  <div class="cash_content">
+    <div class="cash_item1">
+      <div>账户余额&nbsp;&nbsp;{{ActiveMoney==''?0:ActiveMoney}}&nbsp;&nbsp;(积分)&nbsp;&nbsp;({{(ActiveMoney/100).toFixed(2)}}元)</div>
+      <!-- <div>&nbsp;&nbsp;{{ActiveMoney}}</div> -->
+    </div>
+    <div class="cash_item2">
+      <div>提现金额(元)&nbsp;&nbsp;:&nbsp;&nbsp;</div>
+      <input type="number" placeholder="请输入提现金额" min='1' (focus)="giftfocus()" (keydown)="checkNum($event)"  (keyup)="SetMoney($event)" [(ngModel)]="Money" name="Money">
+    </div>
+  </div>
+  <div class="cash_btn1">
+    提现后账户余额
+    <span style="color:#F6554B">{{ReMoney}}</span>
+    积分
+  </div>
+  <div *ngIf="Money<=0" class="cash_btn">确定</div>
+  <div *ngIf="Money>0" class="cash_btnr" tappable (click)="Recharge()">
+    确定
+  </div>
+</ion-content>

@@ -1,0 +1,59 @@
+<!--
+  Generated template for the NewclassificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="height:50px;min-height:50px; ">
+  <ion-navbar style="top:-100px;position:absolute;">
+    <ion-title mode="ios" style="top:-100px;position:absolute;">分类——逛贝商城</ion-title>
+  </ion-navbar>
+  <div class="home_header">
+    <div class="header-inside">
+      <div class="qrcode">
+        <!-- <img tappable (click)="goshoplist()" [src]="img9" alt=""> -->
+        <img [src]="logo2" alt="">
+      </div>
+      <div class="search">
+        <div class="searchimg">
+          <img [src]="img11" alt="">
+        </div>
+        <input class='searchpart' (focus)="gotosearch()" placeholder="逛贝" type="text">
+      </div>
+      <div class="message">
+        <!-- <img [src]="img10" alt=""> -->
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content id="category" cache-view="false">
+  <nav id="nav">
+    <ul>
+      <li *ngFor="let item of list1, let i = index" tappable (click)="categoryLeftClick(item,i)">
+        <span [ngClass]="{true:'nav-current',false:'nav-blur'}[select==i]" style="font-size: 14px">{{item.Name}}</span>
+      </li>
+    </ul>
+  </nav>
+  <div id="pro">
+    <div class="pro-scroll">
+      <div class="pro-warp">
+        <div class="banner" *ngIf="list1!=undefined">
+          <img *ngIf="list1[select].ImageUrl!=''" [src]="list1[select].ImageUrl" alt="" />
+        </div>
+        <div class="content">
+          <div>
+            <!-- <div class="content-title">
+            <span>热卖品类</span>
+          </div> -->
+            <div class="content-body">
+              <li class="content-body-list" *ngFor="let item of list2, let i = index" tappable (click)="gotogoodlist(item.ID,item.BH,item.Name)">
+                <img [src]="item.ImageUrl==''?img:item.ImageUrl" />
+                <span>{{item.Name}}</span>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

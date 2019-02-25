@@ -1,0 +1,59 @@
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">我的收藏</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only>
+        <!-- <img [src]="img4" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt=""> -->
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only tappable (click)="gotogoodscar()">
+        <img [src]="img3" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="list==''">
+    <div class="listnone">
+      <img src="assets/imgs/logo2.png" style="margin:5px 35%;" alt="">
+      <div class="xiaoyu">您还没有收藏的商品，不如去逛逛~</div>
+    </div>
+  </div>
+  <div class="list-item" *ngFor="let item of list ; let i=index">
+    <div tappable (click)="gotodetail(item.ID)"></div>
+    <div class="list-style">
+      <div tappable (click)="gotodetail(item.ID)">
+        <img [src]="item.PicUrl" alt="">
+      </div>
+      <div >
+        <div class="collect_name" tappable (click)="gotodetail(item.ID)">{{item.Name}}</div>
+        <div  class="new_collect_item" style="width:100%;color:#a0a0a0">
+          <div>
+            <img style="width:15px;height:15px;margin-right:10px;" [src]="img5" alt="">
+            <span style="display:block;">{{item.ShopName}}</span>
+          </div>
+          <div tappable (click)="delete(item.ID,i)">
+            删除
+            <!-- <img style="width:10px;margin-right:8px;" [src]="img6" alt="">
+            <span>1150</span> -->
+          </div>
+        </div>
+      </div>
+      <!-- <div>
+        <div class="selectbtn"></div>
+        <div style="width:100%;height:27px;" class="selectbtn"></div>
+        <div class="selectbtn" tappable (click)="delete(item.FranchiseeID,item.goodsguid,i)">删除</div>
+      </div> -->
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <page-popup [(flag)]="flag"></page-popup>
+</ion-content>

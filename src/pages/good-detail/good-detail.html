@@ -1,0 +1,357 @@
+<ion-header style="background: #fff;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios" style="top:-100px;position:absolute;">商品</ion-title>
+    <ion-buttons center>
+      <div id="button_list">
+        <div>
+          <span [ngClass]="{true:'spanType2',false:'spanType1'}[button_num==1]" tappable (click)="button_num=1">
+            商品
+          </span>
+        </div>
+        <!-- <div>
+          <span [ngClass]="{true:'spanType2',false:'spanType1'}[button_num==2]" tappable (click)="button_num=2">
+            评价
+          </span>
+        </div> -->
+        <div>
+          <span [ngClass]="{true:'spanType2',false:'spanType1'}[button_num==3]" tappable (click)="button_num=3">
+            详情
+          </span>
+        </div>
+      </div>
+    </ion-buttons>
+    <ion-buttons right>
+      <!-- <div class="more2" tappable (click)="WxShare()"></div> -->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content id="detail" style="background:#eee;">
+  <!-- <div #btn1 class="backbtn" tappable (click)="goback()"></div>
+  <div #btn2 class="more" tappable (click)="WxShare()"></div>
+  <div class="navbar" #navbar>
+    <div class="backbtn2" tappable (click)="goback()"></div>
+    
+    <div class="more2" tappable (click)="WxShare()"></div>
+  </div> -->
+  <div>
+    <div *ngIf="button_num==1">
+      <div #lyScroll class="scrollcontent">
+        <div class="goods-banner">
+          <ion-slides pager=true (ionSlideDidChange)="slideChanged()">
+            <ion-slide style="background:#e4e4e4" *ngFor="let item of slide">
+              <img style="width:100%" [src]="item.Url" alt="" tappable (click)="gotoslideImg(slide)">
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <div style="background:#fff;width:100%;padding-top:18px;" *ngIf="msg!=null">
+          <div class="goods-title">
+            <span *ngIf="msg.IsSpecial" style="color:#e4393c;" >[特]</span><span *ngIf="msg.ISHD" style="color:#e4393c;">[限时特惠]</span>{{msg.Name}}
+          </div>
+          <div class="goods-intro">
+            {{msg.ShortDesc}}
+          </div>
+          <div class="goods-price">
+            <div>
+              <span style="font-size:12px;">￥</span>
+              {{gettwo(msg.ActivityPrice)}}</div>
+            <div>
+              <span>￥</span>
+              {{gettwo(msg.OldPrice)}}</div>
+            <div *ngIf="msg.OldPrice-msg.ActivityPrice!=0">直降{{gettwo(msg.OldPrice-msg.ActivityPrice)}}元</div>
+          </div>
+          <!-- <div class="goods-title">
+            {{msg.ShopName}}
+          </div> -->
+          <div class="Promotion-part" *ngIf="couponflag">
+            <div class="Promotion-part_left">优惠</div>
+            <div class="Promotion-part_right">
+              <div class="Promotion-part_right_item" tappable (click)="show()">
+                <div class="Promotion-part-item">优惠券</div>
+                <div style="margin-right:20%;">查看可用优惠券</div>
+                <img class="detail_pont" [src]="img_detail" alt="">
+              </div>
+              <div class="Promotion-part_right_item" *ngIf="false">
+                <div class="Promotion-part-item">满减</div>
+                <div style="margin-right:20%;">满199元优惠10元</div>
+                <!-- <img class="detail_pont" [src]="img_detail" alt=""> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="width:100%;background:#fff;">
+          <div class="goods-chioce" *ngIf="desflag" tappable (click)="alertType()">
+            <div>已选</div>
+            <div>{{guige}}</div>
+            <div>
+              <img [src]="img" alt="">
+            </div>
+          </div>
+
+          <div class="goods-more">
+            <img [src]="img4" alt="">承诺正品保障
+          </div>
+        </div>
+        <div *ngIf="commite==null||commite==undefined||commite==''" style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5">
+          <div class="user-judge">
+            暂无评论！
+          </div>
+        </div>
+        <div *ngIf="commite!=null&&commite!=undefined&&commite!=''" style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5">
+          <div class="user-judge">
+            <div>用户评价</div>
+            <div style="display:none;">90%</div>
+            <div style="text-align:center;display:none;">满意</div>
+            <div style="display:none;">
+              <img [src]="img" alt="">
+            </div>
+          </div>
+        </div>
+        <div *ngIf="commite!=null&&commite!=undefined&&commite!=''" style="padding-bottom:10px;background:#fff;margin-bottom:10px">
+          <div class="judge-part">
+            <div class="judge-title">
+              <div *ngIf="commite.HeadUrl!=undefined">
+                <img class="headimg" [src]="commite.HeadUrl" alt="">
+              </div>
+              <div style="padding-left:6px;">
+                <span class="nameSpan">{{commite.comuserName}}</span>
+                <span style="display:flex;flex-direction: row;align-items: center;">
+                  <span *ngFor="let star2 of star_list;let i=index">
+                    <img style="width:10px;height: auto;" *ngIf="i<=commite.Degree-1" [src]="star" alt="">
+                    <img style="width:10px;height: auto;" *ngIf="i>commite.Degree-1" [src]="starNo" alt="">
+                  </span>
+                  <span style="margin-left:10px;">{{commite.comtime.split("T")[0]}}</span>
+                </span>
+               
+              </div>
+            </div>
+            <div class="judge-content">
+              {{commite.comcontent}}
+            </div>
+            <!-- <div style="width:95%;height: auto;margin:0 auto;text-align: right">{{commite.comtime.split("T")[0]}}</div> -->
+            <div class="judge-img" *ngIf="commite.lstSmallPic!=undefined">
+              <img *ngFor="let item2 of commite.lstSmallPic" [src]="item2.Url" alt="" tappable (click)="gotoslideImg(commite.lstPic)">
+            </div>
+            <div class="judge-con" *ngIf="commite.Scontent!=null">
+              <div>
+                <span style="color:#ff4f4f;padding-right:3px;">商家回复:</span>{{commite.Scontent}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="goods_detail_shop" *ngIf="msg!=undefined">
+          <div class="goods_detail_shop1">
+            <div class="getconcer_left">
+                <img style="height:3.5rem;width:auto;" [src]="msg.ShopLogo" alt="">
+                <div class="goods_detail_shop1_right">
+                  <span style="color:#333;font-size:1.4rem;">{{msg.ShopName}}</span>
+                  <span style="color:#999;font-size:1.2rem;">综合评分9.0</span>
+                </div>
+            </div>
+            <div class="getconcer" tappable (click)="getConcer()">+关注</div>
+          </div>
+          <div class="goods_detail_shop2">
+            <div>
+              <span style="font-size: 1.4rem;color:#333;">{{msg.StoreManNum}}</span>
+              <span style="font-size: 1.2rem;color:#999;">关注人数</span>
+            </div>
+            <div style="height:60%;">
+              <span style="font-size: 1.4rem;color:#333;">{{msg.ShopProductNum}}</span>
+              <span style="font-size: 1.2rem;color:#999;">全部商品</span>
+            </div>
+            <!-- <div>
+              <div>
+                物流
+                <span style="color:#1DA54A">9.0低</span>
+              </div>
+              <div>
+                商品
+                <span style="color:#1DA54A">9.0低</span>
+              </div>
+              <div>
+                服务
+                <span style="color:#1DA54A">9.0低</span>
+              </div>
+            </div> -->
+          </div>
+          <div class="goods_detail_shop3" >
+            <div class="goods_detail_shop3_left">
+              <img style="height:1.5rem;width:auto;margin-right:10px;" [src]="msg_img" alt="">
+              <span>联系卖家</span>
+            </div>
+            <div class="goods_detail_shop3_right" tappable (click)="gotoshop(msg.ShopID)">
+              <img style="height:1.5rem;width:auto;margin-right:10px;" [src]="store_img" alt="">
+              <span>进店逛逛</span>
+            </div>
+          </div>
+        </div>
+        <div class="goods-switch">
+          <div [ngClass]="{true:'switch-color',false:''}[switchnum]" style="border-right:1px solid #333" tappable (click)="switch(true)">概述</div>
+          <div [ngClass]="{true:'switch-color',false:''}[!switchnum]" tappable (click)="switch(false)">参数</div>
+        </div>
+        <div id="des1" *ngIf="switchnum" [innerHTML]="des"></div>
+        <div style="background:#fff;padding:10px 0px 10px 0px;margin-top:10px;" *ngIf="!switchnum" [innerHTML]="goodsinfo"></div>
+        <div style="width:100%;height:41px;"></div>
+      </div>
+    </div>
+    <div *ngIf="button_num==2">
+      <div>
+        <div *ngIf="commite==null" style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5">
+          <div class="user-judge">
+            暂无评论！
+          </div>
+        </div>
+        <div *ngIf="commite!=null" style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5">
+          <div class="user-judge">
+            <div>用户评价</div>
+            <div style="display:none;">90%</div>
+            <div style="text-align:center;display:none;">满意</div>
+            <div style="display:none;">
+              <img [src]="img" alt="">
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let item of commiteList" style="padding-bottom:10px;background:#fff;border-bottom:1px solid #dedede;">
+          <div class="judge-part">
+            <div class="judge-title">
+              <div *ngIf="item.HeadUrl!=undefined">
+                <img class="headimg" [src]="item.HeadUrl" alt="">
+              </div>
+              <div style="padding-left:6px;">
+                <span class="nameSpan">{{item.comuserName}}</span>
+                <!-- <span>好评度:{{item.Degree}}星</span> -->
+                <span style="display:flex;flex-direction: row;align-items: center;">
+                  <span *ngFor="let star2 of star_list;let i=index">
+                    <img style="width:10px;height: auto;" *ngIf="i<=item.Degree-1" [src]="star" alt="">
+                    <img style="width:10px;height: auto;" *ngIf="i>item.Degree-1" [src]="starNo" alt="">
+                  </span>
+                  <span style="margin-left:10px;font-size:12px;">{{item.comtime.split("T")[0]}}</span>
+                </span>
+                <!-- <span>{{item.comtime.split("T")[0]}}</span> -->
+              </div>
+            </div>
+            <div class="judge-content">
+              {{item.comcontent}}
+            </div>
+            <!-- <div style="width:95%;height: auto;margin:0 auto;text-align: right">{{commite.comtime.split("T")[0]}}</div> -->
+            <div class="judge-img" *ngIf="item.lstSmallPic!=undefined">
+              <img *ngFor="let item2 of item.lstSmallPic " [src]="item2.Url" alt="" tappable (click)="gotoslideImg(item.lstPic)">
+            </div>
+            <div class="judge-con" *ngIf="commite.Scontent!=null">
+              <div>
+                <span style="color:#ff4f4f;padding-right:3px;">商家回复:</span>{{item.Scontent}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div style="height:4rem;width:100%"></div>
+      </div>
+
+    </div>
+    <div *ngIf="button_num==3">
+      <div id="des">
+        <div class="goods-switch">
+          <div [ngClass]="{true:'switch-color',false:''}[switchnum]" style="border-right:1px solid #333" tappable (click)="switch(true)">概述</div>
+          <div [ngClass]="{true:'switch-color',false:''}[!switchnum]" tappable (click)="switch(false)">参数</div>
+        </div>
+        <div *ngIf="switchnum" [innerHTML]="des" ></div>
+        <div style="background:#fff;padding:10px 0px 10px 0px;margin-top:10px;" *ngIf="!switchnum&&goodsinfo!=null" [innerHTML]="goodsinfo"></div>
+        <div style="width:100%;height:41px;"></div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer *ngIf="msg!=null">
+  <page-template-two [(goodstype)]="goodstype" [(goodsshow)]="goodsshow" [(ProductAttr)]="ProductAttr" [(desflag)]="desflag"
+    [(Fh)]="Fh" [(goodsid)]="goodsid" [(userID)]="userID" [(guige)]="guige" [(seckInfo)]="seckInfo"></page-template-two>
+  <div class="goods-buy">
+    <div tappable (click)="gotochat2()">
+      <img [src]="homeNew" alt="">
+      <div>首页</div>
+    </div>
+    <div *ngIf="shoacngflag" tappable (click)="collection()">
+      <img [src]="img2" alt="">
+      <div>收藏</div>
+    </div>
+    <div *ngIf="!shoacngflag" tappable (click)="cancel()">
+      <img [src]="img5" alt="">
+      <div style="color:#ff4f4f">已收藏</div>
+    </div>
+    <div tappable (click)="gotogoodscar()">
+      <img [src]="img3" alt="">
+      <div>购物车</div>
+    </div>
+    <div class="goincar1" *ngIf="msg.VirtualStock>=0">
+      <span class="more_btn2" *ngIf="msg.VirtualStock>0" tappable (click)="goincar()">加入购物车</span>
+      <span class="more_btn2"  *ngIf="msg.VirtualStock<=0"  style="background:#b0b0b0">加入购物车</span>
+      <span class="more_btn2" *ngIf="msg.VirtualStock>0" tappable (click)="buyStrict()" style="background:#e4393c">立即购买</span>
+      <span class="more_btn2" *ngIf="msg.VirtualStock<=0"  style="background:#b0b0b0">立即购买</span>
+    </div>
+    <div *ngIf="msg.VirtualStock<0" class="goincar" tappable (click)="alertmessage()">加入购物车</div>
+  </div>
+  <div class="cover" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart2" [ngClass]="{true:'goup',false:'godown'}[showflag]" style="overflow-y: scroll;">
+      <div class="canuseTitle">商品可用优惠券</div>
+      <!-- <div class="coupon-content-left" *ngFor="let item of couponList" >
+        <div *ngIf="item.isL" id="zhang"></div>
+        <div class="coupon-content-left-item1">{{item.CouponDes}}
+          <span *ngIf="item.CouponType==1">【满减劵】</span>
+          <span *ngIf="item.CouponType==2">【折扣劵】</span>
+          <span *ngIf="item.CouponType==3">【现金劵】</span>
+        </div>
+        <div class="coupon-content-left-item2">
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==1">{{item.Amount}}元</div>
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==2">{{item.Amount*10}}折</div>
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==3">{{item.Amount}}元</div>
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==4">免邮劵</div>
+          <div *ngIf="item.CouponType!=4">满{{item.MeetPrice}}可用</div>
+        </div>
+      </div> -->
+      <div class="coupon-item" *ngFor="let item of couponList">
+        <div class="item-header"></div>
+        <div class="item-content">
+          <div *ngIf="item.CouponType==1" class="item-num">
+            <div>
+              {{item.Amount}}
+              <span style="font-size:12px;font-weight:100;">元</span>
+            </div>
+            <div>满减券</div>
+          </div>
+          <div *ngIf="item.CouponType==2" class="item-num">
+            <div style="padding-left:2rem;">
+              {{item.Amount*10}}
+              <span style="font-size:12px;font-weight:100;">折</span>
+            </div>
+            <div>折扣券</div>
+          </div>
+          <div *ngIf="item.CouponType==3" class="item-num">
+            <div>
+              {{item.Amount}}
+              <span style="font-size:12px;font-weight:100;">元</span>
+            </div>
+            <div>代金券</div>
+          </div>
+          <div class="item-exp">
+            <div>订单满{{item.MeetPrice}}元即可使用</div>
+            <div>
+              <span *ngIf="item.UsingRange==1">全平台</span>
+              <span *ngIf="item.UsingRange==2">店铺通用</span>
+              <span *ngIf="item.UsingRange==3">品类通用</span>
+              <span *ngIf="item.UsingRange==4">单商品通用</span>
+              <span *ngIf="item.UsingRange==5">品牌通用</span>
+            </div>
+            <!-- <div>不能用情况</div> -->
+          </div>
+        </div>
+        <div class="item-footer">
+          <div>有效期：{{splite(item.StartDate)}}至{{splite(item.EndDate)}}</div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-footer>

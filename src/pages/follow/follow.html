@@ -1,0 +1,164 @@
+<!--
+  Generated template for the FollowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-buttons id="Rname" style="display: flex;flex-direction: row;justify-content: center;">
+      <button ion-button icon-only tappable (click)="changeFlag(1)" style="margin-right:50px;">
+        <span [ngClass]="{true:'color2',false:'nocolor'}[!flag]"> 商品</span>
+      </button>
+      <button ion-button icon-only tappable (click)="changeFlag(2)">
+        <span [ngClass]="{true:'color2',false:'nocolor'}[flag]">店铺</span>
+      </button>
+    </ion-buttons>
+    <ion-buttons id="Rname" right>
+      <!-- <button ion-button icon-only tappable (click)="flag=true">
+        <img [src]="sousuo" style="width:20px;height:auto;" alt="">
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+  <!-- <div class="fllow_title" *ngIf="!flag">
+    <div class="fllow_title_item" [ngClass]="{true:'color',false:''}[type==0]" tappable (click)="updategoods(0)">默认</div>
+    <div class="fllow_title_item" [ngClass]="{true:'color',false:''}[type==1]" tappable (click)="updategoods(1)">降价</div>
+    <div class="fllow_title_item" [ngClass]="{true:'color',false:''}[type==2]" tappable (click)="updategoods(2)">促销</div>
+    <div class="fllow_title_item" [ngClass]="{true:'color',false:''}[type==3]" tappable (click)="updategoods(3)">分类</div>
+    <div class="fllow_title_item" [ngClass]="{true:'color',false:''}[type==4]" tappable (click)="updategoods(4)">库存</div>
+  </div>
+  <div class="fllow_title" *ngIf="flag">
+    <div class="fllow_title_item2" [ngClass]="{true:'color',false:''}[type==0]" tappable (click)="updategoods(0)">综合</div>
+    <div class="fllow_title_item2" [ngClass]="{true:'color',false:''}[type==1]" tappable (click)="updategoods(1)">促销</div>
+    <div class="fllow_title_item2" [ngClass]="{true:'color',false:''}[type==2]" tappable (click)="updategoods(2)">有券</div>
+    <div class="fllow_title_item2" style="border-left:1px solid #dedede" [ngClass]="{true:'color',false:''}[type==3]" tappable
+      (click)="updategoods(3)">筛选</div>
+  </div> -->
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="!flag">
+    <!-- <div class="fllow_goods">
+      <div class="fllow_goods_img">
+        <img [src]="img" alt="">
+      </div>
+      <div class="fllow_goods_msg">
+        <div class="fllow_goods_line1">商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名</div>
+        <div class="fllow_goods_line2">
+          <span class="changecolor" style="margin-right:10px;">￥149.00</span>
+          <span class="line2_tit">劵</span>
+        </div>
+        <div class="fllow_goods_line3">
+          <div>
+            <span class="line2_tit">满减</span>
+            <span>299元选二</span>
+          </div>
+          <img style="height:1.2rem;width:auto;" [src]="goto" alt="">
+        </div>
+        <div class="fllow_goods_line4">
+          <img style="margin-right:10px;" [src]="img2" alt="">
+        </div>
+      </div>
+    </div> -->
+    <div class="list-item" *ngFor="let item of goodslist ; let i=index">
+      <div tappable (click)="gotodetail(item.ID)"></div>
+      <div class="list-style">
+        <div tappable (click)="gotodetail(item.ID)">
+          <img [src]="item.PicUrl" alt="">
+        </div>
+        <div>
+          <div class="collect_name" tappable (click)="gotodetail(item.ID)">{{item.Name}}</div>
+          <div class="new_collect_item" style="width:100%;color:#a0a0a0">
+            <div>
+              <img style="width:15px;height:15px;margin-right:10px;" [src]="img5" alt="">
+              <span style="display:block;">{{item.ShopName}}</span>
+            </div>
+            <div tappable (click)="delete(item.ID,i)">
+              删除
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="flag">
+    <div class="fllow_goods_item2" *ngFor="let item of shoplist;let i=index">
+      <div class="fllow_goods_item21" tappable (click)="gotoshop(item.VendorID)">
+        <img style="height:80%;width:auto;" [src]="item.PicUrl" alt="">
+      </div>
+      <div class="fllow_goods_item22" tappable (click)="gotoshop(item.VendorID)">
+        <div>{{item.VendorName}}</div>
+        <div style="color:#999">
+          <span style="margin-right:10px;">{{item.AttentionNum}}万人关注</span>
+          <span style="margin-right:10px;color:#999;">{{item.ProductNum}}件商品</span>
+          <!-- <span>综合评分
+            <span class="changecolor">9.6</span>
+          </span> -->
+        </div>
+        <div class="flag_color_father">
+            <!-- <span style="margin-right:10px;color:#999;">{{item.ProductNum}}件商品</span> -->
+          <!-- <span class="flag_color">删除</span> -->
+          <!-- <span class="flag_color2">有券</span> -->
+        </div>
+      </div>
+      <div class="fllow_goods_item23">
+        <span style="color:#999;" tappable (click)="deleteShop(item,i)">删除</span>
+        <!-- <img style="height:1.3rem;" [src]="goto" alt=""> -->
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<div class="cover" *ngIf="coverpart" [ngClass]="{true:'goshow',false:'gohide'}[slidepart]">
+  <div class="hidepart" tappable (click)="gohide()"></div>
+  <div class="slidePart" [ngClass]="{true:'goLeft',false:'goRight'}[slidepart]">
+    <div style="width:100%;height:90%;overflow: scroll;" *ngIf="statusType==1">
+      <div class="btnpart">
+        <div class="LevelTitle">类别</div>
+        <div class="firstLevel">
+          <div class="firstcore" *ngFor="let item of list1 let i=index" tappable (click)="changenum(i,item.BH,0)">{{item.Name}}</div>
+        </div>
+      </div>
+      <div class="all_type" tappable (click)="statusType=2">
+        <div>全部分类</div>
+        <img [src]="goto" alt="">
+      </div>
+      <div class="btnpart" style="margin-top:10px;">
+        <div class="LevelTitle">价格区间</div>
+        <div class="firstLevel" style="justify-content: space-around;">
+          <input class="low_price" type="number" placeholder="最低价">
+          <input class="height_price" type="number" placeholder="最高价">
+        </div>
+      </div>
+
+      <div class="bottom_sure_btn">
+        <div class="bottom_sure_btn_left">重置</div>
+        <div class="bottom_sure_btn_right" tappable (click)="gohide()">确认</div>
+      </div>
+    </div>
+    <div style="height:90%;overflow: scroll;background:#fff;" class="type_kind" *ngIf="statusType==2">
+      <div class="type_kind_title">全部分类</div>
+      <div style="height:100%;width:100%;background:#fff;">
+        <div class="type_kind_item" tappable (click)="itemflag=!itemflag">
+          <span>电脑</span>
+          <img style="height:20px;width:auto;" [src]="goto" alt="">
+        </div>
+        <div *ngIf="itemflag">
+          <div class="type_kind_item_detail" *ngFor="let item of testarr">
+            <img style="width:20px;height:20px;margin-right:10px;" [src]="chose" alt="">
+            <span>组装电脑</span>
+          </div>
+        </div>
+      </div>
+      <div class="cancel_btn" tappable (click)="statusType=1">
+        取消
+      </div>
+    </div>
+  </div>
+</div>

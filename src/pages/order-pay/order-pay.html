@@ -1,0 +1,96 @@
+<!--
+  Generated template for the OrderPayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">去付款</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div *ngIf="datalist!=undefined&&!paysuccess">
+    <div class="orderitem" *ngFor="let item of OrderList.Items">
+      <div class="orderimg">
+        <img [src]="item.Url" alt="">
+      </div>
+      <div class="coupon">
+        <div>
+          <div>{{item.Name}}</div>
+        </div>
+        <div [innerHTML]="item.AttributeDescription"></div>
+        <div>{{item.Price}}元&nbsp;&nbsp;X&nbsp;&nbsp;{{item.Quantity}}</div>
+        <!-- <div>{{item.Quantity*item.Price}}元</div> -->
+      </div>
+    </div>
+    <div class="pay-type">
+      <div class="weixinpay" tappable (click)="paytype=2">
+        <div>
+          <img [src]="img2" alt="">
+        </div>
+        <div>微信支付</div>
+        <div>
+          <img *ngIf="paytype==2" [src]="img3" alt="">
+          <img *ngIf="paytype!=2" [src]="img4" alt="">
+        </div>
+      </div>
+      <div class="weixinpay" tappable (click)="paytype=1" style="border-bottom:none;" *ngIf="!isweb">
+        <div>
+          <img [src]="img5" alt="">
+        </div>
+        <div>支付宝</div>
+        <div>
+          <img *ngIf="paytype==1" [src]="img3" alt="">
+          <img *ngIf="paytype!=1" [src]="img4" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pay_success_cover" *ngIf="datalist!=undefined&&paysuccess" >
+    <div class="nav_part">
+      <img style="height: 1.8rem;width:auto;" tappable (click)="gopop()" [src]="fanhui" alt="">
+      <div style="text-align: center;
+      font-size: 1.7rem;
+      font-weight: 100;
+      color: #000;
+      pointer-events: auto;">付款成功</div>
+      <div>
+        <img style="height:2rem;width:auto;margin-right:1.2rem" [src]="gouwu" alt="">
+        <img style="height:2rem;width:auto;" [src]="sousuo" alt="">
+      </div>
+    </div>
+    <div class="pay_success_status">
+      <img style="margin-right:10px;height:2.5rem;width:auto;" [src]="complte" alt="">
+      <div class="pay_status_msg">
+        <span>
+          付款成功
+        </span>
+        <span>
+          请耐心等待收货
+        </span>
+      </div>
+    </div>
+    
+    <div class="pay_success_msg">
+      <div class="pay_success_msg_item">
+        <span style="color:#999">合计:</span>
+        <span class="changecolor">￥{{datalist.PayMoney.toFixed(2)}}</span>
+      </div>
+    </div>
+    <div class="pay_success_btn">
+      <div (click)="gotoOrderList()">查看订单</div>
+      <div (click)="gotohome()">继续购物</div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer style="height:42px;">
+  <div *ngIf="datalist!=undefined&&!paysuccess" class="go-pay">
+    <div>应付金额:{{datalist.PayMoney}}元</div>
+    <div tappable (click)="pay2()">去付款</div>
+  </div>
+</ion-footer>

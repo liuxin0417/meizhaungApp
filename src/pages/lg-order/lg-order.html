@@ -1,0 +1,83 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">选择服务类型</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div class="list-content">
+    <div class="list-item">
+      <div></div>
+      <div class="list-style">
+        <div>
+          <img [src]="Info.Url" alt="">
+        </div>
+        <div>
+          <div>{{Info.Name}}</div>
+          <!-- <div>3-5个月</div> -->
+        </div>
+        <div>
+          <div>￥{{Info.Price}}</div>
+          <div>X{{Info.Quantity}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reason-list">
+    <div class="reason-list-item1" style=" justify-content: space-between;" tappable (click)="show()">
+      <div>物流公司</div>
+      <div style="color:#999;">
+        <span *ngIf="checkType==null">物流公司</span>
+        <span *ngIf="checkType!=null">{{checkType.DText}}</span>
+        <img [src]="img5" alt="">
+      </div>
+    </div>
+    <div class="reason-list-item1">
+      <div>物流单号:</div>
+      <div>
+        <input type="text" placeholder="请填写物流单号" name="BH" id="BH" [(ngModel)]="BH">
+      </div>
+    </div>
+  </div>
+  <div class="reason-list">
+    <div class="reason-list-item1">
+      <div>联系电话:</div>
+      <div>
+        <input type="text" placeholder="请填写手机号" name="linkphone" id="linkphone" [(ngModel)]="linkphone">
+      </div>
+    </div>
+    <div class="reason-list-item1">
+      <div>退款说明:</div>
+      <div class="reason-input">
+        <input type="text" placeholder="选填" name="memo" id="memo" [(ngModel)]="memo">
+      </div>
+    </div>
+  </div>
+  <div class="reason-img">
+    <div class="reason-img-item1">上传凭证</div>
+    <div class="reason-img-item2">
+      <page-select-picture [(fileObjList)]="fileObjList" [max]="6"></page-select-picture>
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <div class="reason-btn" tappable (click)="sureComment()">
+    确认修改
+  </div>
+  <div class="cover" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart2" [ngClass]="{true:'goup',false:'godown'}[showflag]">
+      <div class="translate">
+        <div class="translateType" *ngFor="let item of resonType ;let i=index" [ngClass]="{true:'backgroundcolor'}[chosenum==i]"
+          tappable (click)="changeType(i)">
+          {{item.DText}}
+        </div>
+      </div>
+      <div class="reason-btn" tappable (click)="Check()">
+        确定
+      </div>
+    </div>
+  </div>
+</ion-footer>

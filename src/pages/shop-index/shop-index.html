@@ -1,0 +1,143 @@
+<!--
+  Generated template for the ShopIndexPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title *ngIf="shopmsg!=undefined" mode="ios">{{shopmsg.Name}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only tappable (click)="showList()">
+        <img [src]="gengduo" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background:#dedede;">
+  <div class="shop_swiper">
+    <ion-slides>
+      <ion-slide *ngFor="let item of bannerList" >
+        <a style="display:block;height:12rem;width:100%" [href]="item.StoreUrl">
+          <img style="height:100%;width:100%" [src]="item.PicUrl" alt="">
+        </a>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="switch_btn">
+    <div tappable (click)="chose_btn(1)" [ngClass]="{true:'color_border',false:'no_color_border'}[num==1]">首页</div>
+    <div tappable (click)="chose_btn(2)" [ngClass]="{true:'color_border',false:'no_color_border'}[num==2]">全部商品</div>
+    <div tappable (click)="chose_btn(3)" [ngClass]="{true:'color_border',false:'no_color_border'}[num==3]">店铺详情</div>
+  </div>
+  <div style="width:100%;height:auto;" *ngIf="num==1">
+    <div style="width:100%;background:#F9F9F9" *ngFor="let item of realList">
+      <div *ngIf="item.Imageurl==''" class="Dtitle">
+        <div>{{item.Name}}</div>
+      </div>
+      <div *ngIf="item.Imageurl!=''" class="banner3">
+        <img [src]="item.Imageurl!=''?item.Imageurl:banner" alt="">
+      </div>
+      <div class="goodslist">
+        <div class="goodsitem3" *ngFor="let tab of item.product" tappable (click)="gotoDetail(tab.ProId)">
+          <div>
+            <img *ngIf="tab.ISHD==1" class="activity_pic" [src]="activity" alt="">
+            <img style="width:90%;height:auto;max-height: 100%;" [src]="tab.ProPic!=''?tab.ProPic:imggoods" alt="">
+          </div>
+          <div>{{tab.Name}}</div>
+          <div>
+            <span>￥{{tab.ActivityPrice.toFixed(2)}}</span>
+            <span style="color:#999;text-decoration: line-through">￥{{tab.OldPrice.toFixed(2)}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:100%;height:auto;" *ngIf="num==2">
+    <div class="goods_tab_switch">
+      <div [ngClass]="{true:'color',false:''}[searchNum==1]" tappable (click)="getgoodsList(1)">综合</div>
+      <div [ngClass]="{true:'color',false:''}[searchNum==2]" tappable (click)="getgoodsList(2)">销量</div>
+      <div [ngClass]="{true:'color',false:''}[searchNum==3]" class="goods_tabs_item" tappable (click)="getgoodsList(3)">
+        <span>价格</span>
+        <span class="chose_img">
+          <img *ngIf="type==3||type==1||type==0" [src]="chose1" alt="">
+          <img *ngIf="type==2" [src]="chose3" alt="">
+          <img *ngIf="type==2||type==1||type==0" [src]="chose2" alt="">
+          <img *ngIf="type==3" [src]="chose4" alt="">
+        </span>
+      </div>
+    </div>
+    <div class="goods-list" *ngIf="goodList!=''">
+      <div class="goods-item" *ngFor="let item of goodList" tappable (click)="gotoGoodDetail(item.ID)">
+        <img *ngIf="item.ISHD==1" class="activity_pic" [src]="activity" alt="">
+        <img [src]="item.PicUrl==''?goodsimg:item.PicUrl" alt="">
+        <div class="goods_item_list2">{{item.Name}}</div>
+        <!-- <div class="goods_item_list5">
+          <span>标签1</span>
+          <span>标签2</span>
+        </div> -->
+        <div class="goods_item_list3">
+          <span *ngIf="item.ISHD!=1">￥{{(item.ActivityPrice).toFixed(2)}}</span>
+          <span *ngIf="item.ISHD==1">￥{{(item.HDPrice).toFixed(2)}}</span>
+          <span style="color:#999;text-decoration: line-through;margin-left:5px;">￥{{(item.OldPrice).toFixed(2)}}</span>
+          <!-- <span class="get_border">满减</span>
+          <span class="get_border">秒杀</span> -->
+        </div>
+        <div class="goods_item_list4">
+          <span style="margin-right:10px;">{{item.SalNum}}评价</span>
+          <!-- <span>{{item.Praise}}好评</span> -->
+        </div>
+      </div>
+    </div>
+    <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div style="width:100%;height:auto;" *ngIf="num==3&&shopmsg!=undefined">
+    <div class="shop_msg">
+      <div class="shop_msg_img">
+        <img style="height:100%;width:auto;" [src]="shopmsg.PicUrl" alt="">
+      </div>
+      <div class="shop_msg_detail">
+        <div style="font-size: 16px;font-size: 900;">{{shopmsg.Name}}</div>
+        <div style="text-indent: 24px;padding-right:10px;">{{shopmsg.Description}}</div>
+      </div>
+    </div>
+    <div class="shop_msg_item">
+      <div class="shop_msg_item_content">
+        <div>所在地：</div>
+        <div>{{shopmsg.Address}}</div>
+      </div>
+    </div>
+    <div class="shop_msg_item">
+      <div class="shop_msg_item_content">
+        <div>服务电话：</div>
+        <div>{{shopmsg.Phone}}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="coverall" *ngIf="coverFlag" tappable (click)="coverFlag=false" >
+    <div class="cover_btn_content">
+      <img class="point" [src]="sanjiao" alt="">
+      <a class="cover_btn_item" tappable (click)="gotohome(1)">
+        <img style="height:20px;width:20px;margin:0px 10px;" [src]="homeNew" alt="">
+        <span>商城</span>
+      </a>
+      <a class="cover_btn_item" tappable (click)="gotohome(2)">
+        <img style="height:20px;width:20px;margin:0px 10px;" [src]="huodong" alt="">
+        <span>微活动</span>
+      </a>
+      <a class="cover_btn_item" tappable (click)="gotohome(3)">
+        <img style="height:20px;width:20px;margin:0px 10px;" [src]="shop" alt="">
+        <span>商家门户</span>
+      </a>
+    </div>
+  </div>
+</ion-footer>

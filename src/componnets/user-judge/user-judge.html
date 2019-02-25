@@ -1,0 +1,34 @@
+<!--
+  Generated template for the UserJudgePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+  <div class="judge-part" *ngIf="commite!=undefine" >
+    <div class="judge-title">
+      <div>
+        <img  *ngIf="commite.HeadUrl!=undefined"  class="headimg" [src]="commite.HeadUrl" alt="">
+      </div>
+      <div>
+        {{commite.Nickname}}
+      </div>
+     <!--  <div style="color:#666;font-size: 22px;">
+          <ion-icon name="eye"></ion-icon>
+      </div>
+      <div style="padding-left:10px;">
+        {{commite.Scannum}}
+      </div> -->
+    </div>
+    <div class="judge-content">
+      {{commite.comcontent}}
+    </div>
+    <div class="judge-img">
+        <img *ngFor="let item of json(commite.ImgList)"  [src]="img3" alt="">
+    </div>
+    <!-- <div class="judge-con">
+      <div>
+        <span style="color:#ff4f4f;padding-right:3px;">用户:</span>东西很好啊东西很好啊东西很好啊东西很好啊东西很好啊东西很好啊东西很好啊
+      </div>
+    </div> -->
+  </div>

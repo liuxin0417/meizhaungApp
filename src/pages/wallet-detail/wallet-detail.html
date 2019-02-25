@@ -1,0 +1,31 @@
+<!--
+  Generated template for the WalletDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">明细</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="detail-item" *ngFor="let item of list">
+    <div>
+      <div>{{item.source}}</div>
+      <div>
+        <span *ngIf="type==1&&item.porttype==1">-</span>
+        <span *ngIf="type==1&&item.porttype==0">+</span>
+        <span *ngIf="type==2&&item.porttype==1">-</span>
+        <span *ngIf="type==2&&item.porttype==0">+</span>
+        <span *ngIf="type==1">{{item.MoneyNum}}</span>
+        <span *ngIf="type==2">{{item.GiftNum}}</span>
+      </div>
+    </div>
+    <div>
+      <div>{{item.ObtainTime}}</div>
+      <div></div>
+    </div>
+  </div>
+</ion-content>

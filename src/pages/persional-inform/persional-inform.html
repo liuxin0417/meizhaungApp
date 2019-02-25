@@ -1,0 +1,72 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">个人资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content style="background:#e5e5e5">
+  <div class="per-content">
+    <!-- <div tappable (click)="getimg()"> -->
+    <div>
+      <div style="color:#999">头像</div>
+      <div *ngIf="HeadUrl!=undefined">
+        <img class="headimg" *ngIf="HeadUrl!=''" [src]="HeadUrl" alt="">
+        <img class="headimg" *ngIf="HeadUrl==''" [src]="img3" alt="">
+      </div>
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+    </div>
+    <div tappable (click)="setNickName()">
+      <div style="color:#999">昵称</div>
+      <div>
+        <input type="text" [(ngModel)]="nickname" class="nicknameput" disabled="disabled">
+      </div>
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+    </div>
+    <div tappable (click)="setNickphone()">
+      <div style="color:#999">电话</div>
+      <div>
+        <input type="text" [(ngModel)]="phonenum" class="nicknameput" disabled="disabled">
+      </div>
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+    </div>
+    <!-- <div id="change_self">
+      <ion-item>
+        <ion-label style="padding:0;color:#999">生日</ion-label>
+        <div style="padding:0;width:30px;height:100%;">生日</div>
+        <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="myDate" cancelText="关闭" doneText="确定"></ion-datetime>
+      </ion-item>
+      <div class="change_self_img">
+        <img style="width:11px;height:11px" [src]="img2" alt="">
+      </div>
+    </div> -->
+    <div id="change_self2">
+      <ion-item>
+        <ion-label style="padding:0;color:#999">性别</ion-label>
+        <ion-select [(ngModel)]="sex" cancelText="取消" okText="确定">
+          <ion-option value="0">男</ion-option>
+          <ion-option value="1">女</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+
+
+  <!-- <div class="per-content" style="margin-bottom:10px;">
+    <div style="border:none;">
+      <div style="color:#999">商城账号</div>
+      <div>109181245454</div>
+      <div>
+      </div>
+    </div>
+  </div> -->
+
+</ion-content>
+<ion-footer>
+  <div class="save-message" tappable (click)="savemessage()">保存信息</div>
+
+</ion-footer>

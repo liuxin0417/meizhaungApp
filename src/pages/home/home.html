@@ -1,0 +1,43 @@
+<ion-header style="height:89px;">
+  <ion-title mode="ios" style="top:-100px;position:absolute;">首页</ion-title>
+  <div class="home_header">
+    <div class="header-inside">
+      <div class="qrcode">
+        <img tappable (click)="goshoplist()" [src]="img9" alt="">
+      </div>
+      <div class="search">
+        <div class="searchimg">
+          <img [src]="img11" alt="">
+        </div>
+        <input class='searchpart' placeholder="爱他美" (focus)="gotosearch()" type="text">
+      </div>
+      <div class="message">
+        <img tappable (click)="GotoNitice()" [src]="img10" alt="">
+      </div>
+    </div>
+  </div>
+  <div *ngIf="65!=null&&navlist.length>=1" [ngClass]="{true:'stylesheet2',false:'stylesheet1'}[navlist.length==1]">
+    <ion-slides #slide2 style="width:100%;height:100%;" slidesPerView=5>
+      <ion-slide *ngFor="let tab of navlist, let i = index" (click)="gotopage(i,tab.ID)">
+        <div [ngClass]="{true:'item2',false:'item'}[slidenum==i]">
+          <span>
+            {{tab.Name}}
+          </span>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-header>
+<ion-content id="home" cache-view='true'>
+  <!-- <div *ngIf="navlist!=null&&navlist.length>1" style="width:100%;height:89px;"></div> -->
+  <div *ngIf="navlist!=null&&navlist.length==1" style="width:100%;height:65px;"></div>
+  <div style="height:auto;width:100%;text-align:left;">
+    <ion-slides #slide loop="false" auto="3000" (ionSlideDidChange)="slideChanged()">
+      <ion-slide *ngFor="let tab of navlist, let i = index">
+        <page-template [(Databtn)]="Databtn" [(userData)]="userData" [(Datacontent)]="Datacontent" [(Dataslide)]="Dataslide" [max]="slidenum"></page-template>
+        <!--  <page-template-two *ngIf="slidenum!=0"></page-template-two> -->
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+</ion-content>

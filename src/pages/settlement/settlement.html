@@ -1,0 +1,348 @@
+<ion-header style="min-height:44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">结算</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content scroll="true" style="background:#eee;color:#333;" *ngIf="ordermsg!=undefined">
+
+  <div class="group-goods-part" *ngFor="let item2 of ordermsg.lstCart;let a=index">
+    <!-- <div class="group-goods-part-name" *ngIf="item2.ActivityName!=null&&item2.productList!=null&&item2.productList.length>0">{{item2.StoreName}}</div> -->
+    <div class="group-goods-part-name">{{item2.StoreName}}</div>
+    <div class="coupon" *ngFor="let item of item2.List ;let i=index">
+      <div class="coupon_item_left">
+        <img [src]="item.PicUrl" alt="" [ngClass]="{true:'gray',false:''}[item.isCheck!=1]">
+      </div>
+      <div class="coupon_item_right">
+        <div class="new_goods_name">{{item.Name}}</div>
+        <div [innerHTML]="item.AttrName"></div>
+        <div>{{(item.SubPice).toFixed(2)}}元</div>
+        <div class="coupon_item_right_item4">
+          <!-- <span>
+            x{{item.Quantity}}
+          </span> -->
+          <div>
+            <div style="border-right:none;text-align:center;line-height:20px;" tappable (click)="jiannum(a,i,item.ID)">
+              <img [src]="desimg" alt="">
+            </div>
+            <div style="line-height:20px;text-align:center">{{item.Quantity}}</div>
+            <div style="border-left:none;text-align:center;font-size:15px;line-height:20px;" tappable (click)="addnum(a,i,item.ID)">
+              <img [src]="addimg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="price_total">
+      <div>共计{{item2.SubNum}}件商品</div>
+      <div>
+        小计：
+        <span class="changecolor">￥{{item2.SubPrice.toFixed(2)}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="funct-more">
+    <div tappable (click)="alertPart(1)">
+      <div>配送方式：
+        <span *ngIf="switchNum==0">快递</span>
+        <span *ngIf="switchNum==1">配送网点
+          <span *ngIf="chosepont!=undefined">({{chosepont.Name}})</span>
+        </span>
+        <span *ngIf="switchNum==2">门店自提
+          <span *ngIf="choseself!=undefined">({{choseself.Name}})</span>
+        </span>
+      </div>
+      <div></div>
+      <div>
+        <img [src]="img" alt="">
+      </div>
+    </div>
+    <div style="height:auto;padding-top:5px;padding-bottom: 5px;">
+      <div style="height:auto;line-height:1.5rem;"><span style="color:red;">运费说明：</span>配送网点满38元包邮,36小时内送达;省内满98元包邮。不足包邮的需支付8元快递费。重量太大的特殊商品每一件加收一次运费。</div>
+    </div>
+    <div (click)="alertcoupon()" *ngIf="usecouponNum>0">
+      <div>优惠券:
+        <span *ngIf="coupondata!=''&&coupondata">
+          <span *ngIf="coupondata.CouponType==1">{{coupondata.Amount}}元满减劵</span>
+          <span *ngIf="coupondata.CouponType==2">{{coupondata.Amount*10}}折折扣劵</span>
+          <span *ngIf="coupondata.CouponType==3">{{coupondata.Amount}}元代金券</span>
+        </span>
+      </div>
+      <div>
+
+      </div>
+      <div>
+        <img [src]="img" alt="">
+      </div>
+    </div>
+    <!-- <div (click)="alertcoupon()">
+      <div>电子发票</div>
+      <div></div>
+      <div>
+        <img [src]="img" alt="">
+      </div>
+    </div> -->
+  </div>
+  <div class="longback"></div>
+  <div class="address-part" *ngIf="addressflag" tappable (click)="alertAddress()">
+    <div>
+      <img [src]="img" alt="">
+    </div>
+    <div *ngIf="defaultAddress!=undefine">
+      <div style="line-height:20px;">{{defaultAddress.username}}：{{defaultAddress.tel}}</div>
+      <div style="margin-top:4px;">{{defaultAddress.address}}</div>
+    </div>
+  </div>
+  <div class="add_address" *ngIf="addressflag">
+    <span tappable (click)="gotoaddress(none,3)">添加地址</span>
+  </div>
+  <div class="address-part2" *ngIf="!addressflag" tappable (click)="gotoaddress(none,3)">
+    创建地址
+  </div>
+  <div class="pay-type">
+    <div class="weixinpay">
+      <!--tappable (click)="(paytype==2)?paytype=3:paytype=2"-->
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+      <div>微信支付</div>
+      <div>
+        <img *ngIf="paytype==2" [src]="img3" alt="">
+        <img *ngIf="paytype!=2" [src]="img4" alt="">
+      </div>
+    </div>
+    <div class="weixinpay" tappable (click)="(paytype==1)?paytype=3:paytype=1" style="border-bottom:none;" *ngIf="!isweb">
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+      <div>支付宝</div>
+      <div>
+        <img *ngIf="paytype==1" [src]="img3" alt="">
+        <img *ngIf="paytype!=1" [src]="img4" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="yue" *ngIf="user!=null">
+    <div class="weixinpay" tappable (click)="UseYue()" style="border-bottom:none;">
+      <div>
+        <img [src]="img6" alt="">
+      </div>
+      <div class="yue-item">
+        <div>余额</div>
+        <div>可用余额{{user.Money.toFixed(2)}}元</div>
+      </div>
+      <div>
+        <img *ngIf="yuenum" [src]="img3" alt="">
+        <img *ngIf="!yuenum" [src]="img4" alt="">
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="money-all">
+    <div>商品价格:{{ordermsg.TotalMoney.toFixed(2)}}元</div>
+    <div *ngIf="surplusMoney<ordermsg.FullMoney&&switchNum==0">配送费用:{{ordermsg.ShipMoney.toFixed(2)}}元</div>
+    <div *ngIf="surplusMoney<ordermsg.SiteShipMoney&&switchNum==1">配送费用:{{ordermsg.ShipMoney.toFixed(2)}}元</div>
+    <!-- <div *ngIf="ordermsg.Money>0">金额:{{ordermsg.Money.toFixed(2)}}元</div> -->
+    <div *ngIf="useGift>0">积分:{{useGift}}</div>
+    <div *ngIf="couponMonsy>0">优惠券:{{couponMonsy.toFixed(2)}}元</div>
+  </div>
+  <div class="yue" *ngIf="ordermsg.Gift!=null">
+    <div class="weixinpay" style="border-bottom:none;">
+      <div>
+        <img [src]="img9" alt="">
+      </div>
+      <div *ngIf="!giftnum3" class="yue-item">
+        <div>是否使用积分</div>
+      </div>
+      <div *ngIf="giftnum3" class="yue-item">
+        <input type="number" class="useGift" min='0' max='{{surplusMoney*100}}' [(ngModel)]="useGift" placeholder="填写积分数量"
+          (keydown)="checkNum($event)" (focus)="giftfocus()" (keyup)="checkGift()">
+      </div>
+      <div tappable (click)="UseGift3()">
+        <img *ngIf="giftnum3" [src]="img3" alt="">
+        <img *ngIf="!giftnum3" [src]="img4" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="yue" style="height:auto;" *ngIf="ordermsg.Gift!=null">
+    <div class="weixinpay" style="border-bottom:none;">
+      <div>
+        <img [src]="img9" alt="">
+      </div>
+      <div class="yue-item">
+        <div>可用积分{{surplus}}</div>
+        <div>积分使用规则如下</div>
+      </div>
+      <!-- <div>
+        <img *ngIf="giftnum" [src]="img3" alt="">
+        <img *ngIf="!giftnum" [src]="img4" alt="">
+      </div> -->
+    </div>
+    <!--  积分兑换比例为{{(1/ordermsg.MoneyToGift).toFixed(0)}}:1,使用金额不得超过订单总额的{{this.ordermsg.GiftRate * 100}}% -->
+    <div class="weixinpay" style="height:2rem;">
+      {{shipMemo}}
+    </div>
+  </div>
+  <div class="yue" *ngIf="myCoupon!=null&&(ordermsg.OrderToatal>=ordermsg.ShipMoney)&&(ordermsg.ShipMoney>0||(ordermsg.ShipMoney==0&&mianyounum))">
+    <div class="weixinpay" tappable (click)="UseMY()" style="border-bottom:none;">
+      <div>
+        <img [src]="img15" alt="">
+      </div>
+      <div class="yue-item">
+        <div>是否使用免邮卷</div>
+      </div>
+      <div>
+        <img *ngIf="mianyounum" [src]="img3" alt="">
+        <img *ngIf="!mianyounum" [src]="img4" alt="">
+      </div>
+    </div>
+  </div>
+  <div style="height:45px;width:100%;"></div>
+</ion-content>
+<ion-footer *ngIf="ordermsg!=undefined" style="background:#f7f7f7;">
+  <page-popup [(flag)]="flag" [(flagsecond)]="flagsecond" [(addresList)]="addresList" [(defaultAddress)]="defaultAddress"
+    [(ordermsg)]="ordermsg" [(FranchiseeID)]="FranchiseeID" [(list)]="list"></page-popup>
+  <div class="cover2" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <!-- <div class="clickbtn" tappable (click)="hide()"></div> -->
+    <div class="alertpart2" [ngClass]="{true:'goup',false:'godown'}[showflag]">
+      <div class="deliver-part" *ngIf="showtype==1">
+        <div class="part1" *ngIf="stepnum==1">
+          <div class="delivery-item1">
+            <div [ngClass]="{true:'color-deliver',false:'nocolor-deliver'}[switchNum==0]" tappable (click)="switchNum=0">快递</div>
+            <div [ngClass]="{true:'color-deliver',false:'nocolor-deliver'}[switchNum==1]" tappable (click)="getgoodsAddress()">配送网点</div>
+            <div [ngClass]="{true:'color-deliver',false:'nocolor-deliver'}[switchNum==2]" tappable (click)="getZtAddress()">门店自提</div>
+          </div>
+          <div *ngIf="switchNum==0" class="delivery-item2" style="border:none;"></div>
+          <div *ngIf="switchNum==0" class="delivery-item3" style="border:none;"></div>
+          <div *ngIf="switchNum==1" class="delivery-item2" tappable (click)="stepnum=2">
+            <div>配送网点</div>
+            <div class="delivery-item-name">
+              <div>{{chosepont.Name}}</div>
+              <img [src]="img" alt="">
+            </div>
+          </div>
+          <div *ngIf="switchNum==2" class="delivery-item2" tappable (click)="stepnum=3">
+            <div>门店自提</div>
+            <div class="delivery-item-name">
+              <div>{{choseself.Name}}</div>
+              <img [src]="img" alt="">
+            </div>
+          </div>
+          <!-- <div *ngIf="switchNum==1" class="delivery-item3" tappable (click)="stepnum=3"></div> -->
+
+
+          <div class="address-part" *ngIf="addressflag&&switchNum==1" tappable (click)="alertAddress()">
+            <div>
+              <img [src]="img" alt="">
+            </div>
+            <div *ngIf="defaultAddress!=undefine">
+              <div style="line-height:20px;">{{defaultAddress.username}}：{{defaultAddress.tel}}</div>
+              <div style="margin-top:4px;">{{defaultAddress.address}}</div>
+            </div>
+          </div>
+          <div class="add_address" *ngIf="addressflag&&switchNum==1">
+            <span tappable (click)="gotoaddress(none,3)">添加地址</span>
+          </div>
+          <div class="address-part2" *ngIf="!addressflag" tappable (click)="gotoaddress(none,3)">
+            创建地址
+          </div>
+          <div class="delivery-item4" tappable (click)="confirm()">确认</div>
+        </div>
+        <div class="part2" *ngIf="stepnum==2">
+          <div class="address-item" tappable (click)="chose(i,item)" *ngFor="let item of shoppont ;let i=index">
+            <div class="address-item1" [ngClass]="{true:'color3',false:'nocolor3'}[switchNum2==i]">{{item.Name}}</div>
+            <div class="address-item2">
+              <div class="address-item2-line1">{{item.Address}}</div>
+              <div class="address-item2-line2">
+                <img *ngIf="switchNum2==i" [src]="img7" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="part2 " *ngIf="stepnum==3">
+          <div class="address-item" tappable (click)="choseSelf(i,item)" *ngFor="let item of selfpont ;let i=index">
+            <div class="address-item1" [ngClass]="{true:'color3',false:'nocolor3'}[switchNum3==i]">{{item.Name}}</div>
+            <div class="address-item2">
+              <div class="address-item2-line1">{{item.Address}}</div>
+              <div class="address-item2-line2">
+                <img *ngIf="switchNum3==i" [src]="img7" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="part2" *ngIf="stepnum==3">
+          <div class="time-list" *ngFor="let item of dateList ;let i=index" tappable (click)="AswitchNum3(i,item)">
+            <div>{{item.date}}日(周
+              <span *ngIf="item.day==1">一</span>
+              <span *ngIf="item.day==2">二</span>
+              <span *ngIf="item.day==3">三</span>
+              <span *ngIf="item.day==4">四</span>
+              <span *ngIf="item.day==5">五</span>
+              <span *ngIf="item.day==6">六</span>
+              <span *ngIf="item.day==0">日</span>)</div>
+            <div style="width:1.5rem;height:1.5rem;">
+              <img *ngIf="switchNum3==i" class="choseimg" [src]="img7" alt="">
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="go-pay">
+    <div>应付金额:{{surplusMoney.toFixed(2)}}元</div>
+    <div tappable (click)="payfont()">去付款</div>
+  </div>
+  <div class="pay_success_cover" *ngIf="paySuccess">
+    <div class="nav_part">
+      <img style="height: 1.8rem;width:auto;" tappable (click)="gopop()" [src]="fanhui" alt="">
+      <div style="text-align: center;
+      font-size: 1.7rem;
+      font-weight: 100;
+      color: #000;
+      pointer-events: auto;">付款成功</div>
+      <div>
+        <img style="height:2rem;width:auto;margin-right:1.2rem" [src]="gouwu" alt="">
+        <img style="height:2rem;width:auto;" [src]="sousuo" alt="">
+      </div>
+    </div>
+    <div class="pay_success_status">
+      <img style="margin-right:10px;height:2.5rem;width:auto;" [src]="complte" alt="">
+      <div class="pay_status_msg">
+        <span>
+          付款成功
+        </span>
+        <span>
+          请耐心等待收货
+        </span>
+      </div>
+    </div>
+    <div class="pay_success_msg">
+      <div class="pay_success_msg_item">
+        <span style="color:#999">收货人:</span>
+        <span>{{defaultAddress.username}}</span>
+      </div>
+      <div class="pay_success_msg_item">
+        <span style="color:#999">收货地址:</span>
+        <span class="pay_success_msg_address">{{defaultAddress.address}}</span>
+      </div>
+    </div>
+    <div class="pay_success_msg">
+      <!-- <div class="pay_success_msg_item">
+        <span style="color:#999">订单编号:</span>
+        <span>352562</span>
+      </div> -->
+      <div class="pay_success_msg_item">
+        <span style="color:#999">合计:</span>
+        <span class="changecolor">￥{{PayMoney.toFixed(2)}}</span>
+      </div>
+    </div>
+    <div class="pay_success_btn">
+      <div (click)="gotoOrderList()">查看订单</div>
+      <div (click)="gotohome()">继续购物</div>
+    </div>
+  </div>
+
+</ion-footer>

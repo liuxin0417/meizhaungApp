@@ -1,0 +1,47 @@
+<ion-header style="height:87px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">我的社区</ion-title>
+  </ion-navbar>
+  <div class="switch-btn" *ngIf="usertype==1">
+    <div tappable (click)="Load(0)">
+      <span [ngClass]="{true:'color',false:'nocolor'}[colorShow==0]">原创</span>
+    </div>
+    <div tappable (click)="Load(1)">
+      <span [ngClass]="{true:'color',false:'nocolor'}[colorShow==1]">喜欢</span>
+    </div>
+  </div>
+  <div class="switch-btn2" *ngIf="usertype!=1">
+    <div>原创</div>
+  </div>
+</ion-header>
+
+
+<ion-content style="background:#eee">
+  <!-- <div style="width:100%;height:50px;"></div> -->
+  <div style="width:100%;background:#fff;margin-top:7px;">
+    <div class="com-content-style2" tappable *ngFor="let item of articleList" (click)="gotoarticle(item)">
+      <div class="bannerpic" *ngIf="item.ImgUrl!=null&&item.ImgUrl!=''" >
+        <img [src]="item.ImgUrl" alt="" class="com-style2-img">
+      </div>
+      <div class="com-style2-title">
+        {{item.Title}}
+      </div>
+      <div class="com-style2-persion">
+        <div class="com-style2-part">
+          <img class="com-style-pic1" [src]="img7" alt="" style="margin-right:6px">
+          <div style="margin-right:20px">{{item.LoginName}}</div>
+        </div>
+        <div class="com-style2-part">
+          <img class="com-style-pic2" [src]="img8" alt="">
+          <div style="margin-right:15px">{{item.ClickNum}}</div>
+          <img class="com-style-pic2" [src]="img9" alt="">
+          <div>{{item.CommentNum}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

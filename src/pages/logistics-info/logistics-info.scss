@@ -1,0 +1,20 @@
+page-logistics-info {
+    .lg_item_content{
+        width:100%;
+        background:#fff;
+        margin-top:1rem;
+    }
+    .lg_item{
+        height:4rem;
+        width:96%;
+        margin-left:4%;
+        display:flex;
+        box-sizing: border-box;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-right:1rem;
+        border-bottom:1px solid #e5e5e5;
+      
+    }
+}

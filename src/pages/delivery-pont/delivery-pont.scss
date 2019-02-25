@@ -1,0 +1,52 @@
+page-delivery-pont {
+    .address-item{
+        height:9.3rem;
+        width:100%;
+        box-sizing: border-box;
+        border-bottom:1px solid #e5e5e5;
+        display:flex;
+        flex-direction:column;
+        padding:0px 1.5rem;
+        box-sizing: border-box;
+        background:#fff;
+    }
+    .address-item1{
+        height:3.4rem;
+        line-height:3.4rem;
+        width:100%;
+    }
+    .address-item2{
+        display:flex;
+        flex-direction: row;
+    }
+    .address-item2-line1{
+        width:85%;
+        height:auto;
+        color:#999;
+    }
+    .address-item2-line2{
+        width:15%;
+        height:auto;
+    }
+    .address-item2-line2>img{
+        width:1.9rem;
+        height:1.3rem;
+    }
+    .address-item3{
+        height:1.7rem;
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top:0.5rem;
+        color:#999;
+    }   
+    .address-item3>img{
+        width: 1.5rem;
+        height:1.5rem;
+    }
+    .color{
+        color:color($colors, baseColor);
+    }
+    .nocolor{}
+}

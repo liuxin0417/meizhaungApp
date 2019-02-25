@@ -1,0 +1,70 @@
+page-charge-type {
+    .pay-type {
+        width: 100%;
+        height: auto;
+        background: #fff;
+        margin-top: 7px;
+    }
+    .weixinpay {
+        width: 95%;
+        height: 36px;
+        border-bottom: 1px solid #e5e5e5;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+    }
+    .weixinpay>div:nth-child(1) {
+        width: 10%;
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .weixinpay>div:nth-child(1)>img {
+        width: 25px;
+        height: 25px;
+    }
+    .weixinpay>div:nth-child(2) {
+        width: 80%;
+        height: 36px;
+        line-height: 36px;
+    }
+    .weixinpay>div:nth-child(3) {
+        width: 10%;
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .weixinpay>div:nth-child(3)>img {
+        width: 15px;
+        ;
+        height: 15px;
+    }
+    .go-pay {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 42px;
+        width: 100%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        font-size: 1em;
+    }
+    .go-pay>div:nth-child(1) {
+        width: 55%;
+        height: 42px;
+        line-height: 42px;
+        color: color($colors, baseColor);
+        padding-left: 5%;
+    }
+    .go-pay>div:nth-child(2) {
+        width: 45%;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        background: color($colors, baseColor);
+        color: #fff;
+    }
+}

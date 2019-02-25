@@ -1,0 +1,28 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">商品列表</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#F7F7F7;">
+  <div class="goods-list">
+    <div class="goods-item" *ngFor="let item of GoodsList" tappable (click)="gotoGoodDetail(item.ID)">
+      <img [src]="item.picurl==''?middle:item.picurl" alt="">
+      <div class="goods_item_list2">{{item.name}}</div>
+      <div class="goods_item_list5">
+        <span>标签1</span>
+        <span>标签2</span>
+      </div>
+      <div class="goods_item_list3">
+        <span>￥{{(item.activityprice).toFixed(2)}}</span>
+        <span class="get_border">满减</span>
+        <span class="get_border">秒杀</span>
+      </div>
+      <div class="goods_item_list4">
+        <span style="margin-right:10px;">4164条评价</span>
+        <span>99%好评</span>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,129 @@
+page-popup {
+    .cover {
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: .5);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+    }
+    .alertpart {
+        height: 300px;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index:22;
+    }
+    .title {
+        width: 90%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #eee;
+        display:flex;
+        flex-direction: row;
+    }
+    .title>div:nth-child(1){
+        width:100%;
+        height:50px;
+        text-align: center;
+    }
+    /* .title>div:nth-child(2){
+        width:40%;
+        height:50px;
+        display:flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .title>div:nth-child(2)>img{
+        display:block;
+        width:20px;
+        height:20px;
+    } */
+    .scroll {
+        height: 220px;
+        width: 90%;
+        overflow-y: scroll;
+        margin: 0 auto;
+    }
+    .addressitem {
+        height: 80px;
+        width: 100%;
+        padding: 10px 10px;
+        border-bottom: 1px solid #eee;
+        box-sizing: border-box;
+    }
+    .addressitem>div {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+    /* 动画效果 */
+    @keyframes gotup {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: -300px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: 0px;
+        }
+    }
+    @keyframes gotdown {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: 0px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: -300px;
+        }
+    }
+    .goup {
+        animation: gotup .2s;
+        -webkit-animation: gotup .2s;
+    }
+    .godown {
+        animation: gotdown .2s;
+        -webkit-animation: gotdown .2s;
+    }
+    /* 透明度动画 */
+    @keyframes gotoshow {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes gotohide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display:none;
+        }
+    }
+    .goshow {
+        animation: gotoshow .2s;
+        -webkit-animation: gotoshow .2s;
+    }
+    .gohide {
+        animation: gotohide .2s;
+        -webkit-animation: gotohide .2s;
+    }
+    .clickbtn{
+        width:100%;
+        height:100%;
+     
+    }
+}

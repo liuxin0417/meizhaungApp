@@ -1,0 +1,75 @@
+page-address {
+    .address-item {
+        height: auto;
+        width: 95%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 auto;
+        background: #fff;
+    }
+    .item-content {
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .item-content>div {
+        font-size: 1em;
+        line-height: 20px;
+        margin-top: 5px;
+    }
+    .item-img {
+        height: 40px;
+        width: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .item-img>img {
+        width: 20px;
+        height: 18px;
+    }
+    .signout {
+        width: 95%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: fixed;
+        bottom: 15px;
+        left: 2.5%;
+        border-radius: 3px;
+        background: #fff;
+    }
+    .address_detail {
+        color: #B0B0B0;
+    }
+    .new_address_btn {
+        width: 92%;
+        height: 4rem;
+        margin: 0 auto;
+        line-height: 4rem;
+        text-align: center;
+        background: color($colors, baseColor);
+        color: #fff;
+        margin-bottom: 1.2rem;
+        border-radius: 6px;
+    }
+    .border_change {
+        width: 100%;
+        background: #fff;
+        // border: 1px solid color($colors, baseColor);
+        margin-top: 2px;
+    }
+    .signClass{
+        padding:3px 5px;
+        background:color($colors, baseColor);
+        color:#fff;
+        border-radius:15px;
+        font-size: 12px;
+    }
+}

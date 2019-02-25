@@ -1,0 +1,17 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">喜欢过的用户</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="concer-item" *ngFor="let item of List">
+    <div class="concer-item1">
+      <img [src]="item.Headurl" alt="">
+    </div>
+    <div class="concer-item2">
+      {{item.LoginName}}
+    </div>
+  </div>
+</ion-content>

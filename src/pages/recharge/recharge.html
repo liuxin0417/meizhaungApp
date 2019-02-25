@@ -1,0 +1,20 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">充值</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="inputMoney">
+    <input placeholder="请输入充值金额" type="number" name="recharMoney" [(ngModel)]="recharMoney"/>
+  </div>
+  <div class="charge-btn-title">优惠充值</div>
+  <div class="charge-btn-content">
+      <div class="charge-item" *ngFor="let item of list" (click)="skip(item)">
+        <div style="font-size:1.6rem;">{{item.Money}}元</div>
+        <div>售价:{{item.UseMoney}}元</div>
+      </div>
+  </div>
+  <div class="charge-btn" tappable (click)="recharge()">充值</div>
+</ion-content>

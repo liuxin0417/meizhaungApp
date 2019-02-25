@@ -1,0 +1,127 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">订单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#eee;">
+  <div class="order-status">
+    <img style="margin-right:10px;" [src]="img3" alt="">
+    <div style="line-height: 2.5rem" *ngIf="goodsDetail.OrderStatusId==0">待付款</div>
+    <div style="line-height: 2.5rem" *ngIf="goodsDetail.OrderStatusId==10&&goodsDetail.ShipStatusId==1&&goodsDetail.IsReceipt==0">待发货</div>
+    <div style="line-height: 2.5rem" *ngIf="goodsDetail.OrderStatusId==30&&goodsDetail.ShipStatusId==3&&goodsDetail.IsReceipt==0">待收货</div>
+    <div style="line-height: 2.5rem" *ngIf="goodsDetail.OrderStatusId==40&&goodsDetail.IsEvaluate==0&&goodsDetail.IsReceipt==1">待评价</div>
+    <div style="line-height: 2.5rem" *ngIf="(goodsDetail.OrderStatusId==40||goodsDetail.OrderStatusId==80)&&goodsDetail.IsEvaluate==1&&goodsDetail.IsReceipt==1">已评价</div>
+    <div style="line-height: 2.5rem" *ngIf="goodsDetail.OrderStatusId==10&&goodsDetail.CouponState==1">待拼团</div>
+    <div class="flow_part">
+      <div class="flow_part1">
+        <img style="width:1.5rem;height:auto;" [src]="car" alt="">
+      </div>
+      <div class="flow_part2">
+        <span style="color:#666">
+          感谢您在商城购物，欢迎您再次光临
+        </span>
+      </div>
+      <div class="flow_part3">
+        <img style="height:1.2rem;width:auto;" [src]="goto" alt="">
+      </div>
+    </div>
+  </div>
+  <!--  <div class="order-address">
+    <div><img src="" alt="">{{goodsDetail.ReceiveUser}}&nbsp;&nbsp;&nbsp;&nbsp;{{goodsDetail.Tel}}</div>
+    <div>{{goodsDetail.Address}}</div>
+  </div> -->
+
+  <!-- <div class="group-order">
+    <div class="group-order-title">拼单成功</div>
+    <div class="group-order-user">
+      <div class="group-order-img">
+        <img class="group-head-img" [src]="img2" alt="">
+      </div>
+      <div class="group-order-btn">拼单详情</div>
+    </div>
+  </div> -->
+  <div class="list-content">
+    <div class="list-title">
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+      <div>{{goodsDetail.ShopName}}</div>
+    </div>
+    <div class="list-item" *ngFor="let item of goodsDetail.Items; let i=index">
+      <div></div>
+      <div class="list-style">
+        <div tappable (click)="gotoGoodDetail(item.ProductID)">
+          <img [src]="item.Url" alt="">
+        </div>
+        <div tappable (click)="gotoGoodDetail(item.ProductID)">
+          <div class="oneline">{{item.Name}}</div>
+          <div style="color:#999">
+            <span style="margin-right:10px;">数量:{{item.Quantity}}</span>
+            <!-- <span>产品:3-5个月</span> -->
+          </div>
+          <div [innerHTML]="item.AttributeDescription"></div>
+        </div>
+        <div>
+          <div>￥{{item.Price}}</div>
+          <div *ngIf="item.IsEvaluate==0&&goodsDetail.OrderStatusId==40&&goodsDetail.IsEvaluate==0&&goodsDetail.IsReceipt==1" class="returnBtn"
+            tappable (click)="gotoEvaluatePage(i)">评&nbsp;&nbsp;价</div>
+          <!-- <div class="returnBtn" tappable (click)="gotoReturn(item)" *ngIf="goodsDetail.OrderStatusId!=0&&goodsDetail.OrderStatusId!=80&&item.Isback==0">申请售后</div> -->
+          <div class="returnBtn" *ngIf="goodsDetail.OrderStatusId==40&&goodsDetail.IsReceipt==1"  tappable (click)="gotoReturn(item)">申请售后</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="orderInfo">
+    <div class="orderInfo_child1">订单编号：{{goodsDetail.OrderBh}}</div>
+    <div class="orderInfo_child2">下单时间：{{goodsDetail.CreateTime.split("T")[0]}}</div>
+    <div class="orderInfo_child1" *ngIf="goodsDetail.PaidName=='PayWx'">支付方式：微信支付</div>
+    <div class="orderInfo_child2" *ngIf="goodsDetail.PaidTime" >支付时间：{{goodsDetail.PaidTime.split("T")[0]}}</div>
+    <div class="orderInfo_child1">配送方式：{{goodsDetail.ShippingMethod}}</div>
+    <!-- <div class="orderInfo_child2">期望配送日期：{{goodsDetail.PaidName}}{{goodsDetail.PaidName}}{{goodsDetail.PaidName}}{{goodsDetail.PaidName}}</div> -->
+  </div>
+  <div class="order-address" style="margin-top:10px;">
+    <div class="order-address_left">
+      <img style="height:15px;width:14px;" [src]="position" alt="">
+    </div>
+    <div class="order-address_right">
+      <div>
+        <img src="" alt="">{{goodsDetail.ReceiveUser}}&nbsp;&nbsp;&nbsp;&nbsp;{{goodsDetail.Tel}}
+      </div>
+      <div>{{goodsDetail.Address}}</div>
+    </div>
+  </div>
+  <div class="tranlate">
+    <div class="tran2">
+      <div>总额</div>
+      <div>￥{{goodsDetail.OrderOrlTotal}}</div>
+    </div>
+    <div class="tran2">
+      <div>运费</div>
+      <div>￥{{goodsDetail.ShipMoney}}</div>
+    </div>
+    <div class="tran2">
+      <div>优惠券</div>
+      <div>￥{{goodsDetail.Coupon}}</div>
+    </div>
+    <div class="tran3">
+      <div>积分抵扣</div>
+      <div>￥{{goodsDetail.Gift}}</div>
+    </div>
+    <div class="tran4">
+      实付款：
+      <span style="color:#FF5C00;font-size:1.6rem;">￥{{goodsDetail.OrderTotal}}</span>
+    </div>
+  </div>
+  <div *ngIf="goodsDetail.OrderStatusId==0||goodsDetail.OrderStatusId==80" class="btnpart">
+    <div *ngIf="goodsDetail.OrderStatusId==0" tappable (click)="gotoOrderpay()">去付款</div>
+    <div tappable *ngIf="goodsDetail.OrderStatusId==80" (click)="delete(goodsDetail.ID)">删除订单</div>
+  </div>
+  <!-- <div class="bottom_bnt">
+    <div class="bottom_bnt_left">删除订单</div>
+    <div class="bottom_bnt_right">
+      <div>申请售后</div>
+      <div>晒单评价</div>
+    </div>
+  </div> -->
+</ion-content>

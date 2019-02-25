@@ -1,0 +1,173 @@
+<ion-content style="background:#eee;">
+  <page-template-three [(goodstype)]="goodstype" [(goodsshow)]="goodsshow" [(ProductAttr)]="ProductAttr" [(desflag)]="desflag"
+    [(Fh)]="Fh" [(goodsid)]="goodsid" [(userID)]="userID" [(guige)]="guige" [(grouptype)]="grouptype" [(groupID)]="groupID"
+    [(GrouponID)]="GrouponID" [(FightID)]="FightID"></page-template-three>
+
+  <div #btn1 class="backbtn" tappable (click)="goback()"></div>
+  <div #btn2 class="more"></div>
+  <div class="navbar" #navbar>
+    <div class="backbtn2" tappable (click)="goback()"></div>
+    <div class="more2"></div>
+  </div>
+  <div #lyScroll class="scrollcontent">
+    <div class="goods-banner">
+      <ion-slides pager=true>
+        <ion-slide style="background:#e4e4e4" *ngFor="let item of slide">
+          <img style="width:100%;height:100%;" [src]="item.Url" alt="" tappable (click)="gotoslideImg(slide)">
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <!-- <div class="spacila-price">
+      <div class="spacila-price-left">
+        <div class="spacila-price-left1">
+          ￥2999.00
+        </div>
+        <div class="spacila-price-left2">
+          <div class="spacila-price-left-btn1">￥3338.0</div>
+          <div class="spacila-price-left-btn2">6336件已售</div>
+        </div>
+      </div>
+      <div class="spacila-price-right">
+        <div class="spacila-price-right1">距离结束还剩</div>
+        <div class="spacila-price-right2">
+          <span>35</span>:
+          <span>35</span>:
+          <span>35</span>
+        </div>
+      </div>
+    </div> -->
+    <div style="background:#fff;width:100%;padding-top:18px;" *ngIf="Porduct!=null">
+      <div class="goods-title">
+        {{Porduct.Name}}
+      </div>
+      <div class="goods-price">
+        <div>
+          <span style="font-size:12px;">￥</span>
+          {{Porduct.ActivityPrice}}</div>
+        <div>
+          <span>￥</span>
+          {{Porduct.OldPrice}}</div>
+        <!-- <div>直降10元</div> -->
+      </div>
+    </div>
+    <div style="width:100%;background:#fff;" *ngIf="groupCount>0">
+      <div class="goods-chioce" tappable (click)="alertType()">
+        <div>{{groupCount}}人在拼单，可直接参与</div>
+        <div>查看更多</div>
+        <div>
+          <img [src]="img" alt="">
+        </div>
+      </div>
+      <div class="group-list" *ngFor="let item of grouponList">
+        <div class="group-list-left">
+          <img [src]="item.HeadUrl" alt="">
+          <div>{{item.LoginName}}</div>
+        </div>
+        <div class="group-list-right">
+          <div class="right-btn2">
+            <div>还差{{item.WaitNum}}人拼成</div>
+            <div style="font-size:0.6em;color:#3d3d3f">剩余{{item.timer.hour}}:{{item.timer.minute}}:{{item.timer.second}}</div>
+          </div>
+          <div class="right-btn" tappable (click)="Fight(item)">去拼单</div>
+        </div>
+      </div>
+    </div>
+    <!-- <div  style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5">
+      <div class="user-judge">
+        暂无评论！
+      </div>
+    </div> -->
+    <div style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5" tappable (click)="gotojudge()">
+      <div class="user-judge">
+        <div>用户评价</div>
+        <div *ngIf="commite!=null">{{rate}}%</div>
+        <div style="text-align:center;" *ngIf="commite!=null">满意</div>
+        <div *ngIf="commite==null"></div>
+        <div style="text-align:center;" *ngIf="commite==null">暂无评价</div>
+        <div>
+          <img [src]="img" alt="">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="commite!=null" style="padding-bottom:10px;background:#fff;margin-bottom:10px">
+      <div class="judge-part">
+        <div class="judge-title">
+          <div *ngIf="commite.HeadUrl!=undefined">
+            <img class="headimg" [src]="commite.HeadUrl" alt="">
+          </div>
+          <div>
+            {{commite.Nickname}}
+          </div>
+        </div>
+        <div class="judge-content">
+          {{commite.comcontent}}
+        </div>
+        <div class="judge-img" *ngIf="commite.ImgList!=undefined">
+          <img *ngFor="let item2 of jsonchange(commite.ImgList) " [src]="item2.Url" alt="" tappable (click)="gotoslideImg(jsonchange(commite.RelImgList))">
+        </div>
+        <div class="judge-con" *ngIf="commite.Scontent!=null">
+          <div>
+            <span style="color:#ff4f4f;padding-right:3px;">商家回复:</span>{{commite.Scontent}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="goods-switch">
+      <div [ngClass]="{true:'switch-color',false:''}[switchnum]" style="border-right:1px solid #333" tappable (click)="switch(true)">概述</div>
+      <div [ngClass]="{true:'switch-color',false:''}[!switchnum]" tappable (click)="switch(false)">参数</div>
+    </div>
+    <div *ngIf="switchnum" [innerHTML]="des"></div>
+    <div style="background:#fff;padding:10px 0px 10px 0px;margin-top:10px;" *ngIf="!switchnum" [innerHTML]="goodsinfo"></div>
+
+
+  </div>
+</ion-content>
+<ion-footer style="height:41px;">
+  <div class="goods-buy">
+    <div tappable (click)="gotochat()">
+      <img [src]="img8" alt="">
+      <div>留言</div>
+    </div>
+    <div *ngIf="shoacngflag" tappable (click)="collection()">
+      <img [src]="img2" alt="">
+      <div>收藏</div>
+    </div>
+    <div *ngIf="!shoacngflag" tappable (click)="cancel()">
+      <img [src]="img5" alt="">
+      <div style="color:#ff4f4f">已收藏</div>
+    </div>
+    <div tappable (click)="gotogoodscar()">
+      <img [src]="img3" alt="">
+      <div>购物车</div>
+    </div>
+    <div class="goincar1" *ngIf="mobGroupon!=null">
+      <div style="background:#FF8484" tappable (click)="signplebuy()">
+        <div>￥{{mobGroupon.SinglePrice}}</div>
+        <div>单独购买</div>
+      </div>
+      <div style="background:#ff4f4f" tappable (click)="gotogroupbuy()">
+        <div>￥{{mobGroupon.GroupPrice}}</div>
+        <div>发起拼单</div>
+      </div>
+    </div>
+    <!--  <div  class="goincar">加入购物车</div> -->
+  </div>
+  <div class="cover" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart" [ngClass]="{true:'goup',false:'godown'}[showflag]">
+      <div class="group-list" *ngFor="let item of grouponList">
+        <div class="group-list-left">
+          <img [src]="item.HeadUrl" alt="">
+          <div>{{item.LoginName}}</div>
+        </div>
+        <div class="group-list-right">
+          <div class="right-btn2">
+            <div>还差{{item.WaitNum}}人拼成</div>
+            <div style="font-size:0.6em;color:#3d3d3f">剩余{{item.timer.hour}}:{{item.timer.minute}}:{{item.timer.second}}</div>
+          </div>
+          <div class="right-btn" tappable (click)="Fight(item)">去拼单</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-footer>

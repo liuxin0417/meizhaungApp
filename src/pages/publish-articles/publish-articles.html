@@ -1,0 +1,45 @@
+<ion-header style="height:45px;">
+  <div class="publish-head">
+    <img tappable (click)="close()" [src]="img" alt="">
+    <div tappable (click)="SendImg()">发布</div>
+  </div>
+</ion-header>
+<ion-content class="test">
+  <div class="publish-title">
+    <ion-input type="text" placeholder="加个标题(3~25)" [(ngModel)]="Title" name="Title" id="Title" #myInput>
+    </ion-input>
+  </div>
+  <div class="publish-content">
+    <textarea placeholder="来吧，尽情发挥吧..." [(ngModel)]="ShortDesc" name="ShortDesc" id="ShortDesc"></textarea>
+  </div>
+  <div class="publish-img" *ngIf="!isweb">
+    <div *ngFor="let item of fileObjList;let i = index;" class="pictures">
+      <span *ngIf="allowDelete" class="remove" tappable (click)="deletePicture(i)">×</span>
+      <img [src]="item.thumbPath" tappable (click)="viewerPicture(i)" />
+    </div>
+    <div class="pictures">
+      <img [src]="img5" alt="" tappable (click)="getImg()" *ngIf="fileObjList.length<max">
+    </div>
+  </div>
+  <div class="publish-img" *ngIf="isweb">
+    <div *ngFor="let item of WimgUrl;let i = index;" class="pictures">
+      <span *ngIf="allowDelete" class="remove" tappable (click)="deleteWxPicture(i)">×</span>
+      <img [src]="item" tappable (click)="viewPicture(item)" />
+    </div>
+    <div class="pictures">
+      <img [src]="img5" alt="" tappable (click)="getImg()" *ngIf="imgUrl.length<max">
+    </div>
+  </div>
+  <!-- <div class="publish-bottom">
+    <div class="bottom-sign1">隐藏标题</div>
+    <div class="bottom-sign1">所有人可见</div>
+  </div> -->
+</ion-content>
+<ion-footer>
+  <div class="publish-sign">
+    <img class="sign-img" [src]="img1" alt="">
+    <img class="sign-img" [src]="img2" alt="" (click)="getImg()">
+    <img class="sign-img" [src]="img3" alt="">
+    <img class="sign-img" tappable (click)="alerttheme()" [src]="img4" alt="">
+  </div>
+</ion-footer>

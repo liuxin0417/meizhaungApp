@@ -1,0 +1,28 @@
+<div class="cover" *ngIf="goodstype" [ngClass]="{true:'goshow',false:'gohide'}[goodsshow]">
+  <div class="clickbtn" tappable (click)="close()"></div>
+  <div class="alertpart" [ngClass]="{true:'goup',false:'godown'}[goodsshow]">
+    <div class="picPart" tappable (click)="unshow()">
+      <img [src]="ProductAttr.ProductImage" alt="img2" class="goodspic">
+      <!-- <img [src]="img4" alt="" class="closebtn" tappable (click)="close()"> -->
+      <div class="goods-detail">
+        <div style="color:#ff4f4f">￥
+          <span style="font-size:1.5em;">
+            {{ProductAttr.ProductPrice}}
+          </span>
+        </div>
+        <div style="line-height:20px;">{{ProductAttr.ProductName}}</div>
+      </div>
+    </div>
+    <div class="goodscontent">
+      <div class="typeitem" *ngFor="let item of ProductAttr.AttrList">
+        <div class="goodsTitle">{{item.TextPrompt}}</div>
+        <div class="goodsType">
+          <div *ngFor="let item2 of item.AttValueList;let i=index;" [ngClass]="{true:'checkdiv',false:'nocheckdiv'}[item2.Check==1]"
+            tappable (click)="ChoiceAttr(item.AttValueList,item2)">{{item2.Value}}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="btnflag" class="buyBtn" tappable (click)="Sure()">确定</div>
+    <div *ngIf="!btnflag" class="buyBtn2" tappable (click)="gotosettlement()">确定</div>
+  </div>
+</div>

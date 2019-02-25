@@ -1,0 +1,325 @@
+page-shop-goods-list {
+    .goodsitem{
+        height:50px;
+        width:100%;
+        background:#fff;
+        margin-top:5px;
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        padding-left:10px; 
+        font-size:0.75em;
+    }
+    .goodsitem>img{
+        height:35px;
+        width:35px;
+    }
+    .goodsitem>div:nth-child(2){
+        width:70%;
+        height:50px;
+        line-height:50px;
+        padding-left:10px;
+    }
+    .goodsitem>div:nth-child(3){
+        height:50px;
+        line-height:50px;
+        width:30px;
+    }
+    .goodsitem>div:nth-child(4){
+        height:50px;
+        line-height:50px;
+        color:color($colors, baseColor);
+    }
+    .total{
+        height:30px;
+        width:100%;
+        display:flex;
+        flex-direction:row-reverse;
+        background:#fff; 
+        font-size:0.75em;
+        padding-right:10px;
+        border-top:1px solid #eee;
+    }
+    .total>div{
+        width:auto;
+        height:30px;
+        line-height:30px;
+    }
+    .useritem{
+        height:105px;
+        width:100%;
+        margin-top:10px;
+        background:#fff;
+        padding-left:15px;
+        display:flex;
+        flex-direction:column;
+        box-sizing: border-box;
+    }
+    .useritem1{
+        border-bottom:1px solid #eee;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .useritem1>div{
+        height:35px;
+        width:100px;
+        line-height:35px;
+    }
+    .useritem1>input{
+        display:block;
+        outline: none;
+        border:none;
+        line-height:30px;
+        height:30px; 
+    }
+    .useritem>div{
+        width:100%;
+        height:35px;
+    }
+    .transform{
+        height:74px;
+        width:100%;
+        background:#fff;
+        margin-top:10px;
+        padding-left:15px;
+        display:flex;
+        flex-direction: column;
+        box-sizing:border-box; 
+    }
+    .transform1{
+        display:flex;
+        flex-direction:row; 
+    }
+    .transform1>div{
+        width:50%;
+        height:37px;
+        line-height:37px;
+    }
+    .transform1>div:nth-child(2){
+        display:flex;
+        flex-direction:row-reverse;
+        align-items: center;
+        padding-right:15px; 
+    }
+    .transform1>div>img{
+        width:15px;
+        height:15px;
+    }
+    .transform>div{
+        width:100%;
+        height:37px;
+    }
+    .msg{
+        height:120px;
+        width:100%;
+        margin-top:6px;
+        background:#fff;
+        padding-left:10px;
+        display:flex;
+        flex-direction: column;
+        box-sizing:border-box; 
+    }
+    .msg>div{
+        height:40px;
+        width:100%;
+        border-bottom:1px solid #eee;
+    }
+    .msgitem{
+        display:flex;
+        flex-direction: row;
+    }
+    .msgitem>div:nth-child(1){
+        height:40px;
+        line-height:40px;
+        color:#999;
+        font-size:0.75em
+    }
+    .msgitem>div:nth-child(2){
+        height:40px;
+        line-height:40px;
+        margin-left:10px;
+    }
+    .btn{
+        width:50%;
+        height:44px;
+        line-height:44px;
+        text-align: center;
+    }
+    .btnAll{
+        width:100%;
+        height:44px;
+        background:color($colors, baseColor);
+        color:#fff;
+        line-height:44px;
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        border-radius:4px;
+        display:flex;
+        flex-direction: row;
+    }
+    .btnAll2{
+        width:100%;
+        height:44px;
+        background:color($colors, baseColor);
+        color:#fff;
+        line-height:44px;
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        border-radius:4px;
+        text-align: center;
+    }
+    .cover {
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: .5);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+    } //动画效果
+    @keyframes gotup {
+        0% {
+            
+            bottom: -300px;
+        }
+        100% {
+           
+            bottom: 0px;
+        }
+    }
+    @keyframes gotdown {
+        0% {
+            
+            bottom: 0px;
+        }
+        100% {
+           
+            bottom: -300px;
+        }
+    }
+    .goup {
+        animation: gotup .2s;
+        -webkit-animation: gotup .2s;
+    }
+    .godown {
+        animation: gotdown .2s;
+        -webkit-animation: gotdown .2s;
+    }
+    /* 透明度动画 */
+    @keyframes gotoshow {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes gotohide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+    .goshow {
+        animation: gotoshow .2s;
+        -webkit-animation: gotoshow .2s;
+    }
+    .gohide {
+        animation: gotohide .2s;
+        -webkit-animation: gotohide .2s;
+    }
+    .clickbtn {
+        width: 100%;
+        height: 100%;
+    }
+    .alertpart2 {
+        height: 300px;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 22;
+    }
+    .title {
+        width: 90%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-direction: row;
+    }
+    .title>div:nth-child(1) {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+    }
+    .scroll {
+        height: 220px;
+        width: 90%;
+        overflow-y: scroll;
+        margin: 0 auto;
+    }
+    .addressitem {
+        height: 80px;
+        width: 100%;
+        padding: 10px 10px;
+        border-bottom: 1px solid #eee;
+        box-sizing: border-box;
+    }
+    .addressitem>div {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+    //结束
+    pay-type{
+        width:100%;
+        height:auto;
+        background:#fff;
+        margin-top:7px;
+    }
+    .weixinpay{
+        width:95%;
+        height:36px;
+        border-bottom:1px solid #e5e5e5;
+        margin-left:5%;
+        display:flex;
+        flex-direction:row; 
+    }
+    .weixinpay>div:nth-child(1){
+        width:10%;
+        height:36px;
+        display:flex;
+        flex-direction:row;
+        align-items: center; 
+    }
+    .weixinpay>div:nth-child(1)>img{
+        width:25px;
+        height:25px;
+    }
+    .weixinpay>div:nth-child(2){
+        width:80%;
+        height:36px;
+        line-height:36px;
+    }
+    .weixinpay>div:nth-child(3){
+        width:10%;
+        height:36px;
+        display:flex;
+        flex-direction:row;
+        align-items: center; 
+    }
+    .weixinpay>div:nth-child(3)>img{
+        width:15px;;
+        height:15px;
+    }
+}

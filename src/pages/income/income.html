@@ -1,0 +1,32 @@
+<!--
+  Generated template for the MoneyInOutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">收益记录</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content style="background:#f2f2f2">
+  <div class="in_content">
+    <div class="in_item"  *ngFor="let item of list">
+      <div class="in_item_left">
+        <div *ngIf="item.GiftNum>0" style="font-size:1.2rem;margin-bottom:4px;">来自团队成员<span style="color:#ff5c00;">{{item.FromUserNickName}}</span>下单</div>
+        <div *ngIf="item.GiftNum<0" style="font-size:1.2rem;margin-bottom:4px;">{{item.source}}</div>
+        <div style="font-size:1.2rem;color:#999;">{{item.ObtainTime}}</div>
+      </div>
+      <div class="in_item_right">
+        <span style="color:#ff5c00;">{{item.GiftNum}}</span>
+        <span style="font-size:1.2rem;">积分</span>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

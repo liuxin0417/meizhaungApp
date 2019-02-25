@@ -1,0 +1,100 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">选择服务类型</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#eee;">
+  <div class="list-content">
+    <div class="list-item">
+      <div></div>
+      <div class="list-style">
+        <div>
+          <img [src]="item.Url" alt="">
+        </div>
+        <div>
+          <div>{{item.Name}}</div>
+          <div [innerHTML]="item.AttributeDescription"></div>
+        </div>
+        <div>
+          <div>￥{{item.Price}}</div>
+          <div>X{{item.Quantity}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reason-list">
+    <!-- <div class="reason-list-item1" style=" justify-content: space-between; ">
+      <div>货物状态</div>
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+    </div> -->
+    <div class="reason-list-item1" style=" justify-content: space-between; " tappable (click)="show()">
+      <div>退款原因</div>
+      <div *ngIf="checkType!=null">{{checkType.DText}}</div>
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="reason-list">
+    <div class="reason-list-item1">
+      <div>联系人:</div>
+      <div>
+        <input type="text" placeholder="必填" name="linkuser" id="linkuser" [(ngModel)]="linkuser" />
+      </div>
+    </div>
+    <div class="reason-list-item1">
+      <div>联系电话:</div>
+      <div class="reason-input">
+        <input type="number" placeholder="必填" name="linkphone" id="linkphone" [(ngModel)]="linkphone" />
+      </div>
+    </div>
+  </div>
+  <div class="reason-list">
+    <div class="reason-list-item1" *ngIf="newtype==0">
+      <div>退款金额:</div>
+      <div style="margin-left:10px;">&yen;{{item.TotalMoney}}</div>
+      <!-- <div>
+        <input type="text" placeholder="请填写">
+      </div> -->
+    </div>
+    <div class="reason-list-item1">
+      <div>退款说明:</div>
+      <div class="reason-input">
+        <ion-input type="text" placeholder="选填" name="memo" id="memo" [(ngModel)]="memo" #myInput></ion-input>
+      </div>
+    </div>
+  </div>
+  <div class="reason-img">
+    <div class="reason-img-item1">上传凭证</div>
+    <div class="reason-img-item2" *ngIf="!isweb">
+      <page-select-picture [(fileObjList)]="fileObjList" [max]="6"></page-select-picture>
+    </div>
+    <div class="reason-img-item2" *ngIf="isweb">
+      <div *ngFor="let item of WimgUrl;let i = index;" class="pictures">
+        <span *ngIf="allowDelete" class="remove" tappable (click)="deleteWxPicture(i)">×</span>
+        <img [src]="item" tappable (click)="viewPicture(item)" />
+      </div>
+      <div class="pictures">
+        <img [src]="img10" alt="" tappable (click)="getImg()" *ngIf="imgUrl.length<max">
+      </div>
+    </div>
+  </div>
+  <div class="reason-btn" tappable (click)="sureComment()">
+    确认修改
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="cover" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart2" [ngClass]="{true:'goup',false:'godown'}[showflag]" style="overflow-y: scroll;">
+      <div class="reasonList" *ngFor="let item of resonType;let i=index" tappable (click)="CheckReason(item)">
+        <div>{{item.DText}}</div>
+        <img *ngIf="item.isCheck" [src]="img6" alt="">
+      </div>
+      <div class="reasonBtn" (click)="SureCheck()">确定</div>
+    </div>
+  </div>
+</ion-footer>

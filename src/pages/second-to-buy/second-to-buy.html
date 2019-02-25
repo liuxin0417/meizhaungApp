@@ -1,0 +1,56 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">{{ActivityName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <!-- <div class="banner-pic">
+    <img [src]="img" alt="">
+  </div> -->
+  <!-- <div style="width:100%;height:60px;"></div> -->
+  <div class="goods-list">
+    <div class="goods-item" *ngFor="let item of goodlist" (click)="gotoseckill(item)">
+      <div class="goods-img">
+        <img [src]="item.PicUrl" alt="">
+      </div>
+      <div class="goods-content">
+        <div class="goods-content1">
+          {{slice(item.ProductName)}}
+        </div>
+        <div class="goods-content2">
+          <div class="goods-content2-price">
+            <div class="changecolor">￥{{item.SecKillPrice}}</div>
+            <div style="color:#999;text-decoration: line-through">￥{{item.ActivityPrice}}</div>
+          </div>
+          <div class="goods-content2-btn">
+            <div class="btn2" *ngIf="state==1">去抢购</div>
+            <div class="btn" *ngIf="state!=1">去抢购</div>
+            <div>还有{{item.ResidueNum}}件</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="goods-item">
+      <div class="goods-img">
+        <img [src]="img1" alt="">
+      </div>
+      <div class="goods-content">
+        <div class="goods-content1">
+          可心柔V9润+宝贝系列抽纸3层120抽4提16包整箱量贩卫生纸柔润保湿纸巾
+        </div>
+        <div class="goods-content2">
+          <div class="goods-content2-price">
+            <div style="color:#ff4f4f">￥1.11</div>
+            <div style="color:#999;text-decoration: line-through">￥219.9</div>
+          </div>
+          <div class="goods-content2-btn">
+            <div class="btn2" tappable (click)="gotoseckill()">去抢购</div>
+            <div>已售37%</div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</ion-content>

@@ -1,0 +1,178 @@
+<ion-header style="height: 44px;">
+
+  <ion-navbar mode="ios" style="height: 44px;">
+    <ion-title mode="ios">退款详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content style="background:#f7f7f7;">
+  <div class="order-status">
+    请退货并填写物流信息
+  </div>
+  <div class="new_order_item1">
+    <div class="new_order_item_title">
+      商家已同意退货申请，请尽早退货
+    </div>
+    <div class="new_order_item_address">
+      <div class="return_address_chose1">
+        <img style="height:1.5rem;width:auto;" [src]="dizhi" alt="">
+      </div>
+      <div class="return_address_chose2" *ngIf="addressInfo!=undefined">
+        联系人:{{addressInfo.TelUser}},&nbsp;&nbsp;电话:{{addressInfo.Phone}},&nbsp;&nbsp;地址:{{addressInfo.Address}}
+      </div>
+    </div>
+    <div class="new_order_item_address" style="border:none;color:#666">
+      <div class="return_address_chose1">
+      </div>
+      <div class="return_address_chose2">
+        退货说明：不收到付件，不影响二次销售，退回运费客户自理
+      </div>
+    </div>
+    <div class="new_order_item_address" style="border:none;height:4rem;">
+      <div class="return_address_chose1">
+        <div class="pont"></div>
+      </div>
+      <div class="return_address_chose2">
+        商家同意后，请按照给出的退货地址退货，并请记录货运单号
+      </div>
+    </div>
+    <div class="new_order_item_address" style="border:none;height:4rem;">
+      <div class="return_address_chose1">
+        <div class="pont"></div>
+      </div>
+      <div class="return_address_chose2">
+        如商家拒绝，您可以修改申请后再次发起，商家会重新处理
+      </div>
+    </div>
+  </div>
+  <div class="return_compony">
+    <div class="return_compony_item" style="border-bottom:1px solid #dedede" >
+      <span>物流公司:&nbsp;&nbsp;&nbsp;&nbsp;{{typeName}}</span>
+      <span *ngIf="goodsNsg.ShipNo!=''" >{{goodsNsg.ShipNo}}</span>
+      <input *ngIf="goodsNsg.ShipNo==''" class="inputBlock" [(ngModel)]="shipName" placeholder="请输入快递公司" type="text">
+      <!-- <img style="height:1.3rem;width:auto;" [src]="img5" alt=""> -->
+    </div>
+    <div class="return_compony_item" style="border-bottom:1px solid #dedede" >
+      <span>货运单号:&nbsp;&nbsp;&nbsp;&nbsp;{{orderNum}}</span>
+      <span *ngIf="goodsNsg.ShipName!=''" >{{goodsNsg.ShipName}}</span>
+      <input *ngIf="goodsNsg.ShipName==''"  class="inputBlock" [(ngModel)]="shipNum" placeholder="请输入货运单号" type="text">
+      <!-- <img style="height:1.3rem;width:auto;" [src]="img5" alt=""> -->
+    </div>
+    <div *ngIf="goodsNsg.ShipName==''||goodsNsg.ShipNo==''"  class="return_compony_item" style="flex-direction: row-reverse" tappable (click)="subMsg()">
+      <div class="saveBtn">保存信息</div>
+    </div>
+  </div>
+  <div class="return_money">
+    <div style="width:100%;height:2rem;line-height: 2rem;">退款信息</div>
+    <div class="return_goods_msg">
+      <div class="return_goods_msg_left">
+        <img [src]="goodsNsg.PicUrl" alt="">
+      </div>
+      <div class="return_goods_msg_right">
+        <div class="detail_msg">{{goodsNsg.ProductName}}</div>
+        <div style="color:#999">
+          <span style="margin-right:10px;">退款:{{goodsNsg.RefundMoney}}</span>
+          <span>数量:x1</span>
+        </div>
+      </div>
+    </div>
+    <div class="return_money_moremsg">
+      <div class="return_money_moremsg1">申请原因：</div>
+      <div class="return_money_moremsg2">{{goodsNsg.RefundReason}}</div>
+    </div>
+    <div class="return_money_moremsg">
+      <div class="return_money_moremsg1">申请件数：</div>
+      <div class="return_money_moremsg2">1</div>
+    </div>
+    <div class="return_money_moremsg">
+      <div class="return_money_moremsg1">申请时间：</div>
+      <div class="return_money_moremsg2">{{goodsNsg.CreateTime}}</div>
+    </div>
+
+  </div>
+  <!-- <div class="rd_part2" *ngIf="Info.State==0">
+    <div class="rd_part2_line1">
+      您已成功发起退款申请，请耐心等待商家处理
+    </div>
+    <div class="rd_part2_line2">
+      <div class="circle"></div>
+      <div>商家同意后，请按照给出的退货地址退货，并请记录退货运单号</div>
+    </div>
+    <div class="rd_part2_line3">
+      <div class="circle"></div>
+      <div>如果商家拒绝，您可以修改申请后再次发起，商家会重新处理</div>
+    </div>
+    <div class="rd_part2_line4">
+      <div class="rd_part2_line4_btn1" tappable (click)="chexiao()">撤销申请</div>
+    </div>
+  </div>
+  <div class="rd_part2" *ngIf="Info.State==1">
+    <div class="rd_part2_line1">
+      退款申请正在审核
+    </div>
+  </div>
+  <div class="rd_part2" *ngIf="Info.State==2">
+    <div class="rd_part2_line1">
+      退款申请审核失败
+    </div>
+  </div>
+  <div class="rd_part2" *ngIf="Info.State==3">
+    <div class="rd_part2_line1">
+      您已递件，请等待回复
+    </div>
+  </div>
+  <div class="rd_part2" *ngIf="Info.State==4">
+    <div class="rd_part2_line1">
+      商家已同意退货申请，请尽早退货
+    </div>
+    <div class="rd_part2_type1" *ngIf="addressInfo!=null">
+      <span style="color:#ff4f4f;">商家收货信息:</span>
+      收货人{{addressInfo.user}}，{{addressInfo.phone}}，{{addressInfo.address}},{{addressInfo.area}}
+    </div>
+    <div class="rd_part2_type2">
+      退货说明：不收到付件，不影响二次销售，退回运费客户自理
+    </div>
+    <div class="rd_part2_type3">
+      <div class="circle"></div>
+      <div>商家同意后，请按照给出的退货地址退货，并请记录退货运单号</div>
+    </div>
+    <div class="rd_part2_type4">
+      <div class="circle"></div>
+      <div>如果商家拒绝，您可以修改申请后再发起，商家会重新处理</div>
+    </div>
+    <div class="rd_part2_type5" tappable (click)="gotoLgNumber()">
+      <div class="number_btn">
+        <div>我已寄出</div>
+        <div>点击填写运单号</div>
+      </div>
+    </div>
+  </div>
+  <div class="rd_part2" *ngIf="Info.State==5">
+    <div class="rd_part2_item1" style="border-bottom:1px solid #999;">
+      <div>退款总金额</div>
+      <div style="color:#ff4f4f;">￥{{Info.Money}}</div>
+    </div>
+    <div class="rd_part2_item1">
+      <div>退回银行卡</div>
+      <div>￥{{Info.Balance}}</div>
+    </div>
+  </div>
+  <div class="rd_part3">
+    <div class="rd_part3_line1">退款信息</div>
+    <div class="list-style">
+      <div>
+        <img [src]="Info.Url" alt="">
+      </div>
+      <div>
+        <div>{{Info.Name}}</div>
+      </div>
+      <div>
+        <div>￥{{Info.Price}}</div>
+        <div>X{{Info.Quantity}}</div>
+      </div>
+    </div>
+    <div class="rd_part3_line2">退款原因:{{Info.DText}}</div>
+    <div class="rd_part3_line2">退款现金:￥{{Info.Balance}}</div>
+    <div class="rd_part3_line2">申请件数:{{Info.Quantity}}</div>
+    <div class="rd_part3_line2">申请时间:{{Info.CreateTime}}</div>
+  </div> -->
+</ion-content>

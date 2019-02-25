@@ -1,0 +1,108 @@
+<ion-header style="height:104px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">商品订单</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only tappable (click)="gotogoodscar()">
+        <img [src]="img3" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div class="status-btn">
+    <div tappable (click)="ordertype(0)">
+      <span class="dirctionT" [ngClass]="{true:'change',false:'nochange'}[indexnum==0]">
+        <span style="line-height:20px;">全部</span>
+        <span *ngIf="numList!=undefiend"  style="line-height:10px;font-size: 10px;">{{numList.TotalNum}}</span>
+      </span>
+    </div>
+    <div  tappable (click)="ordertype(1)">
+      <span class="dirctionT" [ngClass]="{true:'change',false:'nochange'}[indexnum==1]">
+        <span style="line-height:20px;">待付款</span>
+        <span *ngIf="numList!=undefiend" style="line-height:10px;font-size: 10px;">{{numList.NoPayNum}}</span>
+      </span>
+    </div>
+    <!-- <div tappable (click)="ordertype(5)">
+      <span [ngClass]="{true:'change',false:''}[indexnum==5]">待拼团</span>
+    </div> -->
+    <div  tappable (click)="ordertype(2)">
+      <span class="dirctionT" [ngClass]="{true:'change',false:'nochange'}[indexnum==2]">
+        <span style="line-height:20px;">待发货</span>
+        <span *ngIf="numList!=undefiend" style="line-height:10px;font-size: 10px;">{{numList.NoSendNum}}</span>
+      </span>
+    </div>
+    <div  tappable (click)="ordertype(3)">
+      <span class="dirctionT" [ngClass]="{true:'change',false:'nochange'}[indexnum==3]">
+        <span style="line-height:20px;">待收货</span>
+        <span *ngIf="numList!=undefiend" style="line-height:10px;font-size: 10px;">{{numList.NoReceiveNum}}</span>
+      </span>
+    </div>
+    <div  tappable (click)="ordertype(4)">
+      <span class="dirctionT" [ngClass]="{true:'change',false:'nochange'}[indexnum==4]">
+        <span style="line-height:20px;">待评价</span>
+        <span *ngIf="numList!=undefiend" style="line-height:10px;font-size: 10px;">{{numList.NoCommentNum}}</span>
+      </span>
+    </div>
+    <div  tappable (click)="ordertype(5)">
+      <span class="dirctionT" [ngClass]="{true:'change',false:'nochange'}[indexnum==5]">
+        <span style="line-height:20px;">已完成</span>
+        <span *ngIf="numList!=undefiend" style="line-height:10px;font-size: 10px;">{{numList.TotalFinishNum}}</span>
+      </span>
+    </div>
+  </div>
+</ion-header>
+<ion-content style="background:#fff">
+  <div class="list-content" style="height:100%;" *ngIf="orderlist==''">
+    <img src="assets/imgs/list.png" style="margin:50px auto 5px;width: 50%" alt="">
+    <div class="xiaoyu">您没有商品订单</div>
+  </div>
+  <div class="list-content">
+    <div *ngFor="let item of this.orderlist;let i=index">
+      <div class="list-title">
+        <div>
+          <img [src]="img2" alt="">
+        </div>
+        <div>{{item.ShopName}}</div>
+        <div *ngIf="item.OrderStatusId==0&&item.ShipStatusId!=0">待付款</div>
+        <div *ngIf="item.ShipStatusId==0">到店自取</div>
+        <!-- <div *ngIf="(item.OrderStatusId==20&&item.ShipStatusId!=0||item.OrderStatusId==10&&item.ShipStatusId!=0||item.OrderStatusId==10&&item.ShipStatusId==1)&&(item.CouponState==-1||item.CouponState==2)">待发货</div> -->
+        <div *ngIf="item.OrderStatusId==10&&item.ShipStatusId==1&&item.IsReceipt==0">待发货</div>
+        <div *ngIf="item.OrderStatusId==30&&item.ShipStatusId==3&&item.IsReceipt==0">待收货</div>
+        <div *ngIf="item.OrderStatusId==40&&item.IsEvaluate==0&&item.IsReceipt==1">待评价</div>
+        <div *ngIf="item.OrderStatusId==40&&item.IsEvaluate==1&&item.IsReceipt==1">已完成</div>
+        <!-- <div *ngIf="item.OrderStatusId==40&&item.IsReceipt==1&&indexnum==5&&item.IsEvaluate!=0">已完成</div> -->
+        <!-- <div *ngIf="item.OrderStatusId==10&&item.CouponState==1">待拼团</div> -->
+      </div>
+      <div class="list-item" tappable (click)="gotoOrderDetail(item)" *ngFor="let item2 of item.Items">
+        <div></div>
+        <div class="list-style">
+          <div>
+            <img [src]="item2.Url" alt="">
+          </div>
+          <div>
+            <div class="order_name" style="font-size:1.2rem">{{item2.Name}}</div>
+            <div class="order_name_des" style="font-size:1.2rem" *ngIf="item2.AttributeDescription!=null" [innerHTML]="item2.AttributeDescription"></div>
+          </div>
+          <div>
+            <div>￥{{item2.Price}}</div>
+            <div>x{{item2.Quantity}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="total">
+        共计{{num(item.Items)}}件商品 合计：￥{{item.OrderTotal}}
+      </div>
+      <div class="total-btn">
+        <div *ngIf="item.OrderStatusId==0" tappable (click)="gotoOrderpay(item)">去付款</div>
+        <div *ngIf="item.OrderStatusId==0" tappable (click)="delete(item,i)">删除订单</div>
+        <div *ngIf="item.OrderStatusId==30&&item.ShipStatusId==3&&item.IsReceipt==0" tappable (click)="confirm(item,item.ID)">确认收货</div>
+        <div *ngIf="item.OrderStatusId==30&&item.ShipStatusId==3&&item.IsReceipt==0" (click)="searchlog(item)">查看物流</div>
+        <div *ngIf="item.OrderStatusId==10&&item.CouponState==1" tappable (click)="gotoPinDan(item)">去拼单</div>
+        <div *ngIf="item.OrderStatusId==40&&item.IsEvaluate==0&&item.IsReceipt==1" tappable (click)="gotoOrderDetail(item)">订单评价</div>
+        <div *ngIf="item.OrderStatusId==40&&item.IsReceipt==1" tappable (click)="gotoOrderDetail(item)">申请售后</div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

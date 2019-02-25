@@ -1,0 +1,96 @@
+<ion-header style="background:#fff;">
+    <ion-title mode="ios" style="height:0px;overflow:hidden">我的收藏</ion-title>
+    <div class="com-title">
+        <img [src]="img1" alt="" tappable (click)="gotodeliver()">
+        <img [src]="img2" alt="">
+        <img tappable (click)="MyCommunityPage()" [src]="img3" alt="">
+    </div>
+</ion-header>
+<ion-content style="background:#f5f5f5">
+    <div class="write-article" tappable (click)="gotoarticle()">
+        <img [src]="img11" alt="">
+    </div>
+    <div class="com-part1">
+        <div class="com-slides">
+            <ion-slides pager>
+                <ion-slide *ngFor="let item of slide">
+                    <img [src]="item.PicUrl" alt="">
+                </ion-slide>
+            </ion-slides>
+        </div>
+        <div class="com-hotTitle">
+            <div class="hotTitle-tit">
+                <div class="hotTitle-tit-title">热门话题</div>
+                <div class="hotTitle-tit-more" tappable (click)="gotohotplate()">更多>></div>
+            </div>
+            <div class="hotTitle-content">
+                <ion-slides loop="false" slidesPerView=2.5>
+                    <ion-slide *ngFor="let item of theme">
+                        <div class="com-slide-item" tappable (click)="gotoperson(item)">
+                            <img class="com-slide-pic" [src]="item.ImgUrl" alt="">
+                            <div class="com-slide-tit">{{item.Name}}</div>
+                            <div class="com-slide-des">{{item.Num}}篇文章</div>
+                        </div>
+                        <div class="com-slide-btn" tappable (click)="AddFollow(item)">+关注</div>
+                    </ion-slide>
+                </ion-slides>
+            </div>
+        </div>
+    </div>
+    <div class="com-part2">
+        <div class="com-tit-btn">
+            <ion-slides loop="false" slidesPerView=5>
+                <ion-slide *ngFor="let item of nav ;let i=index" style="font-size:1.4rem;" tappbale (click)="login3(i,item.ID)">
+                    <span [ngClass]="{true:'style1',false:'style2'}[indexnum==i]">{{item.Name}}</span>
+                </ion-slide>
+            </ion-slides>
+        </div>
+        <div class="com-only-pic">
+            <img [src]="img5" alt="">
+        </div>
+        <div *ngFor="let item of article">
+            <div class="com-content-style1" *ngIf="item.Position==1" tappbale (click)="gotoinfo(item)">
+                <div class="img-litte-part">
+                        <!-- {{item.ImgUrl}} -->
+                    <img [src]="item.ImgUrl" alt="" tappable>
+                </div>
+                <div class="com-style1-detail">
+                    <div class="com-detail1">{{item.Title}}</div>
+                    <div class="com-detail2">
+                        <img class="com-style-pic1" [src]="item.HeadUrl" alt="" style="margin-right:6px">
+                        <div style="margin-right:20px">{{item.LoginName}}</div>
+                        <img class="com-style-pic2" [src]="img8" alt="">
+                        <div style="margin-right:15px">{{item.ClickNum}}</div>
+                        <img class="com-style-pic2" [src]="img9" alt="">
+                        <div>{{item.CommentNum}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="com-content-style2" *ngIf="item.Position==0" tappbale (click)="gotoinfo(item)">
+                <div class="bannerpic" *ngIf="item.ImgUrl!=''">
+                    <img [src]="item.ImgUrl" tappable alt="" class="com-style2-img">
+                </div>
+                <div class="com-style2-title">
+                    {{item.Title}}
+                </div>
+                <div class="com-style2-persion">
+                    <div class="com-style2-part">
+                        <img class="com-style-pic1" [src]="item.HeadUrl" alt="" style="margin-right:6px">
+                        <div style="margin-right:20px">{{item.LoginName}}</div>
+                    </div>
+                    <div class="com-style2-part">
+                        <img class="com-style-pic2" [src]="img8" alt="">
+                        <div style="margin-right:15px">{{item.ClickNum}}</div>
+                        <img class="com-style-pic2" [src]="img9" alt="">
+                        <div>{{item.CommentNum}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width:100%;height:10px;"></div>
+    </div>
+    <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

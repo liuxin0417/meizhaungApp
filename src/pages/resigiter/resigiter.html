@@ -1,0 +1,48 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-buttons left *ngIf="showflag" >
+      <button ion-button icon-only tappable (click)="hidepage()">
+        <img [src]="img3" style="height:12px;width:12px;margin-left:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+    <ion-title mode="ios">注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="phone-num">
+    <div class="phone-item">
+      <div>手机号</div>
+      <input type="tel" placeholder="请输入手机号" [(ngModel)]="phonenum">
+    </div>
+  </div>
+  <div class="yan-code">
+    <div class="yan-code-item">
+      <div>验证码</div>
+      <input type="number" placeholder="请输入验证码" name="yzm" id="yzm" [(ngModel)]="yzm">
+      <div *ngIf="sendflag" tappable (click)="GetYZM()">获取验证码</div>
+      <div *ngIf="!sendflag" style="border-color:#999">
+        <input class="inputpart" disabled="disabled" type="text" [(ngModel)]="second">
+      </div>
+    </div>
+  </div>
+  <div class="password">
+    <div class="password-item">
+      <div>密&nbsp;&nbsp;&nbsp;&nbsp;码</div>
+      <input type="password" placeholder="请输入密码" [(ngModel)]="password" name="password" id="password">
+    </div>
+  </div>
+  <div class="password">
+    <div class="password-item">
+      <div>邀请码</div>
+      <input *ngIf="showtype==1" type="text" placeholder="请输入邀请码" [(ngModel)]="yqm" name="yqm">
+      <div *ngIf="showtype==2" style="height:100%;width:80px;line-height: 46px">{{yqm}}</div>
+    </div>
+  </div>
+  <div class="resgiter-btn" *ngIf="codeflag" tappable (click)="resigiter()">注册</div>
+  <div class="resgiter-btn" *ngIf="!codeflag" style="background:#ccc;color:#666;">注册</div>
+  <div class="tixing" *ngIf="!codeflag">每个微信账号只能注册一次，请尝试更换微信账号后注册</div>
+  <div class="resgiter-btn" style="margin-top:30px;" *ngIf="!codeflag" tappable (click)="gotoroot()">去逛逛</div>
+  <!-- <div class="tixing" style="text-align: right;color:#0084ff" *ngIf="!codeflag" tappable (click)="gotoroot()" >去逛逛</div> -->
+  <div></div>
+</ion-content>

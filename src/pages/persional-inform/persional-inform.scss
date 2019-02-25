@@ -1,0 +1,114 @@
+page-persional-inform {
+    
+    .per-content{
+        height:auto;
+        width:100%;
+        box-sizing:border-box;
+        padding-left:10px; 
+        display:flex;
+        flex-direction:column; 
+        background:#fff;
+        font-size:1.5rem;
+    }
+    .per-content>div{
+        height:4.4rem;
+        width:100%;
+        border-bottom:1px solid buttonface;
+        display:flex;
+        flex-direction:row;
+        box-sizing: border-box; 
+    }
+    .per-content>div>div:nth-child(1){
+        width:45%;
+        height:4.4rem;
+        line-height:4.4rem;
+        padding-left:10px;
+        
+    }
+    .per-content>div>div:nth-child(2){
+        width:45%;
+        height:4.4rem;
+        line-height:4.4rem;
+        padding-right:5px;
+        display:flex;
+        flex-direction:row-reverse;
+        align-items: center; 
+        text-align:right;
+    }
+    .per-content>div>div:nth-child(2)>img{
+        width:34px;
+        height:34px;
+    }
+    .per-content>div>div:nth-child(3){
+        width:10%;
+        height:4.4rem;
+        display:flex;
+        flex-direction:row;
+        align-items: center; 
+    }
+    .per-content>div>div:nth-child(3)>img{
+        width:11px;
+        height:11px;
+    }
+    .save-message{
+        width:92%;
+        height:4rem;
+        line-height:4rem;
+        text-align: center;
+        color:#fff;
+        background:color($colors, baseColor);
+        margin:0 auto;
+        margin-bottom:1.2rem;
+        border-radius:8px;
+    }
+    .label-ios {
+        margin: 0px 8px 0px 3%;
+        font-size: 1.5rem;
+    }
+    .nicknameput{
+        height:90%;
+        width:100%;
+        border:none;
+        outline: none;
+        background:#fff;
+        text-align: right;
+    }
+    .headimg{
+        border-radius:50%;
+    }
+    #change_self .item-ios{
+        padding-left:10px;
+        padding-right:5px;
+        min-height: 4.3rem;
+    }
+    #change_self .label-ios{
+        margin:0px;
+    }
+    #change_self .item-block{
+        width:90%;
+    }
+    #change_self .datetime-ios{
+        padding:0px;
+    }
+    .item-ios.item-block .item-inner{
+        padding:0px;
+        border-bottom:0px;
+    }
+    #change_self .change_self_img{
+        width: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding:0px;
+    }
+    #change_self2 .item-block{
+        width:90%;
+        min-height:4.3rem;
+        padding-left:10px;
+    }
+    #change_self2 .label-ios{
+        margin:0px;
+        
+    }
+}

@@ -1,0 +1,193 @@
+page-order-list {
+    .status-btn {
+        height: 60px;
+        width: 100%;
+        border-bottom: 1px solid #e5e5e5;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        background:#fff;
+       /*  position: fixed; */
+    }
+    .scroll-content {
+        margin-top: 0px;
+        margin-top: 104px !important;
+    }
+
+    .status-btn>div {
+        height: 60px;
+        width: 25%;
+        // line-height: 60px;
+        text-align: center;
+        font-size: 1.4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .list-content {
+       /*  padding-top:40px; */
+        height: auto;
+        background: #fff;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .list-title {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .list-title>div:nth-child(1) {
+        width: 12%;
+        height: 35px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      
+    }
+    .list-title>div:nth-child(1)>img {
+        height: 18px;
+        width: 18px;
+    }
+    .list-title>div:nth-child(2) {
+        line-height: 35px;
+        width: 64%;
+        height: 35px;
+        font-size: 1.4rem;
+    }
+    .list-title>div:nth-child(3) {
+        width: 25%;
+        height: 35px;
+        line-height: 35px;
+        font-size: 1.2rem;
+        color: color($colors, baseColor);
+        text-align: right;
+        padding-right:10px;
+    } //订单列表样式   
+    .list-item {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        flex-direction: row;
+    }
+    .list-item>div:first-child {
+        width: 5%;
+        height: 84px;
+    }
+    .list-style {
+        width: 95%;
+        height: 84px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .list-style>div:nth-child(1) {
+        height: 64px;
+        width: 20%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .list-style>div:nth-child(2) {
+        height: 64px;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        
+        line-height: 20px;
+        padding-left: 5px;
+    }
+    .list-style>div:nth-child(3) {
+        height: 64px;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        color: #7d7d7d;
+        font-size: 1.2rem;
+        line-height: 20px;
+        text-align: right;
+        padding-right: 10px;
+    }
+    .list-style>div>img {
+        display: block;
+        height: 64px;
+        width: 64px;
+    } //结束
+    .total {
+        height: 30px;
+        width: 100%;
+        text-align: right;
+        font-size:1.4rem;
+        line-height: 30px;
+        padding-right: 10px;
+        border-bottom:1px solid #eee;
+    }
+    .total-btn {
+        height: 50px;
+        padding-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        padding-right: 10px;
+        border-bottom:1px solid #eee;
+    }
+    .total-btn>div {
+        height: 30px;
+        line-height: 28px;
+        width: auto;
+        text-align: center;
+        border: 1px solid #FF5C00;
+        color: #FF5C00;
+        font-size: 1.2rem;
+        border-radius: 3px;
+        margin-left: 5px;
+        padding:0px 5px;
+    }
+    .change{
+        color:color($colors, baseColor);
+        border-bottom:2px solid color($colors, baseColor);
+        padding-bottom:5px;
+    }
+    .nochange{
+        border-bottom:2px solid #fff;
+        padding-bottom:5px;
+    }
+    .xiaoyu{
+        margin: 10px auto;
+        color: #808080;
+        letter-spacing: 0.03em;
+        font-size: 1.2em;
+        width: 130px;
+    }
+    .order_name{
+        width: 100%;
+        line-height:1.5rem;
+        overflow:hidden; 
+        text-overflow:ellipsis;
+        display:-webkit-box; 
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:2; 
+    }
+    .order_name_des{
+        width:100%;
+        font-size:1.2rem;
+        height:1.5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .dirctionT{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width:90%;
+    }
+    
+}

@@ -1,0 +1,48 @@
+<!--
+  Generated template for the JudegePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">用户评价</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div style="padding-bottom:10px;background:#fff;margin-bottom:10px;" *ngFor="let item of commentlist" >
+      <div class="judge-part" >
+          <div class="judge-title">
+            <div>
+              <img class="headimg" [src]="item.HeadUrl" alt="">
+            </div>
+            <div>
+              {{item.Nickname}}
+            </div>
+           <!--  <div style="color:#666;font-size: 22px;">
+                <ion-icon name="eye"></ion-icon>
+            </div>
+            <div style="padding-left:10px;">
+              {{item.Scannum}}
+            </div> -->
+          </div>
+          <div class="judge-content">
+            {{item.comcontent}}
+          </div>
+          <div class="judge-img">
+              <img *ngFor="let item2 of json(item.ImgList) "   [src]="item2.Url" tappable (click)="gotoslideImg(json(item.RelImgList))" alt="">
+          </div>
+          <div class="judge-con" *ngIf="item.Scontent!=null" >
+            <div>
+              <span style="color:#ff4f4f;padding-right:3px;">商家回复:</span>{{item.Scontent}}
+            </div>
+          </div>
+        </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isscroll"  (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

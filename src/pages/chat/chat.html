@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">留言</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div class="goods-detail">
+    <div class="goods-detail-item1">
+      <img [src]="picurl" alt="">
+    </div>
+    <div class="goods-detail-item2">
+      {{name}}
+    </div>
+    <div class="goods-detail-item3">
+      <img [src]="img1" alt="">
+    </div>
+  </div>
+  <div style="height:40px;width:100%;"></div>
+  <div class="message-part" *ngFor="let item of list ">
+    <div class="message-time"> {{splice(item.comtime)}}</div>
+    <div *ngIf="item.IsSeller==1" class="user-type1">
+      <div class="message-box">
+        <img [src]="img2" class="singer1" alt=""> {{item.comcontent}}
+      </div>
+    </div>
+    <div *ngIf="item.IsSeller==0" class="user-type2">
+      <div class="message-box">
+        <img [src]="img3" class="singer2" alt=""> {{item.comcontent}}
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>
+<ion-footer>
+  <div class="write-commite">
+    <div class="write-btn">
+      <img [src]="img7" alt="">
+      <input type="text" class="message-input" [(ngModel)]="textarea" placeholder="写留言" (keyup.enter)="ask()">
+    </div>
+
+    <div class="write-zan-heart" tappable (click)="ask()">
+      <img [src]="img8" alt="">
+    </div>
+  </div>
+</ion-footer>

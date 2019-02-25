@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>查看物流</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#f7f7f7">
+  <div class="lg_item_content" *ngIf="logInfo!=null">
+    <div class="lg_item" style="margin-top:1rem;">
+      <div>物流公司</div>
+      <div>{{logInfo.ShipCompany}}</div>
+    </div>
+    <div class="lg_item">
+      <div>物流单号</div>
+      <div>{{logInfo.ShipNo}}</div>
+    </div>
+  </div>
+
+</ion-content>

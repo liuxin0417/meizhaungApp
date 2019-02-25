@@ -1,0 +1,27 @@
+<!--
+  Generated template for the TestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>test</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list [virtualScroll]="goodList">
+
+    <ion-item style="height:200px;" *virtualItem="let item">
+      <ion-avatar item-start>
+        <ion-img [src]="item.PicUrl"></ion-img>
+      </ion-avatar>
+      {{ item.Name }}
+    </ion-item>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,524 @@
+page-return-type {
+    .list-content {
+        height: auto;
+        background: #fff;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    } //订单列表样式   
+    .list-item {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        flex-direction: row;
+    }
+    .list-item>div:first-child {
+        width: 5%;
+        height: 84px;
+    }
+    .list-style {
+        width: 95%;
+        height: 84px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .list-style>div:nth-child(1) {
+        height: 64px;
+        width: 20%;
+        display: flex;
+        flex-direction: row;
+    }
+    .list-style>div:nth-child(2) {
+        height: 64px;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.625em;
+        line-height: 20px;
+        padding-left: 5px;
+        justify-content: center;
+    }
+    .list-style>div:nth-child(3) {
+        height: 64px;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        color: #7d7d7d;
+        font-size: 0.625em;
+        line-height: 20px;
+        text-align: right;
+        padding-right: 10px;
+    }
+    .list-style>div>img {
+        display: block;
+        height: 64px;
+        width: 64px;
+    } //结束
+    .returnBtn {
+        height: 20px;
+        width: 80%;
+        margin-left: 20%;
+        line-height: 20px;
+        font-size: 0.75em;
+        text-align: center;
+        border: 1px solid #a0a0a0;
+        color: #a0a0a0;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    .returnType1 {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+    }
+    .returnType1>div:nth-child(1),
+    .returnType2>div:nth-child(1),
+    .returnType3>div:nth-child(1) {
+        height: 46px;
+        width: 7%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .returnType1>div:nth-child(1)>img,
+    .returnType2>div:nth-child(1)>img,
+    .returnType3>div:nth-child(1)>img {
+        height: 15px;
+        width: 15px;
+    }
+    .returnType1>div:nth-child(2),
+    .returnType2>div:nth-child(2),
+    .returnType3>div:nth-child(2) {
+        height: 46px;
+        width: 83%;
+        line-height: 46px;
+    }
+    .returnType1>div:nth-child(3),
+    .returnType2>div:nth-child(3),
+    .returnType3>div:nth-child(3) {
+        height: 46px;
+        width: 10%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        padding-right: 10px;
+    }
+    .returnType1>div:nth-child(3)>img,
+    .returnType2>div:nth-child(3)>img,
+    .returnType3>div:nth-child(3)>img {
+        height: 12px;
+        width: 12px;
+    }
+    .returnType2 {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+    }
+    .returnType3 {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+    } //新样式
+    .return_type {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 0px 1.2rem;
+        background: #fff;
+        margin-top: 10px;
+        padding:10px 0px;
+    }
+    .return_type_title {
+        width: 100%;
+        height: 2.7rem;
+        padding:6px 10px;
+        box-sizing: border-box;
+    }
+    .return_type_btn {
+        height: 5.3rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .return_btn {
+        width: 80%;
+        height: 2.7rem;
+        margin:0 auto;
+        display: block;
+        padding: 0px 15px;
+        line-height: 2.7rem;
+        border-bottom:1px solid #dedede;
+    }
+    .bordercolor {
+        background:url("../assets/imgs/chose.png") no-repeat;
+        background-size: 1.5rem auto; 
+        background-position: center right;
+        color: color($colors, baseColor);
+    }
+    .return_goods_msg {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        background: #fff;
+        margin-top: 10px;
+        border-bottom: 1px solid #dedede;
+        padding: 10px 1.2rem 0px 1.2rem;
+    }
+    .return_goods_msg_left {
+        height: 7.2rem;
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .return_goods_msg_left>img {
+       height:64px;
+       width:64px;
+    }
+    .return_goods_msg_right {
+        height: 7.2rem;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .detail_msg {
+        width: 100%;
+        height: 4rem;
+    }
+    .return_goods_reson {
+        height: 4.4rem;
+        width: 100%;
+        padding: 0px 1.2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+    }
+    .return_goods_reson_right {
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .return_reson_msg {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        background: #fff;
+        padding: 0px 1.2rem;
+        margin-top: 10px;
+        padding-bottom: 1rem;
+    }
+    .return_resMsg_title {
+        width: 100%;
+        height: 4rem;
+        line-height: 4rem;
+    }
+    .return_resMsg_title2 {
+        width: 100%;
+        height: auto;
+        line-height: 4rem;
+        padding:10px 0px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .return_resMsg_title3 {
+        width: 100%;
+        height: 4rem;
+        line-height: 2rem;
+        font-size: 14px;
+        padding: 0px 1.2rem;
+    }
+    .return_msg_p {
+        width: 100%;
+        height: 6rem;
+        padding:6px;
+        background: #eee;
+        margin: 0 auto;
+        outline: none;
+        border: none;
+    }
+    .submit_btn {
+        width: 90%;
+        height: 4rem;
+        line-height: 4rem;
+        margin: 0 auto;
+        margin-top: 1rem;
+        text-align: center;
+        box-sizing: border-box;
+        background: color($colors, baseColor);
+        color: #fff;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+    .return_way {
+        width: 100%;
+        height: auto;
+        padding: 0px 1.2rem;
+        background: #fff;
+        margin-top: 1rem;
+    }
+    .return_way_btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .return_btn_detail {
+        height: 2.7rem;
+        padding: 0px 1rem;
+        border-radius: 5px;
+        line-height: 2.78rem;
+        border: 1px solid #dedede;
+        margin-right: 1rem;
+    }
+    .return_type_des {
+        width: 100%;
+        height: auto;
+        padding-bottom: 10px;
+        color: #999;
+        line-height: 20px;
+    }
+    .return_address {
+        width: 100%;
+        height: auto;
+        padding-left: 1.2rem;
+        box-sizing: border-box;
+        background: #fff;
+        margin-top: 10px;
+    }
+    .return_address_item {
+        height: 4rem;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #dedede;
+    }
+    .return_address_title {
+        width: 30%;
+        height: auto;
+        color: #999;
+    }
+    .return_address_msg {
+        display: block;
+        width: 70%;
+        height: 90%;
+        border: none;
+        outline: none;
+    }
+    .return_address_chose {
+        display: flex;
+        flex-direction: row;
+        height: 6.5rem;
+        width: 100%;
+    }
+    .return_address_chose1 {
+        width: 15%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .return_address_chose2 {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .return_address_chose3 {
+        width: 15%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    } //上拉部分
+    .cover {
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: .5);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+    } //动画效果
+    @keyframes gotup {
+        0% {
+            bottom: -300px;
+        }
+        100% {
+            bottom: 0px;
+        }
+    }
+    @keyframes gotdown {
+        0% {
+            bottom: 0px;
+        }
+        100% {
+            bottom: -300px;
+        }
+    }
+    .goup {
+        animation: gotup .2s;
+        -webkit-animation: gotup .2s;
+    }
+    .godown {
+        animation: gotdown .2s;
+        -webkit-animation: gotdown .2s;
+    }
+    /* 透明度动画 */
+    @keyframes gotoshow {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes gotohide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+    .goshow {
+        animation: gotoshow .2s;
+        -webkit-animation: gotoshow .2s;
+    }
+    .gohide {
+        animation: gotohide .2s;
+        -webkit-animation: gotohide .2s;
+    }
+    .clickbtn {
+        width: 100%;
+        height: 100%;
+    }
+    .alertpart2 {
+        height: 300px;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 22;
+    }
+    .title {
+        width: 90%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-direction: row;
+    }
+    .title>div:nth-child(1) {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+    }
+    .scroll {
+        height: 220px;
+        width: 90%;
+        overflow-y: scroll;
+        margin: 0 auto;
+    }
+    .addressitem {
+        height: 80px;
+        width: 100%;
+        padding: 10px 10px;
+        border-bottom: 1px solid #eee;
+        box-sizing: border-box;
+    }
+    .addressitem>div {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+    .reasonList{
+        height:4rem;
+        width:96%;
+        margin:0 auto;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom:1px solid #999;
+        justify-content: space-between;
+        padding:1rem;
+    }
+    .reasonList>img{
+        width:1.5rem;
+        height:1.5rem;
+    }
+    .reasonBtn{
+        height:3.5rem;
+        width:100%;
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        background:color($colors, baseColor);
+        color:#fff;
+        text-align: center;
+        line-height:3.5rem;
+    }
+    .pictures {
+        position: relative;
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin: 3px;
+    }
+    .pictures img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+    .remove {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        display: block;
+        width: 18px;
+        height: 18px;
+        border-radius: 18px;
+        font-size: 16px;
+        text-align: center;
+        color: #fff;
+        background-color: color($colors, baseColor);
+    }
+    .rn_img_input{
+        width:70px;
+        height:70px;
+        border:none;
+        outline: none;
+        position:absolute;
+        top:0px;
+        left:0px;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+    }
+    
+}

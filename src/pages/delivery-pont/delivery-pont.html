@@ -1,0 +1,52 @@
+<!--
+  Generated template for the DeliveryPontPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">选择自提地点</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#e5e5e5;">
+  <div style="width:100%;height:0.6rem;"></div>
+  <div class="address-item" tappable (click)="chose(1)">
+    <div class="address-item1" [ngClass]="{true:'color',false:'nocolor'}[switchNum==1]">持久大厦蜂巢自提柜</div>
+    <div class="address-item2">
+      <div class="address-item2-line1">山东烟台市莱山区黄海路街道万光汪洋万光8-9(26400)</div>
+      <div class="address-item2-line2">
+        <img *ngIf="switchNum==1" [src]="img" alt="">
+      </div>
+    </div>
+    <div class="address-item3">
+      <img [src]="img2" alt=""> 0.1km
+    </div>
+  </div>
+  <div class="address-item" tappable (click)="chose(2)">
+    <div class="address-item1" [ngClass]="{true:'color',false:'nocolor'}[switchNum==2]">持久大厦蜂巢自提柜</div>
+    <div class="address-item2">
+      <div class="address-item2-line1">山东烟台市莱山区黄海路街道万光汪洋万光8-9(26400)</div>
+      <div class="address-item2-line2">
+        <img *ngIf="switchNum==2" [src]="img" alt="">
+      </div>
+    </div>
+    <div class="address-item3">
+      <img [src]="img2" alt=""> 0.1km
+    </div>
+  </div>
+  <div class="address-item" tappable (click)="chose(3)">
+    <div class="address-item1" [ngClass]="{true:'color',false:'nocolor'}[switchNum==3]">持久大厦蜂巢自提柜</div>
+    <div class="address-item2">
+      <div class="address-item2-line1">山东烟台市莱山区黄海路街道万光汪洋万光8-9(26400)</div>
+      <div class="address-item2-line2">
+        <img *ngIf="switchNum==3" [src]="img" alt="">
+      </div>
+    </div>
+    <div class="address-item3">
+      <img [src]="img2" alt=""> 0.1km
+    </div>
+  </div>
+</ion-content>

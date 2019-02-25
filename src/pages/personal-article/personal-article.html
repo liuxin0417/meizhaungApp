@@ -1,0 +1,88 @@
+<ion-content style="background:#eee;">
+  <div #lyScroll class="scrollcontent">
+    <div id="headpart" *ngIf="Article!=null">
+      <div class="head-nav">
+        <div tappable (click)="goback()">
+          <img [src]="img" alt="">
+        </div>
+        <div></div>
+        <div>
+          <img [src]="img2" alt="">
+        </div>
+      </div>
+      <div class="head-msg">
+        <div class="head-msg-item1">
+          {{Article.Info}}
+        </div>
+        <div class="head-msg-item2">
+          <div class="item2-left">
+            <img [src]="Article.TypeUrl" alt="">
+            <div>{{Article.Name}}</div>
+          </div>
+          <div class="item2-right">
+            {{Article.CREATEDATE}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="allbg" *ngIf="Article!=null">
+      <div class="article-sign">
+        <img [src]="img4" alt=""> {{Article.Name}}
+      </div>
+    </div>
+    <div class="articlepart" *ngIf="Article!=null">
+      <div style="text-indent:2em;padding:10px 0px;">{{Article.ShortDesc}}</div>
+      <img *ngFor="let item of ImgList" [src]="item.Url" alt="">
+      <div class="jubao">
+        <div>举报</div>
+      </div>
+    </div>
+    <div class="commite-num" *ngIf="Article!=null&&type!=2">
+      <div>共有{{Article.toatalCount}}喜欢</div>
+      <div class="commite-num-right">
+        <img *ngFor="let item of Article.praiseList" class="love-your-article" [src]="item.Headurl" tappable (click)="gotolist()"
+          alt="">
+      </div>
+    </div>
+    <div class="commite-content" *ngIf="Article!=null&&Article.commentList.length!=0">
+      <div class="commite-title">
+        <div>
+          评论
+          <img class="img-up" [src]="img6" alt="">
+        </div>
+        <div class="write-message" *ngIf="Article!=null">
+          <img [src]="img8" alt=""> {{Article.toatalcomment}}
+        </div>
+      </div>
+      <div class="commite-item" *ngFor="let item of Article.commentList">
+        <div class="commite-item-title">
+          <div style="width:12.5%;">
+            <img class="img-head-visiter" [src]="item.Headurl" alt="">
+          </div>
+          <div style="width:50%">{{item.LoginName}}</div>
+          <div style="padding-right:3px;">{{item.CommentTime}}</div>
+        </div>
+        <div class="commite-item-content">
+          {{item.ContentInfo}}
+        </div>
+      </div>
+       <div class="more-commite"><!-- 查看更多评论 --></div>
+    </div>
+    <div style="height:10px;width:100%;"></div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="write-commite">
+    <div class="write-zan-heart" *ngIf="Article!=null" (click)="SetPraise()">
+      <img *ngIf="Article.ispriase&&type!=2" [src]="img10" />
+      <img *ngIf="!Article.ispriase&&type!=2" [src]="img9" />
+    </div>
+    <div class="write-btn">
+      <img [src]="img7" alt="">
+      <input type="text" [(ngModel)]="textarea" placeholder="写评论" (keyup.enter)="ask()">
+    </div>
+    <div tappable (click)="ask()">
+        <ion-icon name="send" style="font-size:29px;color:#999"></ion-icon>
+    </div>
+  </div>
+</ion-footer>

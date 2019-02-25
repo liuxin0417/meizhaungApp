@@ -1,0 +1,60 @@
+page-set-up {
+    .setupcontent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .type1 {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .type1>div {
+        width: 95%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+    }
+    .type2 {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        line-height: 46px;
+        background: #fff;
+        font-size: 1.2rem;
+    }
+    .type2>div>img {
+        width: 11px;
+        height: 11px;
+    }
+    .type2>div:nth-child(3) {
+        height: 46px;
+        width: 65%;
+    }
+    .type2>div:nth-child(2) {
+        height: 46px;
+        width: 20%;
+        text-align: right;
+    }
+    .type2>div:nth-child(1) {
+        height: 46px;
+        width: 10%;
+        display: flex;
+        flex-direction: row-reverse;
+        padding-right: 15px;
+        align-items: center;
+    }
+    .signout {
+        width: 95%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: fixed;
+        bottom: 15px;
+        left: 2.5%;
+        border-radius: 3px;
+        background: #fff;
+    }
+}

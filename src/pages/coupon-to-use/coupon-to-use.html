@@ -1,0 +1,69 @@
+<!--
+  Generated template for the CouponToUsePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+  <ion-navbar  mode="ios" style="min-height: 44px;">
+    <ion-title  mode="ios">优惠券列表</ion-title>
+    <ion-buttons right>
+        <button ion-button icon-only tappable (click)="close()">
+          <img [src]="img" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#e5e5e5">
+  <!-- <div class="coupon-switch">
+    <div tappable (click)="switch(0)">
+      <span [ngClass]="{true:'color',false:''}[switchflag==0]">可用</span>
+    </div>
+    <div tappable (click)="switch(1)">
+      <span [ngClass]="{true:'color',false:''}[switchflag==1]">不可用</span>
+    </div>
+  </div> -->
+  <div class="coupon-item" *ngFor="let item of conponList;let i=index" tappable (click)="dismiss(item,i)">
+    <div class="item-header" [ngClass]="{true:'item-header',false:'item-header2'}[switchflag==0]" ></div>
+    <div class="item-content">
+      <div *ngIf="item.CouponType==1" class="item-num" [ngClass]="{true:'item-num',false:'item-num2'}[switchflag==0]">
+        <div>
+          {{item.Amount}}
+          <span style="font-size:12px;font-weight:100;">元</span>
+        </div>
+        <div>满减劵</div>
+      </div>
+      <div *ngIf="item.CouponType==2" class="item-num" [ngClass]="{true:'item-num',false:'item-num2'}[switchflag==0]">
+        <div style="padding-left:2rem;">
+          {{item.Amount*10}}
+          <span style="font-size:12px;font-weight:100;">折</span>
+        </div>
+        <div>折扣劵</div>
+      </div>
+      <div *ngIf="item.CouponType==3" class="item-num" [ngClass]="{true:'item-num',false:'item-num2'}[switchflag==0]">
+        <div>
+          {{item.Amount}}
+          <span style="font-size:12px;font-weight:100;">元</span>
+        </div>
+        <div>代金券</div>
+      </div>
+      <div class="item-exp">
+        <div>订单满{{item.MeetPrice}}元即可使用</div>
+        <div>
+          <span *ngIf="item.UsingRange==1">全平台可用</span>
+          <span *ngIf="item.UsingRange==2">店铺通用类</span>
+          <span *ngIf="item.UsingRange==3">分类通用类</span>
+          <span *ngIf="item.UsingRange==4">商品使用类</span>
+          <span *ngIf="item.UsingRange==5">品牌使用</span>
+        </div>
+        <!-- <div>不能用情况</div> -->
+      </div>
+    </div>
+    <div class="item-footer">
+      <div>有效期：{{splite(item.StartDate)}}至{{splite(item.EndDate)}}</div>
+      <div *ngIf="item.isL" style="color:#ff5c00">已选择</div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">热门板块</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#eee;">
+  <div class="plate-item" *ngFor="let item of typeList" tappable (click)="gotoperson(item)">
+    <img class="head-img" [src]="item.ImgUrl" alt="">
+    <div class="plate-content">
+      <div>{{item.Name}}</div>
+      <div style="font-size:0.75em;color:#999">{{item.Num}}文章</div>
+    </div>
+    <div class="plate-btn" *ngIf="fatherType==1"  tappable (click)="AddFollow(item)">+关注</div>
+  </div>
+</ion-content>

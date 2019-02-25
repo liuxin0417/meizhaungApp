@@ -1,0 +1,197 @@
+page-template-three {
+
+    .cover {
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: .5);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+    }
+    .alertpart {
+        height: 300px;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 22;
+    }
+    /* 动画效果 */
+    @keyframes gotup {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: -300px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: 0px;
+        }
+    }
+    @keyframes gotdown {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: 0px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: -300px;
+        }
+    }
+    .goup {
+        animation: gotup .2s;
+        -webkit-animation: gotup .2s;
+    }
+    .godown {
+        animation: gotdown .2s;
+        -webkit-animation: gotdown .2s;
+    }
+    /* 透明度动画 */
+    @keyframes gotoshow {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes gotohide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+    .goshow {
+        animation: gotoshow .2s;
+        -webkit-animation: gotoshow .2s;
+    }
+    .gohide {
+        animation: gotohide .2s;
+        -webkit-animation: gotohide .2s;
+    }
+}
+
+.picPart {
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: row;
+    padding-left: 110px;
+    box-sizing: border-box;
+}
+
+.goodspic {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    border-radius: 3px;
+}
+
+.goods-detail {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0px;
+}
+
+.goods-detail>div {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+}
+
+.buyBtn {
+    height: 45px;
+    width: 100%;
+    background: #ff4f4f;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.goodscontent {
+    height: 175px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.typeitem {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.goodsTitle {
+    height: 25px;
+    width: 100%;
+    font-weight: 900;
+    line-height: 25px;
+}
+
+.goodsType {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.goodsType>div {
+    height: 30px;
+    padding: 4px;
+    margin: 5px;
+}
+
+.nocheckdiv {
+    border: 1px solid #999;
+}
+
+.checkdiv {
+    border: 1px solid #ff4f4f;
+    color: #ff4f4f;
+}
+
+.closebtn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.buyBtn2 {
+    height: 45px;
+    width: 100%;
+    background: #999;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1.2em;
+}
+.clickbtn{
+    width:100%;
+    height:100%;
+}

@@ -1,0 +1,37 @@
+<!--
+  Generated template for the StockManagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title>库存管理</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background:#eeeeee">
+  <div class="goodsMsg" *ngFor="let item of msg"  >
+    <div class="goodsDeatil">
+      <div class="goodsTitle">sku码：</div>
+      <div class="goodsContent">{{item.sku}}</div>
+    </div>
+    <div class="goodsDeatil">
+      <div class="goodsTitle">名称：</div>
+      <div class="goodsContent">{{item.Name}}</div>
+    </div>
+    <div class="goodsDeatil">
+      <div class="goodsTitle">数量：</div>
+      <input class="numInput" type="number" [(ngModel)]="item.Inventory"  placeholder="请填写数量">
+      <!-- <div class="goodsContent">面膜</div> -->
+    </div>
+    <div class="saveBtn" tappable (click)="savemsg()">
+      保存
+    </div>
+  </div>
+  <div *ngIf="!msg" style="height:200px;line-height: 200px;width:100%;color:#999;text-align: center">暂无信息</div>
+  <img class="codeImg" tappable (click)="QRcode()" [src]="code" alt="">
+</ion-content>

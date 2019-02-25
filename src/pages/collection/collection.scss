@@ -1,0 +1,86 @@
+page-collection {
+    .list-item {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        flex-direction: row;
+    }
+    .list-item>div:first-child {
+        width: 5%;
+        height: 84px;
+    }
+    .list-style {
+        width: 95%;
+        height: 84px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .list-style>div:nth-child(1) {
+        height: 64px;
+        width: 20%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .list-style>div:nth-child(2) {
+        height: 64px;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1em;
+        line-height: 20px;
+        padding-left: 5px;
+        justify-content: space-between;
+    }
+    .list-style>div:nth-child(3) {
+        height: 64px;
+        width: 20%;
+        color: #7d7d7d;
+        font-size: 1em;
+        line-height: 20px;
+        text-align: right;
+        padding-right: 10px;
+    }
+    .list-style>div>img {
+        display: block;
+        height: 64px;
+        width: 64px;
+    }
+    .selectbtn {
+        width: 100%;
+        height: 20px;
+    }
+    .xiaoyu {
+        margin: 10px auto;
+        color: #808080;
+        letter-spacing: 0.03em;
+        font-size: 1.2em;
+        width: 280px;
+        text-align: center;
+    }
+    .listnone {
+        width: 100%;
+        height: 150px;
+        margin: 70px auto;
+    }
+    .collect_name {
+        width:96%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .new_collect_item{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .new_collect_item>div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}

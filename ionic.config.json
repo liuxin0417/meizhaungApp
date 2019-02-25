@@ -1,0 +1,7 @@
+{
+  "name": "YunYing",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,156 @@
+<ion-content style="background:#e5e5e5;color:#666;font-size: 12px;font-family: -apple-system,Helvetica,sans-serif;">
+    <ion-navbar style="top:-100px;position:absolute;">
+        <ion-title mode="ios" style="top:-100px;position:absolute;">个人中心</ion-title>
+    </ion-navbar>
+    <div class="persional-home">
+        <div class="home-item1">
+            <img [src]="img2" alt="通知" (click)="GotoNitice()">
+            <img [src]="img" style="margin-right:18px;" alt="设置" tappable (click)="gotosetup()">
+        </div>
+        <div class="home-item2">
+            <div class="home-name">
+                <div class="home-name_left">
+                    <span style="font-size:1.4rem;">{{usermsg.NickName}}</span>
+                    <span class="home-name_pop home-name_pop2">
+                        <img style="width:12px;height:12px;display: block;margin-right:3px;" [src]="lv2" alt="">
+                        <span>{{usermsg.LevelId}}</span>
+                    </span>
+                </div>
+                <div class="home-name_left">
+                    <!-- <span class="home-name_pop" style="margin-left:0px;">余额:3000</span> -->
+                    <span class="home-name_pop">积分:{{usermsg.Gift}}</span>
+                </div>
+            </div>
+            <!-- <img *ngIf="usermsg.HeadUrl!=undefined&&usermsg.HeadUrl!=''" [src]="usermsg.HeadUrl" alt="头像" tappable (click)="gotoinform()"> -->
+            <img [src]="usermsg.HeadUrl==''?img3:usermsg.HeadUrl" alt="头像" tappable (click)="gotoinform()">
+        </div>
+    </div>
+    <!-- <div style="width:100%;background:#fff;">
+        <div class="myorder-title">
+            <div>我的订单</div>
+            <div tappable (click)="gotoOrderList(0)">全部订单</div>
+            <div tappable (click)="gotoOrderList(0)">
+                <img style="height:15px;width:15px;display:block;" [src]="img4" alt="">
+            </div>
+        </div>
+    </div> -->
+    <div class="per_item_part">
+        <div class="order-statius">
+            <div tappable (click)="gotoOrderList(1)">
+                <div *ngIf="usermsg.NoPayNum>0" class="pontNum">{{usermsg.NoPayNum}}</div>
+                <img [src]="img5" alt="">
+                <div>待付款</div>
+            </div>
+            <div tappable (click)="gotoOrderList(2)">
+                <div *ngIf="usermsg.NoReceiveNum>0" class="pontNum">{{usermsg.NoReceiveNum}}</div>
+                <img [src]="img6" alt="">
+                <div>待发货</div>
+            </div>
+            <div tappable (click)="gotoOrderList(4)">
+                <div *ngIf="usermsg.NoCommentNum>0" class="pontNum">{{usermsg.NoCommentNum}}</div>
+                <img [src]="img7" alt="">
+                <div>待评价</div>
+            </div>
+            <div tappable (click)="ReturnGoodsPage()">
+                <div *ngIf="usermsg.AfterSalesNum>0" class="pontNum">{{usermsg.AfterSalesNum}}</div>
+                <img [src]="img8" alt="">
+                <div>退款订单</div>
+            </div>
+        </div>
+    </div>
+    <div class="per_item_part">
+        <div class="order-statius">
+            <div tappable (click)="gotowallet()">
+                <div style="font-weight:900">{{usermsg.CouponNum}}</div>
+                <div>优惠券</div>
+            </div>
+            <div tappable (click)="follow()">
+                <div style="font-weight:900">{{usermsg.collectNum+usermsg.ShopCNum}}</div>
+                <div>收藏</div>
+            </div>
+            <div tappable (click)="gotoSeenList()">
+                <div style="font-weight:900">{{usermsg.BrowsNum}}</div>
+                <div>浏览记录</div>
+            </div>
+            <div tappable (click)="gototeam()">
+                <div style="font-weight:900">{{usermsg.TeamNum}}</div>
+                <div>我的团队</div>
+            </div>
+            <div tappable (click)="gotocash()">
+                <img [src]="tixian" alt="">
+                <div>提现</div>
+            </div>
+            <div tappable (click)="gotomoney()">
+                <img [src]="tixianlog" alt="">
+                <div>提现记录</div>
+            </div>
+            <div tappable (click)="gotoSyls()">
+                <img [src]="moneybag" alt="">
+                <div>收益记录</div>
+            </div>
+        </div>
+    </div>
+    <div class="per_item_part" *ngIf="userinfo&&userinfo.IsSystemAccount" >
+        <div class="order-statius">
+            <div tappable (click)="gotostock()">
+                <img [src]="huodong" alt="">
+                <div>库存管理</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="per_item_part">
+        <div class="order-statius">
+            <div tappable (click)="gotoOrderList(1)">
+                <img [src]="huodong" alt="">
+                <div>我的活动</div>
+            </div>
+            <div tappable (click)="gotoOrderList(3)">
+                <img [src]="qiandao" alt="">
+                <div>签到</div>
+            </div>
+            <div tappable (click)="gotoOrderList(4)">
+                <img [src]="kefu" alt="">
+                <div>客户服务</div>
+            </div>
+            <div tappable (click)="ReturnGoodsPage()">
+                <img [src]="zhushou" alt="">
+                <div>购物助手</div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="my-swiper">
+        <img *ngIf="advpic!=undefined" [src]="advpic.ImageUrl" alt="">
+    </div> -->
+    <!-- <div class="my-item">
+        <div tappable (click)="gotowallet()" *ngIf="isopen==1">
+            <div style="width:60%">
+                <img [src]="img9" alt=""> 我的钱包
+            </div>
+            <div style="width:30%;color:#c2c2c2;text-align: right; padding-right:10px;font-size:1.2rem;">优惠券/积分</div>
+            <img [src]="img4" alt="">
+        </div>
+        <div tappable (click)="MyCommunityPage()">
+            <div style="width:90%">
+                <img [src]="img13" alt=""> 我的圈子
+            </div>
+            <img [src]="img4" alt="">
+        </div>
+        <div tappable (click)="gotocollection()">
+            <div style="width:90%">
+                <img [src]="img10" alt=""> 我的收藏
+            </div>
+            <img [src]="img4" alt="">
+        </div>
+        <div tappable (click)="gotoaddress()">
+            <div style="width:90%">
+                <img [src]="img11" alt="">地址管理</div>
+            <img [src]="img4" alt="">
+        </div>
+        <div>
+            <div style="width:90%">
+                <img [src]="img12" alt="">更多</div>
+            <img [src]="img4" alt="">
+        </div>
+    </div> -->
+</ion-content>

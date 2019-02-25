@@ -1,0 +1,21 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">团购列表</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="goods-list">
+    <div class="goods-item" tappable *ngFor="let item of GroupList" (click)="gotoGroupDetail(item)">
+      <img [src]="item.PicUrl" alt="">
+      <div>
+        {{slice(item.Name)}}
+      </div>
+      <div>￥{{item.GroupPrice}}</div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

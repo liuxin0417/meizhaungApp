@@ -1,0 +1,105 @@
+<!--
+  Generated template for the ShopGoodsListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height: 44px;">
+
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">结算</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div class="goodsitem" *ngFor="let item of goodslist">
+    <img [src]="item.Url" alt="">
+    <div>{{slice(item.Name)}}</div>
+    <div>X{{item.num}}</div>
+    <div>{{item.Price}}元</div>
+  </div>
+  <div class="total">
+    <div>合计：{{totalnum}}</div>
+  </div>
+  <!-- <div class="useritem" style="height:35px;">
+    <div class="useritem1">
+      <div style="width:100px;">注册电话：</div>
+      <input type="text" [(ngModel)]="regPhone" placeholder="选填">
+    </div>
+  </div> -->
+  <div class="useritem" *ngIf="type!=0">
+    <div class="useritem1">
+      <div>收货人：</div>
+      <input type="text" [(ngModel)]="name" placeholder="必填">
+    </div>
+    <div class="useritem1">
+      <div>联系电话：</div>
+      <input type="text" [(ngModel)]="phone" placeholder="必填">
+    </div>
+    <div class="useritem1">
+      <div>收货地址：</div>
+      <input type="text" [(ngModel)]="address" placeholder="必填">
+    </div>
+  </div>
+  <div style="height:44px;width:100%;"></div>
+
+
+</ion-content>
+<ion-footer>
+  <div class="btnAll">
+    <div class="btn" style="border-right:1px solid #fff;" (click)="Desksubmit()">去收银台结算</div>
+    <div class="btn" tappable (click)="submit()">自主结算</div>
+  </div>
+  <div class="cover" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart2" [ngClass]="{true:'goup',false:'godown'}[showflag]">
+      <div class="pay-type">
+        <div class="weixinpay" tappable (click)="paytype=2">
+          <div>
+            <img [src]="img12" alt="">
+          </div>
+          <div>微信支付</div>
+          <div>
+            <img *ngIf="paytype==2" [src]="img13" alt="">
+            <img *ngIf="paytype!=2" [src]="img4" alt="">
+          </div>
+        </div>
+        <div *ngIf="!isweb" class="weixinpay" tappable (click)="paytype=1">
+          <div>
+            <img [src]="img5" alt="">
+          </div>
+          <div>支付宝</div>
+          <div>
+            <img *ngIf="paytype==1" [src]="img13" alt="">
+            <img *ngIf="paytype!=1" [src]="img4" alt="">
+          </div>
+        </div>
+        <div class="weixinpay" tappable (click)="UseYue()">
+          <div>
+            <img [src]="img6" alt="">
+          </div>
+          <div *ngIf="user!=null">余额({{user.Money}})</div>
+          <div>
+            <img *ngIf="yuenum" [src]="img13" alt="">
+            <img *ngIf="!yuenum" [src]="img4" alt="">
+          </div>
+        </div>
+        <div class="weixinpay" tappable (click)="UseGift()">
+          <div>
+            <img [src]="img7" alt="">
+          </div>
+          <div *ngIf="user!=null">积分({{user.Gift}})</div>
+          <div>
+            <img *ngIf="giftnum" [src]="img13" alt="">
+            <img *ngIf="!giftnum" [src]="img4" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="btnAll2" (click)="payOrder()">支付</div>
+    </div>
+
+  </div>
+
+</ion-footer>

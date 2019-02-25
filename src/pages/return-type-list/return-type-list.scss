@@ -1,0 +1,12 @@
+page-return-type-list {
+    .return_type{
+        width:100%;
+        height:4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom:1px solid #dedede;
+        justify-content: space-between;
+        padding:0px 1.2rem;
+    }
+}   

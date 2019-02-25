@@ -1,0 +1,321 @@
+page-invite-friends {
+    .invite-item1{
+        width:100%;
+        height:50px;
+        line-height:50px;
+        background:#fff;
+        padding-top:5px;
+    }
+    .invite-item1>div{
+        width:80px;
+        height:30px;
+        margin:0 auto;
+        background:#eee;
+        line-height:30px;
+        text-align: center;
+        border-radius:2px;
+    }
+    .invite-item2{
+        width:100%;
+        height:30px;
+        text-align: center;
+        background:#fff;
+    }
+    .invite-item3{
+        width:100%;
+        height:50px;
+        background:#fff;
+    }
+    .invite-item3>div{
+        width:87.5%;
+        height:40px;
+        text-align: center;
+        line-height: 40px;
+        background:color($colors, baseColor);
+        color:#fff;
+        margin:0 auto;
+        border-radius:5px;
+    }
+    .invite-item4{
+        width:100%;
+        height:60px;
+        background:#fff;
+    }
+    .invite-item4>div{
+        width:87.5%;
+        height:40px;
+        text-align: center;
+        line-height: 40px;
+        border:1px solid color($colors, baseColor);
+        color:color($colors, baseColor);
+        margin:0 auto;
+        border-radius:5px;
+    }
+    .invite-item5{
+        height:60px;
+        width:95%;
+        margin:0 auto;
+        background:#fff;
+        display:flex;
+        flex-direction:row; 
+        justify-content: center;
+        align-items: center;
+        margin-top:10px;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .pinzhu{
+        width:40px;
+        height:40px;
+        position: relative;
+        margin-right:5px;
+    }
+    .pinzhu-name{
+        position: absolute;
+        height:20px;
+        width:30px;
+        top:-10px;
+        left:0px;
+        border-radius:4px;
+        background:#2675D3;
+        color:#fff;
+        font-size:0.6em;
+        text-align: center;
+        line-height:20px;
+    }
+    .invite-item6, .invite-item7{
+        width:100%;
+        height:40px;
+        background:#fff;
+    }
+    .invite-item6>div{
+        width:95%;
+        height:40px;
+        margin:0 auto;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        background:#fff;
+        justify-content: space-between;
+    }
+    .invite-item7>div{
+        width:95%;
+        height:40px;
+        margin:0 auto;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        background:#fff;
+        justify-content: space-between;
+    }
+    .img-goto{
+        width:11px;
+        height:11px;
+        margin-left:9px;
+    }
+    .goods-name{
+        width:auto;
+        height:auto;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .goods-name-width>div{
+        width:80px;
+        height:100%;
+        font-size:0.75em;
+        text-align: right;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .circle-black{
+        width:5px;
+        height:5px;
+        background:#000;
+        border-radius:50%;
+        margin-right:4px;
+    }
+    /* cover层 */
+    .cover {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background: rgba($color: #333, $alpha: 0.2);
+        z-index: 20;
+    }
+    .slidePart {
+        width:100% ;
+        height: 182px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        background: #fff;
+        z-index: 2;
+    }
+    .hidepart {
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    } //动画效果
+    @keyframes goleft {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: -185px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: 0px;
+        }
+    }
+    @keyframes goright {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: 0px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: -185px;
+        }
+    }
+    .goLeft {
+        animation: goleft .2s;
+        -webkit-animation: goleft .2s;
+    }
+    .goRight {
+        animation: goright .2s;
+        -webkit-animation: goright .2s;
+    }
+    /* 透明度动画 */
+    @keyframes gotoshow {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes gotohide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+    .goshow {
+        animation: gotoshow .2s;
+        -webkit-animation: gotoshow .2s;
+    }
+    .gohide {
+        animation: gotohide .2s;
+        -webkit-animation: gotohide .2s;
+    }
+    .btnpart{
+        width:100%;
+        height:auto;
+        display:flex;
+        flex-direction:column;
+        padding-top:30px;
+    }
+    .LevelTitle{
+        width:100%;
+        height:35px;
+        line-height:35px;
+        padding-left:11px;
+    }
+    .firstLevel{
+        width:100%;
+        height:auto;
+        display:flex;
+        flex-direction: row;
+    }
+    .firstcore{
+        height:40px;
+        width:86px;
+        line-height:40px;
+        text-align: center;
+        margin-left:10px;
+        background:#eee;
+        color:#353535;
+        border-radius:3px;
+    }
+    .firstcore2{
+        height:40px;
+        width:86px;
+        line-height:40px;
+        text-align: center;
+        margin-left:10px;
+       border:1px solid #eee;
+        color:#353535;
+        border-radius:3px;
+    }
+    .xiaoyu{
+        margin:10px 15px;
+        color: #808080;
+        letter-spacing:0.08em;
+        font-size: 1.2em;
+    }
+    .listnone{
+       
+        width:110px;
+        height:150px;
+        margin: 70px auto;
+    }
+    .cover-title{
+        width:80%;
+        height:46px;
+        display:flex;
+        margin:0 auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .midline{
+        width:30%;
+        height:1px;
+        border-bottom:1px solid #414141;
+    }
+    .mide-text{
+        height:46px;
+        line-height:46px;
+        width:auto;
+        padding:0px 11px;
+    }
+    .share-btn{
+        height:93px;
+        width:80%;
+        display:flex;
+        flex-direction:row; 
+        margin:0 auto;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .sharebtn{
+        width:25%;
+        height:100%;
+        display:flex;
+        flex-direction:column; 
+        text-align: center;
+    }
+    .sharebtn>img{
+        display:block;
+        height:40px;
+        width:40px;
+        margin:0 auto;
+        margin-bottom:15px;
+    }
+    .cancle-btn{
+        width:80%;
+        height:42.5px;
+        line-height: 42.5px;
+        text-align: center;
+        margin:0 auto;
+    }
+}

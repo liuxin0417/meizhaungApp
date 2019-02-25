@@ -1,0 +1,168 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">申请售后服务</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#eee;">
+  <div class="return_type">
+    <div class="return_type_title">
+      服务类型
+    </div>
+    <div class="return_type_btn">
+      <div class="return_btn" [ngClass]="{true:'bordercolor',false:''}[type==1]" tappable (click)="changetype(1)">退货</div>
+      <div class="return_btn" [ngClass]="{true:'bordercolor',false:''}[type==2]" tappable (click)="changetype(2)">换货</div>
+      <!-- <div class="return_btn" [ngClass]="{true:'bordercolor',false:''}[type==3]" tappable (click)="type=3">维修</div>
+      <div class="return_btn" [ngClass]="{true:'bordercolor',false:''}[type==4]" tappable (click)="type=4">补发商品</div> -->
+    </div>
+  </div>
+  <div class="return_goods_msg">
+    <div class="return_goods_msg_left">
+      <img [src]="item.Url" alt="">
+    </div>
+    <div class="return_goods_msg_right">
+      <div class="detail_msg">{{item.Name}}</div>
+      <div class="detail_msg" *ngIf="item.AttributeDescription" >{{item.AttributeDescription}}</div>
+      <div style="color:#999">
+        <span style="margin-right:10px;">价格:{{item.Price}}</span>
+        <span>数量:x{{item.Quantity}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="return_goods_reson" tappable (click)="show()">
+    <div>申请原因:{{returnreson}}</div>
+    <div class="return_goods_reson_right">
+      <span style="margin-right:10px;" *ngIf="btnshowflag">
+        请选择
+      </span>
+      <img *ngIf="btnshowflag" style="width:1.8rem;height:auto;" [src]="img6" alt="">
+    </div>
+  </div>
+  <div class="return_reson_msg">
+    <div class="return_resMsg_title">问题描述</div>
+    <textarea *ngIf="btnshowflag" class="return_msg_p" [(ngModel)]="RefundDescript">
+    </textarea>
+    <textarea *ngIf="!btnshowflag" disabled="disabled" class="return_msg_p" [(ngModel)]="RefundDescript">
+    </textarea>
+    <div class="return_resMsg_title2">
+      <div *ngFor="let item of imgUrl;let i = index;" class="pictures">
+        <span *ngIf="allowDelete" class="remove" tappable (click)="deleteWxPicture(i)">×</span>
+        <img [src]="item" tappable (click)="viewPicture(item)" />
+      </div>
+      <div class="pictures">
+        <input class="rn_img_input" type="file" (change)="onChange1($event)">
+        <img [src]="xiangji" alt="" *ngIf="imgUrl.length<max">
+      </div>
+      <!-- <img tappable (click)="getImg()" style="width:1.5rem;height:auto;" [src]="xiangji" alt=""> -->
+    </div>
+  </div>
+  <div *ngIf="btnshowflag" class="submit_btn" tappable (click)="savelogin()">
+    提交
+  </div>
+  <!-- <div class="return_way" *ngIf="type!=1">
+    <div class="return_resMsg_title">商品回退方式</div>
+    <div class="return_resMsg_title return_way_btn">
+      <div class="return_btn_detail" [ngClass]="{true:'bordercolor',false:''}[returntype==1]" tappable (click)="returntype=1">送货至自提点</div>
+      <div class="return_btn_detail" [ngClass]="{true:'bordercolor',false:''}[returntype==2]" tappable (click)="returntype=2">快递至京东</div>
+    </div>
+    <div class="return_type_des">
+      商品寄回地址将在审核通过后以短信形式告知，或在申请记录中查询，商城不收取快递附加费
+    </div>
+  </div>
+  <div class="return_address" *ngIf="type!=1">
+    <div class="return_address_item">
+      <div class="return_address_title">
+        收货人
+      </div>
+      <input type="text" class="return_address_msg">
+    </div>
+    <div class="return_address_item">
+      <div class="return_address_title">
+        手机号码
+      </div>
+      <input type="text" class="return_address_msg">
+    </div>
+    <div class="return_address_item" style="color:#999;border:none;">
+      收货地址(该地址是商城寄回给您的地址)
+    </div>
+    <div class="return_address_chose">
+      <div class="return_address_chose1">
+        <img style="height:1.5rem;width:auto;" [src]="dizhi" alt="">
+      </div>
+      <div class="return_address_chose2" tappable (click)="alertAddress()">
+        山东省烟台市莱山区黄海路街道王广福前301
+      </div>
+      <div class="return_address_chose3">
+        <img style="height:1.2rem;width:auto;" [src]="img5" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="return_resMsg_title3" style="color:#999;">
+    提交服务订单后，售后专员会与您电话沟通，请保持手机通畅
+  </div>
+  <div *ngIf="btnshowflag"  class="submit_btn" tappable (click)="savelogin()">
+    提交
+  </div> -->
+  <!-- <div class="list-content">
+    <div class="list-item">
+      <div></div>
+      <div class="list-style">
+        <div>
+          <img [src]="item.Url" alt="">
+        </div>
+        <div>
+          <div>{{item.Name}}</div>
+          <div [innerHTML]="item.AttributeDescription"></div>
+        </div>
+        <div>
+          <div>￥{{item.Price}}</div>
+          <div>X{{item.Quantity}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;height:auto;padding-left:15px;background:#fff;">
+    <div class="returnType1" tappable (click)="gotogoods(0,0)">
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+      <div>仅退款</div>
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+    </div>
+    <div class="returnType2" tappable (click)="gotogoods(1,0)">
+      <div>
+        <img [src]="img3" alt="">
+      </div>
+      <div>退款退货</div>
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+    </div>
+    <div class="returnType2" tappable (click)="gotogoods(2,1)">
+      <div>
+        <img [src]="img4" alt="">
+      </div>
+      <div>换货</div>
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+    </div>
+  </div> -->
+</ion-content>
+<ion-footer>
+  <page-popup [(flag)]="flag" [(flagsecond)]="flagsecond" [(addresList)]="addresList" [(defaultAddress)]="defaultAddress" [(ordermsg)]="ordermsg"
+    [(FranchiseeID)]="FranchiseeID" [(list)]="list"></page-popup>
+  <div class="cover" *ngIf="showflag1" [ngClass]="{true:'goshow',false:'gohide'}[showflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart2" [ngClass]="{true:'goup',false:'godown'}[showflag]" style="overflow-y: scroll;">
+      <div class="reasonList" *ngFor="let item of resonType;let i=index" tappable (click)="CheckReason(item,i)">
+        <div>{{item}}</div>
+        <img *ngIf="resionNum==i" [src]="img16" alt="">
+      </div>
+      <div class="reasonBtn" (click)="SureCheck()">确定</div>
+    </div>
+  </div>
+</ion-footer>

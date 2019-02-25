@@ -1,0 +1,152 @@
+page-my-community {
+    #headpart{
+        height:190px;
+        width:100%;
+        background:url("/assets/imgs/temporary/personbg.png") no-repeat;
+        background-size:150% auto;
+        padding-top:35px;
+    }
+    .head-nav{
+        display:flex;
+        flex-direction: row;
+        width:100%;
+        height: 40px;
+        align-items: center;
+        justify-content: space-between;
+        padding:0px 10px;
+        font-size:1.2em;
+    }
+    .head-nav>div{
+        width:auto;
+        color:#fff;
+    }
+    .head-nav>div>img{
+        height:15px;
+        width:15px;
+    }
+    .head-msg{
+        width:100%;
+        height:75px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color:#fff;
+        padding:0px 15px;
+        margin-top:10px;
+    }
+    .head-msg-item1>img{
+        height:75px;
+        width:75px;
+        border-radius:50%;
+    }
+    .head-msg-item2{
+        width:50%;
+        height:auto;
+    }
+    .head-msg-item3>div{
+        width:60px;
+        height:20px;
+        text-align: center;
+        line-height:20px;
+        font-size:0.75em;
+        background:color($colors, baseColor);
+        border-radius:5px;
+    }
+    /* 文章 */
+    .com-content-style2{
+        width:94%;
+        margin:0 auto;
+        height:auto;
+        padding:10px 0px 10px 0px ;
+        display:flex;
+        flex-direction:column;
+        border-bottom:1px solid #e0e0e0;  
+        background:#fff;
+    }
+    .com-style2-img{
+        width:100%;
+    }
+    .com-style2-title{
+        height:26px;
+        width:100%;
+        line-height:26px;
+        font-size:1em;
+        margin-bottom:11px;
+    }
+    .com-style2-persion{
+        height:23px;
+        width:100%;
+        line-height:23px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .com-style2-part{
+        height:23px;
+        line-height:23px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .com-style-pic1{
+        height:20px;
+        height:20px;
+        border-radius:50%;
+    }
+    .com-style-pic2{
+        height:15px;
+        width:15px;
+        margin-right:2px
+    }
+    .switch-btn{
+        width:100%;
+        height:43px;
+        line-height: 35px;
+        background:#fff;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        align-items:flex-end ;
+        background:#eee;
+      
+    }
+    .switch-btn2{
+        width:100%;
+        height:43px;
+        line-height: 35px;
+        background:#fff;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        align-items:flex-end ;
+        background:#eee;
+        margin-bottom:7px;
+    }
+    .switch-btn>div{
+        width:50%;
+        height:35px;
+        line-height:35px;
+        text-align: center;
+        background:#fff;
+    }
+    .switch-btn2>div{
+        width:100%;
+        height:35px;
+        line-height:35px;
+        text-align: center;
+        background:#fff;
+    }
+    .color{
+        padding-bottom:3px;
+        color:color($colors, baseColor);
+        border-bottom:1px solid color($colors, baseColor);
+    }
+    .nocolor{}
+    .bannerpic{
+        width:100%;
+        height:14rem;
+        overflow: hidden;
+    }
+}

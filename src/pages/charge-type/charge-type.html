@@ -1,0 +1,36 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">结算</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#f7f7f7">
+  <div class="pay-type">
+    <div class="weixinpay" tappable (click)="paytype=2">
+      <div>
+        <img [src]="img2" alt="">
+      </div>
+      <div>微信支付</div>
+      <div>
+        <img *ngIf="paytype==2" [src]="img3" alt="">
+        <img *ngIf="paytype!=2" [src]="img4" alt="">
+      </div>
+    </div>
+    <div class="weixinpay" tappable (click)="paytype=1" style="border-bottom:none;">
+      <div>
+        <img [src]="img5" alt="">
+      </div>
+      <div>支付宝</div>
+      <div>
+        <img *ngIf="paytype==1" [src]="img3" alt="">
+        <img *ngIf="paytype!=1" [src]="img4" alt="">
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="go-pay">
+    <div>应付金额:{{money}}元</div>
+    <div tappable (click)="pay()">去付款</div>
+  </div>
+</ion-footer>

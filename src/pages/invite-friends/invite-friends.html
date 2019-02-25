@@ -1,0 +1,107 @@
+<!--
+  Generated template for the InviteFriendsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header  style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">商品订单</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only>
+        <img [src]="img4" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only tappable (click)="gotogoodscar()">
+        <img [src]="img3" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div class="invite-item1">
+    <div>23:59:45</div>
+  </div>
+  <div class="invite-item2">
+    还差1人，赶紧邀请好友来拼单吧
+  </div>
+  <div class="invite-item3">
+    <div tappable (click)="goshow()">邀请好友拼单</div>
+  </div>
+  <div class="invite-item4">
+    <div>回到首页</div>
+  </div>
+  <div style="width:100%;background:#fff;">
+    <div class="invite-item5">
+      <div class="pinzhu">
+        <div class="pinzhu-name">拼主</div>
+        <img [src]="img1" alt="">
+      </div>
+      <div class="pinzhu">
+        <img [src]="img1" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="invite-item6">
+    <div style="border-bottom:1px solid #e5e5e5">
+      <div style="font-weight:900;">商品名称</div>
+      <div class="goods-name">
+        <div>可心柔V9润+宝贝系列抽...</div>
+        <img class="img-goto" [src]="img2" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="invite-item7">
+    <div>
+      <div style="font-weight:900;">拼单须知</div>
+      <div class="goods-name goods-name-width">
+        <div>
+          <div class="circle-black"></div>
+          好友拼单
+        </div>
+        <div>
+          <div class="circle-black"></div>
+          人满发货
+        </div>
+        <div>
+          <div class="circle-black"></div>
+          人不满退款
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<div class="cover" *ngIf="coverpart" [ngClass]="{true:'goshow',false:'gohide'}[slidepart]">
+  <div class="hidepart" tappable (click)="gohide()"></div>
+  <div class="slidePart" [ngClass]="{true:'goLeft',false:'goRight'}[slidepart]">
+    <div class='cover-title'>
+      <div class="midline"></div>
+      <div class="mide-text">分享到</div>
+      <div class="midline"></div>
+    </div>
+    <div class="share-btn">
+      <div class="sharebtn" tappable (click)="gotosuccess()">
+        <img [src]="imgqq" alt="">
+        <div>QQ好友</div>
+      </div>
+      <div class="sharebtn">
+        <img [src]="imgkongjian" alt="">
+        <div>QQ空间</div>
+      </div>
+      <div class="sharebtn">
+        <img [src]="imgweixin" alt="">
+        <div>微信好友</div>
+      </div>
+      <div class="sharebtn">
+        <img [src]="imgquan" alt="">
+        <div>朋友圈</div>
+      </div>
+    </div>
+    <div class="cancle-btn" tappable (click)="gohide()">
+      取消
+    </div>
+  </div>
+</div>

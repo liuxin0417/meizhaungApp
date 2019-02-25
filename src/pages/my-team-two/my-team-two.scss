@@ -1,0 +1,32 @@
+page-my-team-two {
+    .myteam_list{
+       
+        width:100%;
+        height:auto;
+    }
+    .myteam_list_item{
+        height:5.5rem;
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding:0px 1rem;
+        background:#fff;
+        border-bottom: 1px solid #dedede;
+        justify-content: space-between;
+    }
+    .myteam_item_left{
+        width:auto;
+        height:100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .myteam_item_right{
+        width:auto;
+        height:100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}

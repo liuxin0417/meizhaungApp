@@ -1,0 +1,141 @@
+<ion-content style="background:#eee;">
+  <div #btn1 class="backbtn" tappable (click)="goback()"></div>
+  <div #btn2 class="more"></div>
+  <div class="navbar" #navbar>
+    <div class="backbtn2" tappable (click)="goback()"></div>
+    <div class="more2"></div>
+  </div>
+  <div #lyScroll class="scrollcontent">
+    <div class="goods-banner">
+      <ion-slides pager=true>
+        <ion-slide style="background:#e4e4e4" *ngFor="let item of slide">
+          <img style="width:100%;height:100%;" [src]="item.Url" alt="" tappable (click)="gotoslideImg(slide)">
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div style="background:#fff;width:100%;padding-top:18px;">
+      <div class="goods-title">
+        {{msg.Name}}
+      </div>
+    </div>
+    <div class="spacila-price" *ngIf="seckproduct!=null&&seck.State==4">
+      <div class="spacila-price-left">
+        <div class="spacila-price-left1">
+          ￥{{seckproduct.SecKillPrice}}
+        </div>
+        <div class="spacila-price-left2">
+          <div class="spacila-price-left-btn1">￥{{seckproduct.ActivityPrice}}</div>
+          <div class="spacila-price-left-btn2">{{seckproduct.SuccessNum}}件已售</div>
+        </div>
+      </div>
+      <div class="spacila-price-right">
+        <div class="spacila-price-right1">距离结束还剩</div>
+        <div class="spacila-price-right2">
+          <span *ngIf="timer.day>0">{{timer.day}}天</span>:
+          <span>{{timer.hour}}</span>:
+          <span>{{timer.minute}}</span>:
+          <span>{{timer.second}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="goods-price" *ngIf="seckproduct!=null&&seck.State==3">
+      <div>
+        <span style="font-size:12px;">￥</span>
+        {{msg.ActivityPrice}}</div>
+      <div>
+        <span>￥</span>
+        {{msg.OldPrice}}</div>
+      <div>直降{{gettwo(msg.OldPrice-msg.ActivityPrice)}}元</div>
+      <div style="color:#999;margin-left:20%;font-size:1.2rem;">活动暂未开始</div>
+    </div>
+    <!-- <div style="width:100%;background:#fff;" *ngIf="groupCount>0" >
+      <div class="goods-chioce" tappable (click)="alertType()">
+        <div>{{groupCount}}人在拼单，可直接参与</div>
+        <div>查看更多</div>
+        <div>
+          <img [src]="img" alt="">
+        </div>
+      </div>
+      <div class="group-list" *ngFor="let item of slide">
+        <div class="group-list-left" *ngFor="let item of grouponList">
+          <img [src]="item.HeadUrl" alt="">
+          <div>{{item.LoginName}}</div>
+        </div>
+        <div class="group-list-right">
+          <div class="right-btn2">
+            <div>还差{{item.WaitNum}}人拼成</div>
+            <div style="font-size:0.6em;color:#3d3d3f">剩余12:14:05.3</div>
+          </div>
+          <div class="right-btn">去拼单</div>
+        </div>
+      </div>
+    </div> -->
+    <div *ngIf="commite==null" style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5">
+      <div class="user-judge">
+        暂无评论！
+      </div>
+    </div>
+    <div *ngIf="commite!=null" style="width:100%;background:#fff;margin-top:7px;border-bottom:1px solid #e5e5e5" tappable (click)="gotojudge()">
+      <div class="user-judge">
+        <div>用户评价</div>
+        <div>{{rate}}%</div>
+        <div style="text-align:center;">满意</div>
+        <div>
+          <img [src]="img" alt="">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="commite!=null" style="padding-bottom:10px;background:#fff;margin-bottom:10px">
+      <div class="judge-part">
+        <div class="judge-title">
+          <div *ngIf="commite.HeadUrl!=undefined">
+            <img class="headimg" [src]="commite.HeadUrl" alt="">
+          </div>
+          <div>
+            {{commite.Nickname}}
+          </div>
+        </div>
+        <div class="judge-content">
+          {{commite.comcontent}}
+        </div>
+        <div class="judge-img" *ngIf="commite.ImgList!=undefined">
+          <img *ngFor="let item2 of jsonchange(commite.ImgList) " [src]="item2.Url" alt="" tappable (click)="gotoslideImg(jsonchange(commite.RelImgList))">
+        </div>
+        <div class="judge-con" *ngIf="commite.Scontent!=null">
+          <div>
+            <span class="changecolor" style="padding-right:3px;">商家回复:</span>{{commite.Scontent}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="goods-switch">
+      <div [ngClass]="{true:'switch-color',false:''}[switchnum]" style="border-right:1px solid #333" tappable (click)="switch(true)">概述</div>
+      <div [ngClass]="{true:'switch-color',false:''}[!switchnum]" tappable (click)="switch(false)">参数</div>
+    </div>
+    <div *ngIf="switchnum" [innerHTML]="des"></div>
+    <div style="background:#fff;padding:10px 0px 10px 0px;margin-top:10px;" *ngIf="!switchnum" [innerHTML]="goodsinfo"></div>
+    <!-- <div style="width:100%;height:41px;"></div> -->
+  </div>
+</ion-content>
+<ion-footer style="height:41px;">
+  <div class="goods-buy">
+    <div tappable (click)="gotochat()">
+      <img [src]="img6" alt="">
+      <div>留言</div>
+    </div>
+    <div *ngIf="shoacngflag" tappable (click)="collection()">
+      <img [src]="img2" alt="">
+      <div>收藏</div>
+    </div>
+    <div *ngIf="!shoacngflag" tappable (click)="cancel()">
+      <img [src]="img5" alt="">
+      <div class="changecolor">已收藏</div>
+    </div>
+    <div tappable (click)="gotogoodscar()">
+      <img [src]="img3" alt="">
+      <div>购物车</div>
+    </div>
+    <div class="goincar1" *ngIf="msg.RealStock!=0" tappable (click)="goincar()">加入购物车</div>
+    <div *ngIf="msg.RealStock==0" class="goincar" tappable (click)="alertmessage()">加入购物车</div>
+  </div>
+</ion-footer>

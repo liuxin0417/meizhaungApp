@@ -1,0 +1,39 @@
+<ion-tabs #myTabs selectedIndex={{selectTabIndex}}>
+  <!-- <div class="appSplash" [style.height.px]="appSplashHeight">
+    <div class="container-loading">
+      <div class="splash-loader"></div>
+      <img class="splash-logo" src="./assets/imgs/logo_2.png" alt="">
+    </div>
+  </div> -->
+  <ion-tab [root]="tab1Root" tabTitle="主页" tabUrlPath="home"    tabIcon="ios-home-outline"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="分类" tabUrlPath="class"   tabIcon="ios-class-outline"></ion-tab>
+  <!-- <ion-tab [root]="tab3Root" tabTitle="社区" tabIcon="ios-Community-outline"></ion-tab> -->
+  <ion-tab [root]="tab4Root" tabBadge="{{params.params}}" tabBadgeStyle="baseColor" tabTitle="购物车" tabUrlPath="shopcar" tabIcon="ios-shopcar-outline"></ion-tab>
+  <!-- <ion-tab *ngIf="num<=0"   [root]="tab4Root" tabTitle="购物车" tabUrlPath="shopcar" tabIcon="ios-shopcar-outline"></ion-tab> -->
+  <ion-tab [root]="tab5Root" tabTitle="我的" tabUrlPath="persional" tabIcon="ios-persional-outline"></ion-tab>
+</ion-tabs>
+<!-- <ion-content *ngIf="!showflag">
+  
+</ion-content> -->
+<!-- <div *ngIf="coverflag"  class="coverpart">
+  <img [src]="adpic" alt="">
+</div> -->
+<style>
+  .coverpart {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    line-height: 600px;
+    text-align: center;
+    color: #ff4f4f;
+    background: #fff;
+  }
+
+  .coverpart>img {
+    width: 100%;
+    height: 100%;
+  }
+</style>

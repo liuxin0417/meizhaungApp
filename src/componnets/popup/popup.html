@@ -1,0 +1,21 @@
+<!--
+  Generated template for the PopupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="cover" *ngIf="flag" [ngClass]="{true:'goshow',false:'gohide'}[flagsecond]">
+  <div class="clickbtn" tappable (click)="getaddress2()"></div>
+  <div class="alertpart" [ngClass]="{true:'goup',false:'godown'}[flagsecond]">
+    <div class="title">
+      <div>收货地址</div>
+      <!-- <div><img [src]="img" alt="" ></div> -->
+    </div>
+    <div class="scroll">
+      <div class="addressitem" tappable (click)="getaddress(i)" *ngFor="let item of addresList;let i=index" >
+        <div>{{item.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.tel}}</div>
+        <div>{{item.address}}</div>
+      </div>
+    </div>
+  </div>
+</div>

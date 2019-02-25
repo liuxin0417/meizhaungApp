@@ -1,0 +1,560 @@
+page-group-settlement {
+    .longback {
+        width: 100%;
+        height: 5px;
+        background: url("../assets/imgs/longback.png") repeat-x;
+        background-size: 100% 100%;
+        margin-top: 5px;
+    }
+    .address-part {
+        width: 100%;
+        height: 81px;
+        background: #fff;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .address-part2 {
+        width: 100%;
+        height: 81px;
+        background: #fff;
+        line-height: 81px;
+        text-align: center;
+    }
+    .address-part>div:nth-child(1) {
+        width: 10%;
+        height: 81px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .address-part>div:nth-child(1)>img {
+        height: 11px;
+        width: 11px;
+    }
+    .address-part>div:nth-child(2) {
+        font-size: 0.75em;
+        width: 85%;
+        height: 81px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 19px;
+    }
+    .pay-type {
+        width: 100%;
+        height: auto;
+        background: #fff;
+        margin-top: 7px;
+        margin-bottom: 10px;
+    }
+    .weixinpay {
+        width: 95%;
+        height: 36px;
+        border-bottom: 1px solid #e5e5e5;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+    }
+    .weixinpay>div:nth-child(1) {
+        width: 10%;
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .weixinpay>div:nth-child(1)>img {
+        width: 25px;
+        height: 25px;
+    }
+    .weixinpay>div:nth-child(2) {
+        width: 80%;
+        height: 36px;
+        line-height: 36px;
+    }
+    .weixinpay>div:nth-child(3) {
+        width: 10%;
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .weixinpay>div:nth-child(3)>img {
+        width: 15px;
+        height: 15px;
+    }
+    .yue {
+        width: 100%;
+        height: 36px;
+        background: #fff;
+        margin-bottom: 10px;
+        margin-top:10px;
+    }
+    .yue-item {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .yue-item>div {
+        height: 18px;
+        line-height: 18px;
+    }
+    .yue-item>div:nth-child(2) {
+        font-size: 0.75em;
+        color: #999;
+    }
+    .funct-more {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        margin-top: 7px;
+        margin-bottom: 10px;
+    }
+    .funct-more>div {
+        width: 95%;
+        margin-left: 5%;
+        height: 35px;
+        font-size: 0.75em;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        flex-direction: row;
+    }
+    .funct-more>div>div:nth-child(1) {
+        width: 85%;
+        height: 35px;
+        line-height: 35px;
+    }
+    .funct-more>div>div:nth-child(2) {
+        width: 5%;
+        height: 35px;
+        line-height: 35px;
+    }
+    .funct-more>div>div:nth-child(3) {
+        width: 10%;
+        height: 35px;
+        line-height: 35px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .funct-more>div>div:nth-child(3)>img {
+        height: 11px;
+        width: 11px;
+    }
+    .coupon {
+        height: 50px;
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        flex-direction: row;
+        line-height: 50px;
+        font-size: 0.75em;
+        border-bottom: 1px solid #eee;
+    }
+    .coupon>div:nth-child(1) {
+        width: 15%;
+        margin-left: 5%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .coupon>div:nth-child(1)>img {
+        height: 35px;
+        width: 35px;
+    }
+    .coupon>div:nth-child(2) {
+        width: 60%;
+        height: 50px;
+        line-height: 15px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .coupon>div:nth-child(3) {
+        width: 10%;
+        height: 50px;
+    }
+    .coupon>div:nth-child(4) {
+        width: 20%;
+        height: 50px;
+    }
+    .money-all {
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background: #fff;
+        margin-top: 10px;
+    }
+    .money-all>div {
+        width: 95%;
+        font-size: 0.75em;
+        margin-left: 5%;
+        margin-top: 5px;
+    }
+    .go-pay {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 42px;
+        width: 100%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        font-size: 1em;
+    }
+    .go-pay>div:nth-child(1) {
+        width: 55%;
+        height: 42px;
+        line-height: 42px;
+        color: color($colors, baseColor);
+        padding-left: 5%;
+    }
+    .go-pay>div:nth-child(2) {
+        width: 45%;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        background: color($colors, baseColor);
+        color: #fff;
+    }
+    .gray {
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: gray;
+    }
+    .groupbuy-num {
+        width: 100%;
+        height: 30px;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 5%;
+        justify-content: space-between;
+    }
+    .changenum {
+        width: 19%;
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+    .changenum>div {
+        height: 16px;
+        width: 16px;
+        border: 1px solid #e5e5e5;
+        text-align: center;
+        line-height: 16px;
+        font-size: 0.75em;
+    } //弹出层
+    .cover {
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: .5);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+    } //动画效果
+    @keyframes gotup {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: -300px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: 0px;
+        }
+    }
+    @keyframes gotdown {
+        0% {
+            //opacity:0.0
+            //height:0% ;
+            bottom: 0px;
+        }
+        100% {
+            //opacity:1
+            //height:100%;
+            bottom: -300px;
+        }
+    }
+    .goup {
+        animation: gotup .2s;
+        -webkit-animation: gotup .2s;
+    }
+    .godown {
+        animation: gotdown .2s;
+        -webkit-animation: gotdown .2s;
+    }
+    /* 透明度动画 */
+    @keyframes gotoshow {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes gotohide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+    .goshow {
+        animation: gotoshow .2s;
+        -webkit-animation: gotoshow .2s;
+    }
+    .gohide {
+        animation: gotohide .2s;
+        -webkit-animation: gotohide .2s;
+    }
+    .clickbtn {
+        width: 100%;
+        height: 100%;
+    }
+    .alertpart {
+        height: 300px;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 22;
+    }
+    .title {
+        width: 90%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 0 auto;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-direction: row;
+    }
+    .title>div:nth-child(1) {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+    }
+    .scroll {
+        height: 220px;
+        width: 90%;
+        overflow-y: scroll;
+        margin: 0 auto;
+    }
+    .addressitem {
+        height: 80px;
+        width: 100%;
+        padding: 10px 10px;
+        border-bottom: 1px solid #eee;
+        box-sizing: border-box;
+    }
+    .addressitem>div {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    } //快递方式
+    .funct-more {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        margin-top: 7px;
+        margin-bottom: 10px;
+    }
+    .funct-more>div {
+        width: 95%;
+        margin-left: 5%;
+        height: 35px;
+        font-size: 0.75em;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        flex-direction: row;
+    }
+    .funct-more>div>div:nth-child(1) {
+        width: 85%;
+        height: 35px;
+        line-height: 35px;
+    }
+    .funct-more>div>div:nth-child(2) {
+        width: 5%;
+        height: 35px;
+        line-height: 35px;
+    }
+    .funct-more>div>div:nth-child(3) {
+        width: 10%;
+        height: 35px;
+        line-height: 35px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .funct-more>div>div:nth-child(3)>img {
+        height: 11px;
+        width: 11px;
+    } //配送方式
+    .delivery-item1 {
+        height: 5.5rem;
+        width: 100%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 3%;
+    }
+    .delivery-item1>div {
+        width: 6.8rem;
+        height: 2.5rem;
+        text-align: center;
+        line-height: 2.5rem;
+        border-radius: 3px;
+        margin-right: 0.9rem;
+    }
+    .color-deliver {
+        border: 1px solid color($colors, baseColor);
+        color: color($colors, baseColor);
+    }
+    .nocolor-deliver {
+        border: 1px solid #e5e5e5;
+    }
+    .delivery-item2 {
+        height: 4.5rem;
+        width: 97%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        margin-left: 3%;
+        border-bottom: 1px solid #e5e5e5;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 1rem;
+    }
+    .delivery-item-name {
+        display: flex;
+        flex-direction: row;
+        color: #999;
+    }
+    .delivery-item-name>img {
+        width: 1.4rem;
+        height: 1.4rem;
+        display: block;
+        margin-left: 1rem;
+    }
+    .delivery-item3 {
+        height: 4.5rem;
+        width: 97%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        margin-left: 3%;
+        border-bottom: 1px solid #e5e5e5;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 1rem;
+    }
+    .delivery-item4 {
+        height: 3.5rem;
+        width: 95%;
+        background: color($colors, baseColor);
+        border-radius: 4px;
+        margin: 0 auto;
+        color: #fff;
+        text-align: center;
+        line-height: 3.5rem;
+        margin-top: 4.6rem;
+    }
+    .deliver-part {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+    }
+    //地址列表
+    .address-item{
+        height:7.3rem;
+        width:100%;
+        box-sizing: border-box;
+        border-bottom:1px solid #e5e5e5;
+        display:flex;
+        flex-direction:column;
+        padding:0px 1.5rem;
+        box-sizing: border-box;
+        background:#fff;
+    }
+    .address-item1{
+        height:3.4rem;
+        line-height:3.4rem;
+        width:100%;
+    }
+    .address-item2{
+        display:flex;
+        flex-direction: row;
+    }
+    .address-item2-line1{
+        width:85%;
+        height:auto;
+        color:#999;
+    }
+    .address-item2-line2{
+        width:15%;
+        height:auto;
+    }
+    .address-item2-line2>img{
+        width:1.9rem;
+        height:1.3rem;
+    }
+    .address-item3{
+        height:1.7rem;
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top:0.5rem;
+        color:#999;
+    }   
+    .address-item3>img{
+        width: 1.5rem;
+        height:1.5rem;
+    }
+    .color3{
+        color:color($colors, baseColor);
+    }
+    .nocolor3{}
+    .time-list{
+        width:95%;
+        height:4.5rem;
+        display:flex;
+        flex-direction: row;
+        margin:0 auto;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e5e5e5;
+        padding:0px 1rem;
+        box-sizing: border-box;
+    }
+    .choseimg{
+        width: 1.5rem;
+        height:1.5rem;
+    }
+    .msgtitle{
+        height:200px;
+        width:100%;
+        text-align: center;
+        line-height:200px;
+    }
+}

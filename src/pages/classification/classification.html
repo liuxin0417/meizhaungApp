@@ -1,0 +1,52 @@
+<ion-header style="height:50px;">
+  <div class="home_header">
+    <div class="header-inside">
+      <div class="qrcode">
+        <img tappable (click)="goshoplist()" [src]="img9" alt="">
+      </div>
+      <div class="search">
+        <div class="searchimg">
+          <img [src]="img11" alt="">
+        </div>
+        <input class='searchpart' (focus)="gotosearch()" placeholder="爱他美" type="text">
+      </div>
+      <div class="message" tappable (click)="GotoNitice()">
+        <img [src]="img10" alt="">
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content cache-view='true'>
+  <div class="imgpart">
+    <div class='btnright'>
+      <ion-slides #slide2 style="width:100%;height:100%;" direction="vertical" slidesPerView=11>
+        <ion-slide *ngFor="let tab of list1;let i = index" (click)="gotoslide(i)">
+          <div [ngClass]="{true:'item2',false:'item'}[num==i]">
+            {{tab.Name}}
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    
+    <div #scrollcontent class="scroll-content">
+      <div class="class-content" >
+        <div class="class-content-block"></div>
+        <div #scrollcontent class="class-real-content">
+          <div class="content-img" *ngIf="goodsItem.length!=0">
+            <img [src]="goodsItem.ImageUrl">
+          </div>
+          <div class="content-title">
+          </div>
+          <div class="cont-item">
+            <div *ngFor="let item of goodsItem.CategoryList" tappable (click)="gotogoodlist(item.ID,item.BH,item.Name)">
+              <img [src]="item.image" alt="">
+              <div>{{item.Name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

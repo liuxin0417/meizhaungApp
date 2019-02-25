@@ -1,0 +1,60 @@
+<!--
+  Generated template for the DeliveryTypePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="height:52px;">
+  <div class="home_header">
+    <div class="header-inside">
+      <div class="qrcode" tappable (click)="goback()">
+        <img [src]="img9" alt="">
+      </div>
+      <div class="search">
+        <div class="searchimg">
+          <!-- <img [src]="img11" alt=""> -->
+        </div>
+        <input #inputpart ng-focus="" class='searchpart' placeholder="爱他美" [(ngModel)]="message" type="text" (keyup.Enter)="search()">
+      </div>
+      <div class="message" tappable (click)="search()">
+        <img [src]="img11" alt="">
+      </div>
+    </div>
+  </div>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="ismsg">
+    <div *ngFor="let item of dataList">
+      <div class="com-content-style2" tappbale (click)="gotoinfo(item)">
+        <div class="bannerpic">
+          <img [src]="item.ImgUrl" tappable alt="" class="com-style2-img">
+        </div>
+        <div class="com-style2-title">
+          {{item.Title}}
+        </div>
+        <div class="com-style2-persion">
+          <div class="com-style2-part">
+            <img class="com-style-pic1" [src]="item.HeadUrl" alt="" style="margin-right:6px">
+            <div style="margin-right:20px">{{item.LoginName}}</div>
+          </div>
+          <div class="com-style2-part">
+            <img class="com-style-pic2" [src]="img4" alt="">
+            <div style="margin-right:15px">{{item.ClickNum}}</div>
+            <img class="com-style-pic2" [src]="img5" alt="">
+            <div>{{item.CommentNum}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="noMsg" *ngIf="!ismsg">
+    暂无相关文章
+  </div>
+  <ion-infinite-scroll *ngIf="isscroll" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

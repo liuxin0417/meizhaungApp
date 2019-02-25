@@ -1,0 +1,42 @@
+<!--
+  Generated template for the PaySuccessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="min-height:44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">付款成功</ion-title>
+    <!-- <ion-buttons right>
+      <button ion-button icon-only>
+        <img [src]="img4" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only tappable (click)="gotogoodscar()">
+        <img [src]="img3" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#f7f7f7">
+  <div class="paycontent">
+    <div class="paycontent1">
+      <div>
+        <span style="font-size:1.2rem;">￥</span>
+        <span style="font-size:1.8rem;">{{money}}</span>
+      </div>
+    </div>
+    <div class="paycontent2">
+      <div style="border-right:1px solid #999;text-align:left;" (click)="gotoOrderList()">查看订单</div>
+      <div style="text-align:right;" (click)="gotohome()">去主页</div>
+    </div>
+    <div class="info" *ngIf="shopBh!=''">
+      <p>店铺订单编号:
+        <span style="color:#FF8484;">{{shopBH}}</span>
+      </p>
+    </div>
+  </div>
+</ion-content>

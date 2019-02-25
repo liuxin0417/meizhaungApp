@@ -1,0 +1,212 @@
+page-order-pay {
+    .orderitem {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        background: #fff;
+    }
+    .orderimg {
+        width: 20%;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .orderimg>img {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    .coupon {
+        height: auto;
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 20px;
+        font-size: 1em;
+        border-bottom: 1px solid #eee;
+        padding: 10px 0px 10px 0px;
+        margin-top: 5px;
+    }
+    .coupon>div:nth-child(1) {
+        width: 95%;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .coupon>div:nth-child(1)>img {
+        height: 35px;
+        width: 35px;
+    }
+    .coupon>div:nth-child(2) {
+        width: 95%;
+        margin-left: 5%;
+        line-height: 25px;
+    }
+    .coupon>div:nth-child(3) {
+        width: 95%;
+        margin-left: 5%;
+    }
+    .coupon>div:nth-child(4) {
+        width: 95%;
+        margin-left: 5%;
+    }
+    .go-pay {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 42px;
+        width: 100%;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        font-size: 1em;
+        border-top: 1px solid #eee;
+    }
+    .go-pay>div:nth-child(1) {
+        width: 55%;
+        height: 42px;
+        line-height: 42px;
+        color: color($colors, baseColor);
+        padding-left: 5%;
+    }
+    .go-pay>div:nth-child(2) {
+        width: 45%;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        background: color($colors, baseColor);
+        color: #fff;
+    }
+    .pay-type {
+        width: 100%;
+        height: auto;
+        background: #fff;
+        margin-top: 7px;
+    }
+    .weixinpay {
+        width: 95%;
+        height: 36px;
+        border-bottom: 1px solid #e5e5e5;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+    }
+    .weixinpay>div:nth-child(1) {
+        width: 10%;
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .weixinpay>div:nth-child(1)>img {
+        width: 25px;
+        height: 25px;
+    }
+    .weixinpay>div:nth-child(2) {
+        width: 80%;
+        height: 36px;
+        line-height: 36px;
+    }
+    .weixinpay>div:nth-child(3) {
+        width: 10%;
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .weixinpay>div:nth-child(3)>img {
+        width: 15px;
+        ;
+        height: 15px;
+    } //付款成功
+    .pay_success_cover {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+        background: #F7F7F7;
+    }
+    .nav_part {
+        height: 44px;
+        width: 100%;
+        border-bottom: 1px solid #dedede;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0px 1.2rem;
+    }
+    .pay_success_status {
+        height: 9rem;
+        width: 100%;
+        background: url("../assets/imgs/orderdetail.png");
+        background-size: 100% 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0px 1.2rem;
+    }
+    .pay_status_msg {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+    }
+    .pay_success_msg {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0px 1.2rem;
+        box-sizing: border-box;
+        background: #fff;
+        margin-top: 1rem;
+    }
+    .pay_success_msg_item {
+        height: 3rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .pay_success_msg_address {
+        width: 80%;
+        height: 100%;
+        font-size: 1.4rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 3rem;
+    }
+    .pay_success_msg_item>span {
+        display: block;
+    }
+    .pay_success_btn {
+        width: 100%;
+        height: 4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 1.2rem;
+        margin-top: 1rem;
+    }
+    .pay_success_btn>div {
+        height: 3rem;
+        width: 10rem;
+        text-align: center;
+        line-height: 3rem;
+        border: 1px solid #dedede;
+        background: #fff;
+    }
+}

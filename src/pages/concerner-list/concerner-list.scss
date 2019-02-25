@@ -1,0 +1,29 @@
+page-concerner-list {
+    .concer-item {
+        width: 100%;
+        height: 44px;
+        display:flex;
+        flex-direction:row;
+
+    }
+    .concer-item1{
+        width:15%;
+        height:44px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .concer-item1>img{
+        height:31px;
+        width:31px;
+        margin:0 auto;
+        border-radius:50%;
+    }
+    .concer-item2{
+        width:85%;
+        height:44px;
+        border-bottom:1px solid #ddd;
+        line-height:44px; 
+    }
+}

@@ -1,0 +1,156 @@
+page-group-buy-success {
+    .invite-item1 {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        background: #fff;
+        padding-top: 5px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .invite-item1>div {
+        width: auto;
+        height: 30px;
+        margin: 0 auto;
+        color: #67EBD3;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 2px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size:1.2em;
+    }
+    .duigou{
+        width:20px;
+        height:20px;
+        margin-right:10px;
+      
+    }
+    .invite-item2 {
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        background: #fff;
+        color:#999;
+    }
+    .invite-item3 {
+        width: 100%;
+        height: 50px;
+        background: #fff;
+    }
+    .invite-item3>div {
+        width: 87.5%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background: color($colors, baseColor);
+        color: #fff;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    .invite-item4 {
+        width: 100%;
+        height: 60px;
+        background: #fff;
+    }
+    .invite-item4>div {
+        width: 87.5%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid color($colors, baseColor);
+        color: color($colors, baseColor);
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    .invite-item5 {
+        height: 60px;
+        width: 95%;
+        margin: 0 auto;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .pinzhu {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        margin-right: 5px;
+    }
+    .pinzhu-name {
+        position: absolute;
+        height: 20px;
+        width: 30px;
+        top: -10px;
+        left: 0px;
+        border-radius: 4px;
+        background: #2675D3;
+        color: #fff;
+        font-size: 0.6em;
+        text-align: center;
+        line-height: 20px;
+    }
+    .invite-item6,
+    .invite-item7 {
+        width: 100%;
+        height: auto;
+        padding:5px 0px;
+        background: #fff;
+    }
+    .invite-item6>div {
+        width: 95%;
+        height: auto;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: #fff;
+        justify-content: space-between;
+    }
+    .invite-item7>div {
+        width: 95%;
+        height: auto;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: #fff;
+        justify-content: space-between;
+    }
+    .img-goto {
+        width: 2.2rem;
+        height:2.2rem;
+        margin-left: 9px;
+    }
+    .goods-name {
+        width: 80%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .goods-name-width>div {
+        width: 80px;
+        height: 100%;
+        font-size: 0.75em;
+        text-align: right;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .circle-black {
+        width: 5px;
+        height: 5px;
+        background: #000;
+        border-radius: 50%;
+        margin-right: 4px;
+    }
+}

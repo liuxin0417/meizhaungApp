@@ -1,0 +1,36 @@
+page-wallet-detail {
+    .detail-item{
+        height:46px;
+        width:95%;
+        border-bottom:1px solid #e5e5e5;
+        padding:5px 0px;
+        display:flex;
+        margin:0 auto;
+        flex-direction:column;
+    }
+    .detail-item>div{
+        width:95%;
+        line-height:20px;
+        display:flex;
+        flex-direction:row;
+        margin:0 auto;
+
+    }
+    .detail-item>div>div:nth-child(1){
+        width:50%;
+        text-align: left;
+    }
+    .detail-item>div>div:nth-child(2){
+        width:50%;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .detail-item>div:nth-child(2){
+        font-size:0.68em;
+        color:#666;
+       
+    }
+    
+}

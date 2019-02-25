@@ -1,0 +1,147 @@
+<!--
+  Generated template for the TemplatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- 轮播图 -->
+<div style="height:130px;width:100%;">
+  <ion-slides loop="false" auto="3000">
+    <ion-slide *ngFor="let item of Dataslide">
+      <img style="width:100%;height:100%;" [src]="item.Imageurl" alt="">
+    </ion-slide>
+  </ion-slides>
+</div>
+<div class="btnpart" *ngIf="Databtn!=''">
+  <div *ngFor="let item of Databtn ;let i=index" tappable (click)="gotogroup(item)">
+    <img [src]="item.Imageurl" alt="">
+    <div style="font-size:1.4rem;font-weight:900;">{{item.Name}}</div>
+  </div>
+</div>
+<div *ngFor="let item of Datacontent">
+  <!-- 四个选项 -->
+
+  <!-- 广告1 -->
+  <div class="banner2" *ngIf="item.toltype==4">
+    <img [src]="item.Imageurl" alt="" tappable (click)="PushPage(item)">
+  </div>
+  <div class="banner2" *ngIf="item.toltype==3&&item.type==1&&item.productList[0].ImageUrl!=undefined" tappable (click)="gotoCouponListPage(item)">
+    <img [src]="item.productList[0].ImageUrl" alt="">
+  </div>
+  <!-- 商品楼层 -->
+  <!-- 商品类型 1-->
+  <div style="width:100%" *ngIf="item.toltype==3 && item.type==2">
+    <div class="title">
+      <div>--{{item.url}}--</div>
+      <div>{{item.Imageurl}}</div>
+    </div>
+    <div style="height:18rem;width:100%;margin-bottom:5px;">
+      <ion-slides loop="false" slidesPerView=2.5>
+        <ion-slide *ngFor="let tab of group(item.productList,1);let i=index">
+          <img *ngIf="i==0" style="display: block;" class="new_goods_item" [src]="tab.ImageUrl" alt="" tappable (click)="gotoitem(tab)">
+          <div class="new_goods_item"  *ngIf="i!=0" tappable (click)="gotoitem(tab)">
+            <img class="new_item_goods_img"  [src]="tab.ImageUrl" alt="">
+            <div class="new_item_goods_name" style="font-size:1.2rem;">爱他美一段奶粉爱他美一段奶粉爱他美一段奶粉</div>
+            <div class="new_item_goods_price" style="font-size:1.2rem;">￥149.00</div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="goodsitem">
+      <div tappable (click)="goto(item.productList,2)" *ngIf="select(item.productList,2)!=undefined">
+        <img style="width:100%;height:100%;" [src]="select(item.productList,2).ImageUrl" alt="">
+      </div>
+      <div>
+        <div tappable (click)="goto(item.productList,3)" *ngIf="select(item.productList,3)!=undefined">
+          <img style="width:100%;height:100%;" [src]="select(item.productList,3).ImageUrl" alt="">
+        </div>
+        <div (click)="goto(item.productList,4)" *ngIf="select(item.productList,4)!=undefined">
+          <img style="width:100%;height:100%;" [src]="select(item.productList,4).ImageUrl" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 商品类型 2-->
+  <div style="width:100%" *ngIf="item.toltype==3 && item.type==3">
+    <div class="title">
+      <div>--{{item.url}}--</div>
+    </div>
+    <div class="banner3" tappable (click)="goto(item.productList,1)" *ngIf="select(item.productList,1)!=null">
+      <img [src]="select(item.productList,1).ImageUrl" alt="">
+    </div>
+    <div class="goodsitem2">
+      <div *ngIf="select(item.productList,2)!=null">
+        <div tappable (click)="goto(item.productList,2)">
+          <img style="width:100%;height:100%;" [src]="select(item.productList,2).ImageUrl" alt="">
+        </div>
+        <div class="goodsdetail" *ngIf="select(item.productList,2)!=undefined">
+          <div>{{select(item.productList,2).Name}}</div>
+          <div>￥{{fixedNum(select(item.productList,2).Activityprice)}}</div>
+          <div>99%好评</div>
+        </div>
+      </div>
+      <div style=" flex-direction:row-reverse" *ngIf="select(item.productList,3)!=null">
+        <div>
+          <img style="width:100%;height:100%;" tappable (click)="goto(item.productList,3)" [src]="select(item.productList,3).ImageUrl"
+            alt="">
+        </div>
+        <div class="goodsdetail" *ngIf="select(item.productList,3)!=undefined">
+          <div>{{select(item.productList,3).Name}}</div>
+          <div>￥{{fixedNum(select(item.productList,3).Activityprice)}}</div>
+          <div>99%好评</div>
+        </div>
+      </div>
+    </div>
+    <div class="banner3" *ngIf="select(item.productList,4)!=null">
+      <img [src]="select(item.productList,4).ImageUrl" (click)="goto(item.productList,4)" alt="">
+    </div>
+  </div>
+  <!-- 商品类型 3-->
+  <div style="width:100%" *ngIf="item.toltype==3 && item.type==4">
+    <div class="title">
+      <div>{{item.url}}</div>
+      <div>{{item.Imageurl}}</div>
+    </div>
+    <div class="banner3" *ngIf="select(item.productList,1)!=undefined">
+      <img [src]="select(item.productList,1).ImageUrl" (click)="goto(item.productList,1)" alt="">
+    </div>
+    <div class="goodslist">
+      <div class="goodsitem3" *ngFor="let tab of group(item.productList,2)" tappable (click)="gotoitem(tab)">
+        <div>
+          <div class="fixedpart">新品</div>
+          <img style="width:100%;height:100%;" [src]="tab.ImageUrl" alt="">
+        </div>
+        <div>{{slice(tab.Name)}}</div>
+        <!-- <div>{{tab.Shortdesc}}</div> -->
+        <div>￥{{fixedNum(tab.Activityprice)}}</div>
+      </div>
+
+    </div>
+  </div>
+  <!-- 非首页商品类 -->
+  <div class="type-five" *ngIf=" item.toltype==3 && item.type==5">
+    <div *ngIf="select(item.productList,1)!=undefined">
+      <img style="width:100%;" [src]="select(item.productList,1).ImageUrl" alt="">
+    </div>
+    <div class="goods-one" tappable (click)="goto(item.productList,2)">
+      <img [src]="select(item.productList,2).ImageUrl" alt="">
+      <div class="good-price1">
+        <div>
+          <div style="font-size:14px;font-weight:900;">{{slice(select(item.productList,2).Name)}}</div>
+        </div>
+        <div>￥{{fixedNum(select(item.productList,2).Activityprice)}}</div>
+      </div>
+    </div>
+    <div class="goods-two">
+      <div class="good-price2" *ngFor="let tab of group(item.productList,3)" tappable (click)="goto(item.productList,3)">
+        <img [src]="tab.ImageUrl" alt="">
+        <div style="font-weight:900;">{{slice(tab.Name)}}</div>
+        <div class="changecolor"  >￥{{fixedNum(tab.Activityprice)}}</div>
+      </div>
+    </div>
+  </div>
+  <!-- 广告2 -->
+  <!-- <div class="banner2" *ngIf="item.toltype==4">
+    <img [src]="img5" alt="">
+  </div> -->
+</div>

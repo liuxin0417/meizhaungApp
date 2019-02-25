@@ -1,0 +1,112 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">购物车</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only tappable (click)="additem()">
+        <img [src]="img3" style="height:20px;width:20px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div class="shopTitle">
+    <!-- <div [ngClass]="{true:'type1',false:'type2'}[getType==0]" tappable (click)="select(0)">全部自提</div> -->
+    <div [ngClass]="{true:'type1',false:'type2'}[getType==1]" tappable (click)="select(1)">全部配送</div>
+  </div>
+</ion-header>
+
+<ion-content style="background:#eee;">
+  <div *ngIf="coverflag" class="cover" [ngClass]="{true:'goshow',false:'gohide'}[slideflag]">
+    <div class="clickbtn" tappable (click)="hide()"></div>
+    <div class="alertpart" [ngClass]="{true:'goup',false:'godown'}[slideflag]">
+      <div class="picPart">
+        <img [src]="imgUrl" alt="img2" class="goodspic">
+        <div class="goods-detail">
+          <div class="changecolor" >
+            <span style="font-size:1.5em;">
+              {{ProductPrice}}
+            </span>
+          </div>
+          <div style="line-height:15px;">
+            {{goodsmsg.Name}}
+          </div>
+        </div>
+      </div>
+      <div class="goodscontent">
+        <div class="typeitem" *ngFor="let item of AttrList;let a=index">
+          <div class="goodsTitle">{{item.TextPrompt}}</div>
+          <div class="goodsType">
+            <div *ngFor="let item2 of item.AttValueList;let i=index;" [ngClass]="{true:'checkdiv',false:'nocheckdiv'}[item2.Check==1]"
+              tappable (click)="ChoiceAttr(item.AttValueList,item2,a,i)">{{item2.Value}}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="btnflag" class="buyBtn" tappable (click)="confirme()">确定</div>
+      <div *ngIf="!btnflag" class="buyBtn2">确定</div>
+    </div>
+  </div>
+  <div class="goodsList">
+    
+    <span *ngFor="let item of goodslist ; let i= index">
+      <div class="listItem" *ngIf="item.AttributeDescription==''">
+        <div>
+          <!-- <div [ngClass]="{true:'type1',false:'type2'}[item.type==0]" tappable (click)="selectonme(i,0)">自提</div> -->
+          <div [ngClass]="{true:'type1',false:'type2'}[item.type==1]" tappable (click)="selectonme(i,1)">配送</div>
+        </div>
+        <div class="ItemContent">
+          <div>
+            <img [src]="item.Url" alt="">
+            <div class="itemDetail">
+              <div>{{slice(item.Name)}}</div>
+              <div class="price" style="height:25px;">
+                <span>￥{{item.Price}}</span>
+              </div>
+              <div class="numchange">
+                <div tappable (click)="jian(i)">—</div>
+                <div>{{item.num}}</div>
+                <div tappable (click)="add(i)">+</div>
+              </div>
+              <div *ngIf="item.AttributeDescription!=''">{{item.AttributeDescription}}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div tappable (click)="delete(i)">删除</div>
+        </div>
+      </div>
+    </span>
+    <span *ngFor="let item of goodslist ; let i= index">
+      <div class="listItem" style="height:100px;">
+        <div style="height:100px;padding-top:25px;">
+          <!-- <div [ngClass]="{true:'type1',false:'type2'}[item.type==0]" tappable (click)="selectonme(i,0)">自提</div> -->
+          <div [ngClass]="{true:'type1',false:'type2'}[item.type==1]" tappable (click)="selectonme(i,1)">配送</div>
+        </div>
+        <div class="ItemContent" style="height:100px;">
+          <div style="height:100px;font-size:0.75em;">
+            <img [src]="item.Url" alt="">
+            <div class="itemDetail">
+              <div style="height:25px;line-height:25px;">{{slice(item.Name)}}</div>
+              <div class="price" style="height:25px;line-height:25px;">
+                <span>￥{{item.Price}}</span>
+              </div>
+              <div *ngIf="Description!=''" style="height:25px;line-height:25px;">规格:&nbsp;&nbsp;&nbsp;&nbsp;{{item.Description}}</div>
+              <div class="numchange" style="height:25px;padding-top:2px;">
+                <div tappable (click)="jian(i)">—</div>
+                <div>{{item.num}}</div>
+                <div tappable (click)="add(i)">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="height:100px;">
+          <div tappable (click)="delete(i)">删除</div>
+        </div>
+      </div>
+    </span>
+  </div>
+
+  <!-- <div style="width:100%;height:48px;"></div> -->
+ 
+
+</ion-content>
+<ion-footer style="width:100%;height:48px;">
+  <div class="btn" tappable (click)="gotoSettlement()">去结算</div>
+</ion-footer>

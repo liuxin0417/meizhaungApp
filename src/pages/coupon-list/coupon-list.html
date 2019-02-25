@@ -1,0 +1,79 @@
+<ion-header style="height:4.4rem">
+  <ion-navbar mode="ios" style="min-height: 4.4rem;">
+    <ion-title mode="ios">优惠券列表</ion-title>
+  </ion-navbar>
+  <!-- <div class="coupon-btn">
+    <div class="coupon-btn1" tappable (click)="type(1)">
+      <span [ngClass]="{true:'color',false:'color2'}[number==1]">全平台</span>
+    </div>
+    <div class="coupon-btn2" tappable (click)="type(2)">
+      <span [ngClass]="{true:'color',false:'color2'}[number==2]">品类</span>
+    </div>
+    <div class="coupon-btn3" tappable (click)="type(3)">
+      <span [ngClass]="{true:'color',false:'color2'}[number==3]">单商品</span>
+    </div>
+  </div> -->
+</ion-header>
+
+
+<ion-content style="background:#f7f7f7">
+  <div *ngFor="let item of conponList;let i=index">
+    <div class="coupon-content">
+      <div class="coupon-content-left">
+        <div *ngIf="item.isL" id="zhang"></div>
+        <div class="coupon-content-left-item1" *ngIf="item.UsingRange==1">全平台可用（除特殊商品）
+          <span *ngIf="item.CouponType==1">【满减劵】</span>
+          <span *ngIf="item.CouponType==2">【折扣劵】</span>
+          <span *ngIf="item.CouponType==3">【现金劵】</span>
+        </div>
+        <div class="coupon-content-left-item1" *ngIf="item.UsingRange==2">店铺通用类（除特殊商品）
+          <span *ngIf="item.CouponType==1">【满减劵】</span>
+          <span *ngIf="item.CouponType==2">【折扣劵】</span>
+          <span *ngIf="item.CouponType==3">【现金劵】</span>
+        </div>
+        <div class="coupon-content-left-item1" *ngIf="item.UsingRange==3">品类通用类（除特殊商品）
+          <span *ngIf="item.CouponType==1">【满减劵】</span>
+          <span *ngIf="item.CouponType==2">【折扣劵】</span>
+          <span *ngIf="item.CouponType==3">【现金劵】</span>
+        </div>
+        <div class="coupon-content-left-item1" *ngIf="item.UsingRange==4">商品使用类（除特殊商品）
+          <span *ngIf="item.CouponType==1">【满减劵】</span>
+          <span *ngIf="item.CouponType==2">【折扣劵】</span>
+          <span *ngIf="item.CouponType==3">【现金劵】</span>
+        </div>
+        <div class="coupon-content-left-item1" *ngIf="item.UsingRange==5">品牌使用（除特殊商品）
+          <span *ngIf="item.CouponType==1">【满减劵】</span>
+          <span *ngIf="item.CouponType==2">【折扣劵】</span>
+          <span *ngIf="item.CouponType==3">【现金劵】</span>
+        </div>
+        <div class="coupon-content-left-item2">
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==1">{{item.Amount}}元</div>
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==2">{{item.Amount*10}}折</div>
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==3">{{item.Amount}}元</div>
+          <div style="font-size:2rem;margin-right:0.5rem" *ngIf="item.CouponType==4">免邮劵</div>
+          <div *ngIf="item.CouponType!=4">满{{item.MeetPrice}}可用</div>
+        </div>
+      </div>
+      <div class="coupon-content-right">
+        <div>{{item.CouponName}}</div>
+        <!-- <div>{{(item.LqRate*1000)/10}}%</div> -->
+        <div *ngIf="!item.isL" class="clickBtn" tappable (click)="getCoupon(item)">点击领取</div>
+        <div *ngIf="item.isL" class="clickBtn" tappable (click)="gotoUse(item)">去使用</div>
+        <div *ngIf="choseNum!=i&&item.UsingRange!=1" tappable (click)="getDetail(item,i)">查看详情</div>
+        <div *ngIf="choseNum==i" tappable (click)="resest()">收起</div>
+      </div>
+    </div>
+    <div class="show_detail" *ngIf="choseNum==i">
+      <div class="show_detail_title">适用范围:</div>
+      <div class="show_detail_li">
+        <span *ngFor="let item of showList">
+          {{item.Name}};
+        </span>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

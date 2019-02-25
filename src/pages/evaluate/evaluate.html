@@ -1,0 +1,55 @@
+<ion-header style="min-height: 44px;">
+  <ion-navbar mode="ios" style="min-height: 44px;">
+    <ion-title mode="ios">写评价</ion-title>
+    <ion-buttons right tappable (click)="closealert()">
+      <button ion-button icon-only>
+        <img [src]="img4" style="height:15px;width:15px;margin-right:10px;margin-top:3px;" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background:#eee;">
+  <div class="eva-header">
+    <div class="good-img">
+      <img [src]="goodsDetail.Url" alt="">
+    </div>
+    <div class="good-content">
+      <div>{{slice(goodsDetail.Name)}}</div>
+      <div>{{goodsDetail.Price}}元</div>
+    </div>
+  </div>
+  <div class="eva-content">
+    <div class="star">
+      <div>评价</div>
+      <div class="star-img" *ngFor="let item of list ; let i=index" tappable (click)="givestaar(i)">
+        <img *ngIf="item.statue==true" [src]="img2" alt="">
+        <img *ngIf="item.statue==false" [src]="img3" alt="">
+      </div>
+      <div class="exp">
+        {{status}}
+      </div>
+    </div>
+    <div class="justice">
+      <textarea name="" class="textarea" placeholder="在哪方面改进，会让你更满意" [(ngModel)]="textarea" #myInput></textarea>
+      <!-- <div style="margin-left:20px;" *ngIf="!isweb">
+        <page-select-picture [(fileObjList)]="fileObjList" [max]="6"></page-select-picture>
+      </div> -->
+      <div style="margin-left:20px;">
+        <div *ngFor="let item of fileObjList;let i = index;" class="pictures">
+          <span *ngIf="allowDelete" class="remove" tappable (click)="deleteWxPicture(i)">×</span>
+          <img [src]="item" tappable (click)="viewPicture(item)" />
+        </div>
+        <div class="pictures">
+          <input class="rn_img_input" type="file" (change)="onChange1($event)">
+          <img [src]="img5" alt="" *ngIf="fileObjList.length<max">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;height:40px;"></div>
+  <div class="eva-submit" tappable (click)="comment()">
+    提交
+  </div>
+</ion-content>

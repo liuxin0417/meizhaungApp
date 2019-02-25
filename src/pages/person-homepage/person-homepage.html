@@ -1,0 +1,62 @@
+<ion-header style="height:205px;">
+  <div id="headpart">
+    <div class="head-nav">
+      <div tappable (click)="goback()">
+        <img [src]="img" alt="">
+      </div>
+      <div>{{type.Name}}</div>
+      <div></div>
+    </div>
+    <div class="head-msg">
+      <div class="head-msg-item1">
+        <img [src]="type.ImgUrl" alt="">
+      </div>
+      <div class="head-msg-item2">
+        <div style="margin-bottom:10px;">{{type.Info}}</div>
+        <div *ngIf="fatherType==1" >关注:{{type.PeopleSum}}</div>
+      </div>
+      <div class="head-msg-item3">
+        <div *ngIf="fatherType==1"  tappable (click)="AddFollow(item)">+关注</div>
+      </div>
+    </div>
+  </div>
+  <div class="switch-btn">
+    <div tappable (click)="Load(0)">
+      <span [ngClass]="{true:'bordershow',false:'borderno'}[newtype==0]">精品</span>
+    </div>
+    <div tappable (click)="Load(1)">
+      <span [ngClass]="{true:'bordershow',false:'borderno'}[newtype==1]">帖子</span>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content style="background:#eee">
+  
+  <!-- <div style="width:100%;height:50px;"></div> -->
+  <div style="width:100%;background:#fff;">
+    <div class="com-content-style2" tappable *ngFor="let item of articleList" (click)="gotoarticle(item)">
+      <div class="bannerpic" *ngIf="item.ImgUrl!=''" >
+        <img [src]="item.ImgUrl" alt="" class="com-style2-img">
+      </div>
+      <div class="com-style2-title">
+        {{item.Title}}
+      </div>
+      <div class="com-style2-persion">
+        <div class="com-style2-part">
+          <img class="com-style-pic1" [src]="item.HeadUrl" alt="" style="margin-right:6px">
+          <div style="margin-right:20px">{{item.LoginName}}</div>
+        </div>
+        <div class="com-style2-part">
+          <img class="com-style-pic2" [src]="img8" alt="">
+          <div style="margin-right:15px">{{item.ClickNum}}</div>
+          <img class="com-style-pic2" [src]="img9" alt="">
+          <div>{{item.CommentNum}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="isshow" (ionInfinite)="doInfinite($event)" threshold="30px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
